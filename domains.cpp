@@ -1,15 +1,6 @@
 #include "domains.h"
 #include <iostream>
 
-constexpr std::array<const uint16_t, 5> Capacity::VALID_VALUES;
-
-void Capacity::set(uint16_t value)
-{
-    _validate(value);
-
-    _value = value;
-}
-
 void Capacity::_validate(uint16_t testedValue)
 {
     bool isValid = false;
@@ -23,13 +14,6 @@ void Capacity::_validate(uint16_t testedValue)
     }
 
     throw std::invalid_argument("Invalid value " + std::to_string(testedValue) + ".");
-}
-
-void Role::set(std::string value)
-{
-    _validate(value);
-
-    _value = value;
 }
 
 void Role::_validate(std::string testedValue)
@@ -47,13 +31,6 @@ void Role::_validate(std::string testedValue)
     throw std::invalid_argument("Invalid value " + testedValue + ".");
 }
 
-void IdCode::set(std::string value)
-{
-    _validate(value);
-
-    _value = value;
-}
-
 void IdCode::_validate(std::string testedValue)
 {
     if (!_isRightPattern(testedValue))
@@ -65,13 +42,6 @@ void IdCode::_validate(std::string testedValue)
 bool IdCode::_isRightPattern(std::string testedValue)
 {
     return std::regex_match(testedValue, VALID_PATTERN);
-}
-
-void Date::set(std::string value)
-{
-    _validate(value);
-
-    _value = value;
 }
 
 void Date::_validate(std::string testedDate)

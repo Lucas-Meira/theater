@@ -13,10 +13,16 @@ protected:
     virtual void _validate(T value) = 0;
 
 public:
-    virtual void set(const T value) = 0;
     inline T get() const
     {
         return _value;
+    };
+
+    virtual void set(T value)
+    {
+        _validate(value);
+
+        _value = value;
     };
 };
 
@@ -32,8 +38,6 @@ public:
     }
 
     static constexpr std::array<const uint16_t, 5> VALID_VALUES{100, 200, 300, 400, 500};
-
-    void set(uint16_t value) override;
 };
 
 class Role : public BaseDomain<std::string>
@@ -48,8 +52,6 @@ public:
     }
 
     inline static const std::string VALID_VALUES[6]{"Actor", "Cenographist", "Figurinist", "Makeup Artist", "Sound Designer", "Lighting Designer"};
-
-    void set(std::string value) override;
 };
 
 //CLASSIFICAÇÃO livre, 10, 12, 14, 16, 18
@@ -61,8 +63,6 @@ protected:
 
 public:
     inline static const std::array<const std::string, 6> VALID_VALUES{"general", "10", "12", "14", "16", "18"};
-
-    void set(std::string value) override;
 };
 
 class IdCode : public BaseDomain<std::string>
@@ -77,8 +77,6 @@ public:
     {
         set(value);
     }
-
-    void set(std::string value) override;
 };
 
 class Date : public BaseDomain<std::string>
@@ -116,8 +114,6 @@ public:
     {
         return _year;
     }
-
-    void set(std::string value) override;
 };
 
 class Email : public BaseDomain<std::string>

@@ -4,5 +4,9 @@
 
 int main(void)
 {
-    std::cout << Email("lima07.lucas@gmail.com").get();
+    std::cout << Role("Actor").get() << std::endl;
+    std::cout << Capacity(100).get() << std::endl;
+    std::cout << Email("lima07.lucas@gmail.com").get() << std::endl;
+
+    return 0;
 }
