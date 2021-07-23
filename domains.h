@@ -1,5 +1,5 @@
 #ifndef DOMAINS_H
-#define DOMAINS_S
+#define DOMAINS_H
 
 #include <cstdint>
 #include <array>
@@ -140,6 +140,34 @@ public:
     inline std::string getDomain() const { return _domain; };
 
     void set(std::string value) override;
+};
+
+class Time : public BaseDomain<std::string>
+{
+protected:
+    bool _isRightPattern(std::string time);
+    void _validate(std::string time) override;
+
+    inline static const std::regex VALID_PATTERN{std::regex("^([01][09]|2[0-3]):(00|15|30|45)$")};
+
+    unsigned int _hours;
+    unsigned int _minutes;
+
+public:
+    Time(std::string time)
+    {
+        set(time);
+    }
+
+    inline unsigned int getHours()
+    {
+        return _hours;
+    }
+
+    inline unsigned int getMinutes()
+    {
+        return _minutes;
+    }
 };
 
 /*

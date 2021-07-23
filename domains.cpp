@@ -13,7 +13,7 @@ void Capacity::_validate(uint16_t testedValue)
         }
     }
 
-    throw std::invalid_argument("Invalid value " + std::to_string(testedValue) + ".");
+    throw std::invalid_argument("Invalid value '" + std::to_string(testedValue) + "'.");
 }
 
 void Role::_validate(std::string testedValue)
@@ -28,14 +28,14 @@ void Role::_validate(std::string testedValue)
         }
     }
 
-    throw std::invalid_argument("Invalid value " + testedValue + ".");
+    throw std::invalid_argument("Invalid value '" + testedValue + "'.");
 }
 
 void IdCode::_validate(std::string testedValue)
 {
     if (!_isRightPattern(testedValue))
     {
-        throw std::invalid_argument("Invalid value " + testedValue + ".");
+        throw std::invalid_argument("Invalid value '" + testedValue + "'.");
     }
 }
 
@@ -53,7 +53,7 @@ void Date::_validate(std::string testedDate)
 
     if (!_isValidDate(testedDate))
     {
-        throw std::invalid_argument("Invalid date " + testedDate + ".");
+        throw std::invalid_argument("Invalid date '" + testedDate + "'.");
     }
 }
 
@@ -117,7 +117,7 @@ void Email::_validate(std::string testedAddress)
 {
     if (!_isRightPattern(testedAddress) or !_isValidPeriods(testedAddress))
     {
-        throw std::invalid_argument("Invalid address " + testedAddress + ".");
+        throw std::invalid_argument("Invalid address '" + testedAddress + "'.");
     }
 }
 
@@ -151,4 +151,17 @@ bool Email::_isPeriodAtBeginningOrEnd(std::string testedAddress)
     }
 
     return false;
+}
+
+void Time::_validate(std::string time)
+{
+    if (!_isRightPattern(time))
+    {
+        throw std::invalid_argument("Invalid time '" + time + "'.");
+    }
+}
+
+bool Time::_isRightPattern(std::string time)
+{
+    return std::regex_match(time, VALID_PATTERN);
 }
