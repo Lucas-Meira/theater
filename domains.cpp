@@ -312,3 +312,24 @@ void PhoneNumber::_validate(std::string number)
         throw std::invalid_argument("Invalid area code '" + number.substr(1, 2) + "'.");
     }
 }
+
+bool PlayType::_isValidType(std::string type)
+{
+    for (const std::string &validType : VALID_VALUES)
+    {
+        if (type == validType)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void PlayType::_validate(std::string type)
+{
+    if (!_isValidType(type))
+    {
+        throw std::invalid_argument("Invalid play type '" + type + "'.");
+    }
+}

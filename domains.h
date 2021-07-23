@@ -254,13 +254,20 @@ public:
     }
 };
 
-/*
-TELEFONE Formato (XX)-YYYYYYYYY
-XX é um dos seguintes códigos 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 32, 33,
-34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 63, 64, 65, 66, 67, 68,
-69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99.
-Cada Y é dígito (0-9).
-Não existe número de telefone 000000000.
-TIPO auto, comédia, drama, farsa, melodrama, monólogo, musical, ópera, revista
-*/
+class PlayType : public BaseDomain<std::string>
+{
+protected:
+    bool _isValidType(std::string type);
+    void _validate(std::string type) override;
+
+public:
+    PlayType(std::string type)
+    {
+        set(type);
+    }
+
+    inline static const std::string VALID_VALUES[]{"Auto", "Comedy", "Drama", "Farce", "Melodrama",
+                                                   "Monologue", "Musical", "Opera", "Revue"};
+};
+
 #endif
