@@ -4,10 +4,11 @@
 
 int main(void)
 {
-    std::string password;
+    std::string name;
 
-    std::cin >> password;
-    std::cout << Password(password).get() << std::endl;
+    std::getline(std::cin, name);
+
+    std::cout << Name(name).get() << std::endl;
 
     return 0;
 }

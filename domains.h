@@ -207,12 +207,30 @@ private:
     bool _isRightPattern(std::string password);
     void _validate(std::string password) override;
 
-    inline static const std::regex VALID_PATTERN{std::regex("^(?!.*(.).*\\1)[a-zA-Z0-9!@#$%&?]{8}$")};
+    inline static const std::regex VALID_CHARACTERS{std::regex("^(?!.*(.).*\\1)[a-zA-Z0-9!@#$%&?]{8}$")};
 
 public:
     Password(std::string password)
     {
         set(password);
+    }
+};
+
+class Name : public BaseDomain<std::string>
+{
+private:
+    bool _isFirstLetterCapitalized(std::string name);
+    bool _containsSpaceSequence(std::string name);
+    bool _isPeriodPrecededByLetter(std::string name);
+    bool _containsOnlyValidCharacters(std::string name);
+    void _validate(std::string name) override;
+
+    inline static const std::regex VALID_CHARACTERS{std::regex("^[a-zA-Z. ]{5,20}$")};
+
+public:
+    Name(std::string name)
+    {
+        set(name);
     }
 };
 
@@ -222,11 +240,6 @@ Cada caracter é letra (A-Z ou a-z), ponto (.) ou espaço em branco.
 Ponto (.) é precedido por letra.
 Não há espaços em branco em sequência.
 Primeira letra de cada termo é letra maiúscula (A-Z).
-SENHA Formato XXXXXXXX
-Cada caractere X é letra (A-Z ou a-z), dígito (0-9) ou caractere especial.
-São possíveis caracteres especiais ! @ # $ % & ?
-Não existe caracter repetido.
-Existe pelo menos uma letra (maiúscula ou minúscula), um dígito e um caractere especial.
 TELEFONE Formato (XX)-YYYYYYYYY
 XX é um dos seguintes códigos 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 32, 33,
 34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 63, 64, 65, 66, 67, 68,
