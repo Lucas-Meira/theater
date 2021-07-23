@@ -35,6 +35,8 @@ protected:
     static constexpr std::array<const uint16_t, 5> VALID_VALUES{100, 200, 300, 400, 500};
 
 public:
+    Capacity() {}
+
     Capacity(uint16_t capacity)
     {
         set(capacity);
@@ -51,13 +53,13 @@ protected:
                                                                 "Makeup Artist", "Sound Designer", "Lighting Designer"};
 
 public:
+    Role() {}
+
     Role(std::string role)
     {
         set(role);
     }
 };
-
-//CLASSIFICAÇÃO livre, 10, 12, 14, 16, 18
 
 class Rating : public BaseDomain<std::string>
 {
@@ -68,6 +70,8 @@ protected:
     inline static const std::array<const std::string, 6> VALID_VALUES{"general", "10", "12", "14", "16", "18"};
 
 public:
+    Rating() {}
+
     Rating(std::string rating)
     {
         set(rating);
@@ -82,6 +86,8 @@ protected:
     inline static const std::regex VALID_PATTERN{std::regex("^[a-zA-Z]{2}[0-9]{4}$")};
 
 public:
+    IdCode() {}
+
     IdCode(std::string value)
     {
         set(value);
@@ -104,6 +110,8 @@ protected:
     unsigned int _year;
 
 public:
+    Date() {}
+
     Date(std::string date)
     {
         set(date);
@@ -142,6 +150,8 @@ protected:
     std::string _domain;
 
 public:
+    Email() {}
+
     Email(std::string address)
     {
         set(address);
@@ -165,6 +175,8 @@ protected:
     unsigned int _minutes;
 
 public:
+    Time() {}
+
     Time(std::string time)
     {
         set(time);
@@ -190,6 +202,8 @@ protected:
     inline static const std::regex VALID_PATTERN{std::regex("^(?!.*(.).*\\1)\\d{5}$")};
 
 public:
+    Immatriculation() {}
+
     Immatriculation(std::string immatriculation)
     {
         set(immatriculation);
@@ -208,6 +222,8 @@ private:
     inline static const std::regex VALID_CHARACTERS{std::regex("^(?!.*(.).*\\1)[a-zA-Z0-9!@#$%&?]{8}$")};
 
 public:
+    Password() {}
+
     Password(std::string password)
     {
         set(password);
@@ -226,6 +242,8 @@ private:
     inline static const std::regex VALID_CHARACTERS{std::regex("^[a-zA-Z. ]{5,20}$")};
 
 public:
+    Name() {}
+
     Name(std::string name)
     {
         set(name);
@@ -249,6 +267,8 @@ protected:
     unsigned int _number;
 
 public:
+    PhoneNumber() {}
+
     PhoneNumber(std::string number)
     {
         set(number);
@@ -274,6 +294,8 @@ protected:
     void _validate(std::string testedValue) override;
 
 public:
+    PlayType() {}
+
     PlayType(std::string type)
     {
         set(type);
