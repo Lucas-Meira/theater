@@ -4,11 +4,10 @@
 
 int main(void)
 {
-    std::cout << Role("Actor").get() << std::endl;
-    std::cout << Capacity(100).get() << std::endl;
-    std::cout << Email("lima07.lucas@gmail.com").get() << std::endl;
-    std::cout << Time("10:30").get() << std::endl;
-    std::cout << Immatriculation("62345").get() << std::endl;
+    std::string password;
+
+    std::cin >> password;
+    std::cout << Password(password).get() << std::endl;
 
     return 0;
 }

@@ -198,6 +198,24 @@ public:
     }
 };
 
+class Password : public BaseDomain<std::string>
+{
+private:
+    bool _containsLetter(std::string password);
+    bool _containsDigits(std::string password);
+    bool _containsSpecialCharacters(std::string password);
+    bool _isRightPattern(std::string password);
+    void _validate(std::string password) override;
+
+    inline static const std::regex VALID_PATTERN{std::regex("^(?!.*(.).*\\1)[a-zA-Z0-9!@#$%&?]{8}$")};
+
+public:
+    Password(std::string password)
+    {
+        set(password);
+    }
+};
+
 /*
 NOME 5 a 20 caracteres.
 Cada caracter é letra (A-Z ou a-z), ponto (.) ou espaço em branco.
