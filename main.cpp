@@ -4,11 +4,10 @@
 
 int main(void)
 {
-    std::string name;
+    std::string number;
 
-    std::getline(std::cin, name);
-
-    std::cout << Name(name).get() << std::endl;
+    std::cin >> number;
+    std::cout << PhoneNumber(number).get() << std::endl;
 
     return 0;
 }
