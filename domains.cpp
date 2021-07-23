@@ -1,34 +1,67 @@
 #include "domains.h"
 #include <iostream>
 
-void Capacity::_validate(uint16_t testedValue)
+bool Capacity::_isValidCapacity(uint16_t testedValue)
 {
-    bool isValid = false;
-
     for (const uint16_t &validValue : VALID_VALUES)
     {
         if (testedValue == validValue)
         {
-            return;
+            return true;
         }
     }
 
-    throw std::invalid_argument("Invalid value '" + std::to_string(testedValue) + "'.");
+    return false;
 }
 
-void Role::_validate(std::string testedValue)
+void Capacity::_validate(uint16_t testedValue)
 {
-    bool isValid = false;
+    if (!_isValidCapacity(testedValue))
+    {
+        throw std::invalid_argument("Invalid capacity '" + std::to_string(testedValue) + "'.");
+    }
+}
 
+bool Role::_isValidRole(std::string testedValue)
+{
     for (const std::string &validValue : VALID_VALUES)
     {
         if (testedValue == validValue)
         {
-            return;
+            return true;
         }
     }
 
-    throw std::invalid_argument("Invalid value '" + testedValue + "'.");
+    return false;
+}
+
+void Role::_validate(std::string testedValue)
+{
+    if (!_isValidRole(testedValue))
+    {
+        throw std::invalid_argument("Invalid role '" + testedValue + "'.");
+    }
+}
+
+bool Rating::_isValidRating(std::string testedValue)
+{
+    for (const std::string &validRating : VALID_VALUES)
+    {
+        if (testedValue == validRating)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void Rating::_validate(std::string testedValue)
+{
+    if (!_isValidRating(testedValue))
+    {
+        throw std::invalid_argument("Invalid rating '" + testedValue + "'");
+    }
 }
 
 void IdCode::_validate(std::string testedValue)
@@ -83,10 +116,6 @@ bool Date::_isValidDate(std::string date)
         }
     }
 
-    _day = day;
-    _month = month;
-    _year = year;
-
     return true;
 }
 
@@ -98,6 +127,17 @@ bool Date::_isLeapYear(unsigned int year)
     }
 
     return false;
+}
+
+void Date::set(std::string date)
+{
+    _validate(date);
+
+    _value = date;
+
+    _day = std::stoi(date.substr(0, 2));
+    _month = std::stoi(date.substr(3, 2));
+    _year = std::stoi(date.substr(6, 4));
 }
 
 void Email::set(std::string address)
@@ -311,6 +351,16 @@ void PhoneNumber::_validate(std::string number)
     {
         throw std::invalid_argument("Invalid area code '" + number.substr(1, 2) + "'.");
     }
+}
+
+void PhoneNumber::set(std::string number)
+{
+    _validate(number);
+
+    _value = number;
+
+    _areaCode = std::stoi(number.substr(1, 2).c_str());
+    _number = std::stoi(number.substr(5, 9).c_str());
 }
 
 bool PlayType::_isValidType(std::string type)

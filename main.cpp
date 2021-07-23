@@ -4,10 +4,10 @@
 
 int main(void)
 {
-    std::string playType;
+    std::string testedValue;
 
-    std::cin >> playType;
-    std::cout << PlayType(playType).get() << std::endl;
+    std::cin >> testedValue;
+    std::cout << Email(testedValue).get() << std::endl;
 
     return 0;
 }

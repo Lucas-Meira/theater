@@ -10,7 +10,7 @@ class BaseDomain
 {
 protected:
     T _value;
-    virtual void _validate(T value) = 0;
+    virtual void _validate(T testedValue) = 0;
 
 public:
     inline T get() const
@@ -29,29 +29,31 @@ public:
 class Capacity : public BaseDomain<uint16_t>
 {
 protected:
-    void _validate(uint16_t value) override;
-
-public:
-    Capacity(uint16_t value)
-    {
-        set(value);
-    }
+    bool _isValidCapacity(uint16_t testedValue);
+    void _validate(uint16_t testedValue) override;
 
     static constexpr std::array<const uint16_t, 5> VALID_VALUES{100, 200, 300, 400, 500};
+
+public:
+    Capacity(uint16_t capacity)
+    {
+        set(capacity);
+    }
 };
 
 class Role : public BaseDomain<std::string>
 {
 protected:
-    void _validate(std::string value) override;
-
-public:
-    Role(std::string value)
-    {
-        set(value);
-    }
+    bool _isValidRole(std::string testedValue);
+    void _validate(std::string testedValue) override;
 
     inline static const std::string VALID_VALUES[6]{"Actor", "Cenographist", "Figurinist", "Makeup Artist", "Sound Designer", "Lighting Designer"};
+
+public:
+    Role(std::string role)
+    {
+        set(role);
+    }
 };
 
 //CLASSIFICAÇÃO livre, 10, 12, 14, 16, 18
@@ -59,17 +61,23 @@ public:
 class Rating : public BaseDomain<std::string>
 {
 protected:
-    void _validate(std::string value) override;
+    bool _isValidRating(std::string rating);
+    void _validate(std::string testedValue) override;
+
+    inline static const std::array<const std::string, 6> VALID_VALUES{"general", "10", "12", "14", "16", "18"};
 
 public:
-    inline static const std::array<const std::string, 6> VALID_VALUES{"general", "10", "12", "14", "16", "18"};
+    Rating(std::string rating)
+    {
+        set(rating);
+    }
 };
 
 class IdCode : public BaseDomain<std::string>
 {
 protected:
     bool _isRightPattern(std::string value);
-    void _validate(std::string value) override;
+    void _validate(std::string testedValue) override;
     inline static const std::regex VALID_PATTERN{std::regex("^[a-zA-Z]{2}[0-9]{4}$")};
 
 public:
@@ -85,7 +93,7 @@ protected:
     bool _isRightPattern(std::string value);
     bool _isValidDate(std::string date);
     bool _isLeapYear(unsigned int year);
-    void _validate(std::string value) override;
+    void _validate(std::string testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^(0[0-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[0-2])/([2-9][0-9]{3})$")};
     static constexpr uint8_t DAYS_PER_MONTH[]{0, 31, 28, 31, 30, 31, 31, 30, 31, 30, 31, 30, 31};
@@ -114,12 +122,14 @@ public:
     {
         return _year;
     }
+
+    void set(std::string date) override;
 };
 
 class Email : public BaseDomain<std::string>
 {
 protected:
-    void _validate(std::string value) override;
+    void _validate(std::string testedValue) override;
     bool _isPeriodSequence(std::string testedAddress);
     bool _isPeriodAtBeginningOrEnd(std::string testedAddress);
     bool _isValidPeriods(std::string testedAddress);
@@ -139,14 +149,14 @@ public:
     inline std::string getLocal() const { return _local; };
     inline std::string getDomain() const { return _domain; };
 
-    void set(std::string value) override;
+    void set(std::string address) override;
 };
 
 class Time : public BaseDomain<std::string>
 {
 protected:
     bool _isRightPattern(std::string time);
-    void _validate(std::string time) override;
+    void _validate(std::string testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^([01][09]|2[0-3]):(00|15|30|45)$")};
 
@@ -174,7 +184,7 @@ class Immatriculation : public BaseDomain<std::string>
 {
 protected:
     bool _isRightPattern(std::string immatriculation);
-    void _validate(std::string immatriculation) override;
+    void _validate(std::string testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^(?!.*(.).*\\1)\\d{5}$")};
 
@@ -192,7 +202,7 @@ private:
     bool _containsDigits(std::string password);
     bool _containsSpecialCharacters(std::string password);
     bool _isRightPattern(std::string password);
-    void _validate(std::string password) override;
+    void _validate(std::string testedValue) override;
 
     inline static const std::regex VALID_CHARACTERS{std::regex("^(?!.*(.).*\\1)[a-zA-Z0-9!@#$%&?]{8}$")};
 
@@ -210,7 +220,7 @@ private:
     bool _containsSpaceSequence(std::string name);
     bool _isPeriodPrecededByLetter(std::string name);
     bool _containsOnlyValidCharacters(std::string name);
-    void _validate(std::string name) override;
+    void _validate(std::string testedValue) override;
 
     inline static const std::regex VALID_CHARACTERS{std::regex("^[a-zA-Z. ]{5,20}$")};
 
@@ -227,7 +237,7 @@ protected:
     bool _isRightPattern(std::string number);
     bool _isValidAreacode(std::string number);
     bool _isPhoneNumberZeroes(std::string number);
-    void _validate(std::string number) override;
+    void _validate(std::string testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^\\([0-9]{2}\\)-[0-9]{9}$")};
     inline static const uint8_t VALID_AREA_CODES[]{11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 32, 33,
@@ -252,13 +262,15 @@ public:
     {
         return _number;
     }
+
+    void set(std::string number) override;
 };
 
 class PlayType : public BaseDomain<std::string>
 {
 protected:
     bool _isValidType(std::string type);
-    void _validate(std::string type) override;
+    void _validate(std::string testedValue) override;
 
 public:
     PlayType(std::string type)
