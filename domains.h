@@ -170,13 +170,35 @@ public:
     }
 };
 
+class Immatriculation : public BaseDomain<std::string>
+{
+protected:
+    bool _isRightPattern(std::string immatriculation);
+    void _validate(std::string immatriculation) override;
+
+    inline static const std::regex VALID_PATTERN{std::regex("^(?!.*(.).*\\1)\\d{5}$")};
+
+    unsigned int _hours;
+    unsigned int _minutes;
+
+public:
+    Immatriculation(std::string immatriculation)
+    {
+        set(immatriculation);
+    }
+
+    inline unsigned int getHours()
+    {
+        return _hours;
+    }
+
+    inline unsigned int getMinutes()
+    {
+        return _minutes;
+    }
+};
+
 /*
-HORÁRIO HH:MM
-Em HH tem-se indicação de horário : 00 a 23
-Em MM tem-se indicação de minuto : 00, 15, 30, 45
-MATRÍCULA Formato XXXXX
-Cada X é dígito (0-9).
-Não podem existir dígitos duplicados.
 NOME 5 a 20 caracteres.
 Cada caracter é letra (A-Z ou a-z), ponto (.) ou espaço em branco.
 Ponto (.) é precedido por letra.
