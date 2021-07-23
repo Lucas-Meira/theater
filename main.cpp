@@ -4,10 +4,10 @@
 
 int main(void)
 {
-    std::string testedValue;
+    int testedValue;
 
     std::cin >> testedValue;
-    std::cout << Email(testedValue).get() << std::endl;
+    std::cout << Capacity(testedValue).get() << std::endl;
 
     return 0;
 }

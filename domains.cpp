@@ -1,17 +1,10 @@
 #include "domains.h"
 #include <iostream>
+#include <algorithm>
 
 bool Capacity::_isValidCapacity(uint16_t testedValue)
 {
-    for (const uint16_t &validValue : VALID_VALUES)
-    {
-        if (testedValue == validValue)
-        {
-            return true;
-        }
-    }
-
-    return false;
+    return (std::find(VALID_VALUES.begin(), VALID_VALUES.end(), testedValue) != VALID_VALUES.end());
 }
 
 void Capacity::_validate(uint16_t testedValue)
@@ -24,15 +17,7 @@ void Capacity::_validate(uint16_t testedValue)
 
 bool Role::_isValidRole(std::string testedValue)
 {
-    for (const std::string &validValue : VALID_VALUES)
-    {
-        if (testedValue == validValue)
-        {
-            return true;
-        }
-    }
-
-    return false;
+    return (std::find(VALID_VALUES.begin(), VALID_VALUES.end(), testedValue) != VALID_VALUES.end());
 }
 
 void Role::_validate(std::string testedValue)
@@ -45,15 +30,7 @@ void Role::_validate(std::string testedValue)
 
 bool Rating::_isValidRating(std::string testedValue)
 {
-    for (const std::string &validRating : VALID_VALUES)
-    {
-        if (testedValue == validRating)
-        {
-            return true;
-        }
-    }
-
-    return false;
+    return (std::find(VALID_VALUES.begin(), VALID_VALUES.end(), testedValue) != VALID_VALUES.end());
 }
 
 void Rating::_validate(std::string testedValue)
@@ -303,7 +280,8 @@ bool Name::_isFirstLetterCapitalized(std::string name)
 
 void Name::_validate(std::string name)
 {
-    if (!_containsOnlyValidCharacters(name) or _containsSpaceSequence(name) or !_isPeriodPrecededByLetter(name) or !_isFirstLetterCapitalized(name))
+    if (!_containsOnlyValidCharacters(name) or _containsSpaceSequence(name) or
+        !_isPeriodPrecededByLetter(name) or !_isFirstLetterCapitalized(name))
     {
         throw std::invalid_argument("Invalid name '" + name + "'.");
     }
@@ -318,15 +296,7 @@ bool PhoneNumber::_isValidAreacode(std::string number)
 {
     int code = std::stoi(number.substr(1, 2).c_str());
 
-    for (const &validCode : VALID_AREA_CODES)
-    {
-        if (code == validCode)
-        {
-            return true;
-        }
-    }
-
-    return false;
+    return (std::find(VALID_AREA_CODES.begin(), VALID_AREA_CODES.end(), code) != VALID_AREA_CODES.end());
 }
 bool PhoneNumber::_isPhoneNumberZeroes(std::string number)
 {
@@ -365,15 +335,7 @@ void PhoneNumber::set(std::string number)
 
 bool PlayType::_isValidType(std::string type)
 {
-    for (const std::string &validType : VALID_VALUES)
-    {
-        if (type == validType)
-        {
-            return true;
-        }
-    }
-
-    return false;
+    return (std::find(VALID_VALUES.begin(), VALID_VALUES.end(), type) != VALID_VALUES.end());
 }
 
 void PlayType::_validate(std::string type)

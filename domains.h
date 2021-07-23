@@ -47,7 +47,8 @@ protected:
     bool _isValidRole(std::string testedValue);
     void _validate(std::string testedValue) override;
 
-    inline static const std::string VALID_VALUES[6]{"Actor", "Cenographist", "Figurinist", "Makeup Artist", "Sound Designer", "Lighting Designer"};
+    inline static const std::array<std::string, 6> VALID_VALUES{"Actor", "Cenographist", "Figurinist",
+                                                                "Makeup Artist", "Sound Designer", "Lighting Designer"};
 
 public:
     Role(std::string role)
@@ -96,7 +97,7 @@ protected:
     void _validate(std::string testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^(0[0-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[0-2])/([2-9][0-9]{3})$")};
-    static constexpr uint8_t DAYS_PER_MONTH[]{0, 31, 28, 31, 30, 31, 31, 30, 31, 30, 31, 30, 31};
+    static constexpr std::array<uint8_t, 13> DAYS_PER_MONTH{0, 31, 28, 31, 30, 31, 31, 30, 31, 30, 31, 30, 31};
 
     unsigned int _day;
     unsigned int _month;
@@ -240,9 +241,9 @@ protected:
     void _validate(std::string testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^\\([0-9]{2}\\)-[0-9]{9}$")};
-    inline static const uint8_t VALID_AREA_CODES[]{11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 32, 33,
-                                                   34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 63, 64, 65, 66, 67, 68,
-                                                   69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99};
+    static constexpr std::array<uint8_t, 66> VALID_AREA_CODES{11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 32, 33,
+                                                              34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 63, 64, 65, 66, 67, 68,
+                                                              69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99};
 
     unsigned int _areaCode;
     unsigned int _number;
@@ -278,8 +279,8 @@ public:
         set(type);
     }
 
-    inline static const std::string VALID_VALUES[]{"Auto", "Comedy", "Drama", "Farce", "Melodrama",
-                                                   "Monologue", "Musical", "Opera", "Revue"};
+    inline static const std::array<std::string, 9> VALID_VALUES{"Auto", "Comedy", "Drama", "Farce", "Melodrama",
+                                                                "Monologue", "Musical", "Opera", "Revue"};
 };
 
 #endif
