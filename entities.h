@@ -15,28 +15,80 @@ private:
     Role _role;
 
 public:
-    Immatriculation setImmatriculation(Immatriculation);
-    Immatriculation getImmatriculation();
+    inline Immatriculation setImmatriculation(Immatriculation immatriculation)
+    {
+        _immatriculation = immatriculation;
+    }
 
-    Name setFirstName(Name name);
-    Name getFirstName();
+    inline Immatriculation getImmatriculation()
+    {
+        return _immatriculation;
+    }
 
-    Name setLastName(Name name);
-    Name getLastName();
+    inline Name setFirstName(Name name)
+    {
+        _firstName = name;
+    }
 
-    Name getFullName();
+    inline Name getFirstName()
+    {
+        return _firstName;
+    }
 
-    Email setEmail(Email email);
-    Email getEmail();
+    inline Name setLastName(Name name)
+    {
+        _lastName = name;
+    }
 
-    PhoneNumber setPhoneNumber(PhoneNumber phoneNumber);
-    PhoneNumber getPhoneNumber();
+    inline Name getLastName()
+    {
+        return _lastName;
+    }
 
-    Password setPassword(Password password);
-    Password getPassword();
+    inline Name getFullName()
+    {
+        return _firstName.get() + " " + _lastName.get();
+    }
 
-    Role setRole(Role role);
-    Role getRole();
+    inline Email setEmail(Email email)
+    {
+        _email = email;
+    }
+
+    inline Email getEmail()
+    {
+        return _email;
+    }
+
+    inline PhoneNumber setPhoneNumber(PhoneNumber phoneNumber)
+    {
+        _phoneNumber = phoneNumber;
+    }
+
+    inline PhoneNumber getPhoneNumber()
+    {
+        return _phoneNumber;
+    }
+
+    inline Password setPassword(Password password)
+    {
+        _password = password;
+    }
+
+    inline Password getPassword()
+    {
+        return _password;
+    }
+
+    inline Role setRole(Role role)
+    {
+        _role = role;
+    }
+
+    inline Role getRole()
+    {
+        return _role;
+    }
 };
 
 class Play
@@ -48,17 +100,45 @@ private:
     Rating _rating;
 
 public:
-    IdCode setId(IdCode id);
-    IdCode getId();
+    inline IdCode setId(IdCode id)
+    {
+        _id = id;
+    }
 
-    Name setName(Name name);
-    Name getName();
+    inline IdCode getId()
+    {
+        return _id;
+    }
 
-    PlayType setType(PlayType playType);
-    PlayType getType();
+    inline Name setName(Name name)
+    {
+        _name = name;
+    }
 
-    Rating setRating(Rating rating);
-    Rating getRating();
+    inline Name getName()
+    {
+        return _name;
+    }
+
+    inline PlayType setType(PlayType type)
+    {
+        _type = type;
+    }
+
+    inline PlayType getType()
+    {
+        return _type;
+    }
+
+    inline Rating setRating(Rating rating)
+    {
+        _rating = rating;
+    }
+
+    inline Rating getRating()
+    {
+        return _rating;
+    }
 };
 
 class Session
@@ -69,14 +149,35 @@ private:
     Time _time;
 
 public:
-    IdCode setId(IdCode id);
-    IdCode getId();
+    inline IdCode setId(IdCode id)
+    {
+        _id = id;
+    }
 
-    Date setDate(Date date);
-    Date getDate();
+    inline IdCode getId()
+    {
+        return _id;
+    }
 
-    Time setTime(Time time);
-    Time getTime();
+    inline Date setDate(Date date)
+    {
+        _date = date;
+    }
+
+    inline Date getDate()
+    {
+        return _date;
+    }
+
+    inline Time setTime(Time time)
+    {
+        _time = time;
+    }
+
+    inline Time getTime()
+    {
+        return _time;
+    }
 };
 
 class Room
@@ -87,14 +188,35 @@ private:
     Capacity _capacity;
 
 public:
-    IdCode setId(IdCode id);
-    IdCode getId();
+    inline IdCode setId(IdCode id)
+    {
+        _id = id;
+    }
 
-    Name setName(Name name);
-    Name getName();
+    inline IdCode getId()
+    {
+        return _id;
+    }
 
-    Capacity setCapacity(Capacity capacity);
-    Capacity getCapacity();
+    inline Name setName(Name name)
+    {
+        _name = name;
+    }
+
+    inline Name getName()
+    {
+        return _name;
+    }
+
+    inline Capacity setCapacity(Capacity capacity)
+    {
+        _capacity = capacity;
+    }
+
+    inline Capacity getCapacity()
+    {
+        return _capacity;
+    }
 };
 
 #endif
