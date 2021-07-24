@@ -3,7 +3,7 @@
 
 #include "domains.h"
 
-class Participan
+class Participant
 {
 private:
     Immatriculation immatriculation;
