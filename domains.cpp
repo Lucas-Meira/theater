@@ -98,7 +98,7 @@ bool Date::_isValidDate(std::string date)
 
 bool Date::_isLeapYear(unsigned int year)
 {
-    if (!(year % 4) and (year % 100) || !(year % 400))
+    if ((!(year % 4) and (year % 100)) || !(year % 400))
     {
         return true;
     }
