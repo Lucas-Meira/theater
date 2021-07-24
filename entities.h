@@ -6,38 +6,38 @@
 class Participant
 {
 private:
-    Immatriculation immatriculation;
-    Name name;
-    Name lastName;
-    Email emailAddress;
-    PhoneNumber phoneNumber;
-    Password password;
-    Role role;
+    Immatriculation _immatriculation;
+    Name _name;
+    Name _lastName;
+    Email _emailAddress;
+    PhoneNumber _phoneNumber;
+    Password _password;
+    Role _role;
 };
 
 class Play
 {
 private:
-    IdCode id;
-    Name name;
-    PlayType type;
-    Rating rating;
+    IdCode _id;
+    Name _name;
+    PlayType _type;
+    Rating _rating;
 };
 
 class Session
 {
 private:
-    IdCode id;
-    Date date;
-    Time time;
+    IdCode _id;
+    Date _date;
+    Time _time;
 };
 
 class Room
 {
 private:
-    IdCode id;
-    Name name;
-    Capacity capacity;
+    IdCode _id;
+    Name _name;
+    Capacity _capacity;
 };
 
 #endif
