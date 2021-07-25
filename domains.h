@@ -13,7 +13,7 @@ protected:
     virtual void _validate(T testedValue) = 0;
 
 public:
-    inline T get() const
+    T get() const
     {
         return _value;
     };
@@ -117,17 +117,17 @@ public:
         set(date);
     }
 
-    inline unsigned int getDay()
+    unsigned int getDay()
     {
         return _day;
     }
 
-    inline unsigned int getMonth()
+    unsigned int getMonth()
     {
         return _month;
     }
 
-    inline unsigned int getYear()
+    unsigned int getYear()
     {
         return _year;
     }
@@ -157,8 +157,8 @@ public:
         set(address);
     }
 
-    inline std::string getLocal() const { return _local; };
-    inline std::string getDomain() const { return _domain; };
+    std::string getLocal() const { return _local; };
+    std::string getDomain() const { return _domain; };
 
     void set(std::string address) override;
 };
@@ -182,12 +182,12 @@ public:
         set(time);
     }
 
-    inline unsigned int getHours()
+    unsigned int getHours()
     {
         return _hours;
     }
 
-    inline unsigned int getMinutes()
+    unsigned int getMinutes()
     {
         return _minutes;
     }
@@ -274,12 +274,12 @@ public:
         set(number);
     }
 
-    inline unsigned int getAreaCode()
+    unsigned int getAreaCode()
     {
         return _areaCode;
     }
 
-    inline unsigned int getNumber()
+    unsigned int getNumber()
     {
         return _number;
     }
