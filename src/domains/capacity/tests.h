@@ -1,5 +1,5 @@
-#ifndef TESTS_H
-#define TESTS_H
+#ifndef CAPACITY_TESTS_H
+#define CAPACITY_TESTS_H
 
 #include "capacity.h"
 #include "../state.h"
