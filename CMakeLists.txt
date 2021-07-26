@@ -1,18 +1,19 @@
 cmake_minimum_required(VERSION 3.15)
+project(Theater)
 
-set(CMAKE_GENERATOR "CodeBlocks - MinGW Makefiles")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
 set(CMAKE_CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 message(STATUS "Build flags: ${CMAKE_CXX_FLAGS}")
+message(STATUS "Generator: ${CMAKE_GENERATOR}")
+message(STATUS "Binaries: ${CMAKE_BINARY_DIR}")
 
-
-
-project(Theater)
-
-add_executable(main main.cpp domains.cpp entities.cpp)
+add_subdirectory(src)

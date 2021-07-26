@@ -1,7 +1,7 @@
 #ifndef ENTITIES_H
 #define ENTITIES_H
 
-#include "domains.h"
+#include "domains/domains.h"
 
 class Participant
 {
