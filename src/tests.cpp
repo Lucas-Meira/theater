@@ -7,9 +7,11 @@ int main(void)
 {
     CapacityTest::UnitTest capacityTest;
     DateTest::UnitTest dateTest;
+    IdCodeTest::UnitTest codeTest;
 
     State state = capacityTest.run();
-    State state2 = dateTest.run();
+    dateTest.run();
+    codeTest.run();
 
     return state.get();
 }
