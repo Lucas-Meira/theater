@@ -24,19 +24,16 @@ bool Date::_isValidDate(std::string date)
     unsigned int month = std::stoi(date.substr(3, 2));
     unsigned int year = std::stoi(date.substr(6, 4));
 
-    if (_month != 2 || !_isLeapYear(year))
+    if (month != 2 || !_isLeapYear(year))
     {
         if (day > DAYS_PER_MONTH[month])
         {
             return false;
         }
     }
-    else
+    else if (day > DAYS_PER_MONTH[month] + 1)
     {
-        if (day > DAYS_PER_MONTH[month] + 1)
-        {
-            return false;
-        }
+        return false;
     }
 
     return true;
@@ -44,7 +41,7 @@ bool Date::_isValidDate(std::string date)
 
 bool Date::_isLeapYear(unsigned int year)
 {
-    if ((!(year % 4) and (year % 100)) || !(year % 400))
+    if (((year % 4 == 0) and (year % 100 != 0)) || (year % 400 == 0))
     {
         return true;
     }
