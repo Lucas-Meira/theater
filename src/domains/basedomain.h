@@ -15,17 +15,20 @@ protected:
     virtual void _validate(T testedValue) = 0;
 
 public:
+    BaseDomain() = default;
+    virtual ~BaseDomain() {}
+
     T get() const
     {
         return _value;
-    };
+    }
 
     virtual void set(T value)
     {
         _validate(value);
 
         _value = value;
-    };
+    }
 };
 
 #endif
