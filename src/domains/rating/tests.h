@@ -11,8 +11,7 @@ namespace RatingTest
     private:
         inline static const std::string _classUnderTest{"[RatingTest]"};
 
-        inline static const std::vector<std::string>
-            VALID_VALUES{"general", "10", "12", "14", "16", "18"};
+        inline static const std::vector<std::string> VALID_VALUES{"general", "10", "12", "14", "16", "18"};
         inline static const std::vector<std::string> INVALID_VALUES{"L", "11", "13", "5"};
 
     public:

@@ -1,7 +1,7 @@
 #ifndef BASETEST_H
 #define BASETEST_H
 
-#include <array>
+#include <vector>
 #include <iostream>
 
 #include "state.h"
