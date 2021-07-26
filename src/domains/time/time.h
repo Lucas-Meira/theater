@@ -9,7 +9,7 @@ protected:
     bool _isRightPattern(std::string time);
     void _validate(std::string testedValue) override;
 
-    inline static const std::regex VALID_PATTERN{std::regex("^([01][09]|2[0-3]):(00|15|30|45)$")};
+    inline static const std::regex VALID_PATTERN{std::regex("^([01][0-9]|2[0-3]):(00|15|30|45)$")};
 
     unsigned int _hours;
     unsigned int _minutes;
