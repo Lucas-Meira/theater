@@ -5,13 +5,8 @@
 
 int main(void)
 {
-    CapacityTest::UnitTest capacityTest;
-    DateTest::UnitTest dateTest;
-    IdCodeTest::UnitTest codeTest;
-
-    State state = capacityTest.run();
-    dateTest.run();
-    codeTest.run();
+    ImmatriculationTest::UnitTest test;
+    State state = test.run();
 
     return state.get();
 }
