@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [master, dev]
+  pull_request:
+    branches: [master, dev]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure CMake
+        run: |
+          echo Building targets
+          cmake -G "CodeBlocks - MinGW Makefiles" -S ${{github.workspace}} -B ${{github.workspace}}/build
+
+      - name: Build targets
+        run: cmake --build ${{github.workspace}}/build
+
+      - name: Run tests
+        run: |
+          echo Running tests
+          ./build/bin/tests
