@@ -110,7 +110,7 @@ void BaseTest<T, C>::_printTestStatusMessage()
 template <typename T, class C>
 State BaseTest<T, C>::run()
 {
-    std::cout << _classUnderTest << " RUN" << std::endl;
+    std::cout << _classUnderTest << " [ RUN      ]" << std::endl;
 
     _setUp();
     _testSuccessScenario();
@@ -119,7 +119,7 @@ State BaseTest<T, C>::run()
 
     _printTestStatusMessage();
 
-    std::cout << _classUnderTest << " DONE" << std::endl;
+    std::cout << _classUnderTest << " [     DONE ]" << std::endl;
 
     return _state;
 }
