@@ -1,29 +1,22 @@
 #ifndef PHONE_NUMBER_TESTS_H
 #define PHONE_NUMBER_TESTS_H
 
+#include "../basetest.h"
 #include "phonenumber.h"
-#include "../state.h"
 
 namespace PhoneNumberTest
 {
-    class UnitTest
+    class UnitTest : public BaseTest<std::string, PhoneNumber>
     {
     private:
-        PhoneNumber *phoneNumber;
-
-        inline static const std::array<std::string, 3> VALID_VALUES{"(11)-123456789", "(44)-001133559", "(89)-945678131"};
-        inline static const std::array<std::string, 4> INVALID_VALUES{"(10)-123456789", "(44)-12345678", "(89)-0123456789", "(11)-000000000"};
-
-        State _state;
-
-        void _setUp();
-        void _tearDown();
-        void _testSuccessScenario();
-        void _testFailureScenario();
-        void _printTestStatusMessage(std::string testName);
+        inline static const std::string _classUnderTest{"[PhoneNumberTest]"};
+        inline static const std::vector<std::string> VALID_VALUES{"(11)-123456789", "(44)-001133559", "(89)-945678131"};
+        inline static const std::vector<std::string> INVALID_VALUES{"(10)-123456789", "(44)-12345678", "(89)-0123456789", "(11)-000000000"};
 
     public:
-        State run();
+        UnitTest() : BaseTest<std::string, PhoneNumber>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+        {
+        }
     };
 }
 

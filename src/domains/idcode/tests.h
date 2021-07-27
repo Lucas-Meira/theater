@@ -1,29 +1,22 @@
 #ifndef IDCODE_TESTS_H
 #define IDCODE_TESTS_H
 
+#include "../basetest.h"
 #include "idcode.h"
-#include "../state.h"
 
 namespace IdCodeTest
 {
-    class UnitTest
+    class UnitTest : public BaseTest<std::string, IdCode>
     {
     private:
-        IdCode *code;
-
-        inline static const std::array<std::string, 5> VALID_VALUES{"AA0000", "AZ9999", "DF1234", "WE5849", "OL1313"};
-        inline static const std::array<std::string, 7> INVALID_VALUES{"ABC012", "A01234", "ABCDEF", "123456", "A12345", "1A3425", "0123AB"};
-
-        State _state;
-
-        void _setUp();
-        void _tearDown();
-        bool _testSuccessScenario();
-        bool _testFailureScenario();
-        void _printTestStatusMessage(std::string testName, bool passed);
+        inline static const std::string _classUnderTest{"[IdCodeTest]"};
+        inline static const std::vector<std::string> VALID_VALUES{"AA0000", "AZ9999", "DF1234", "WE5849", "OL1313"};
+        inline static const std::vector<std::string> INVALID_VALUES{"ABC012", "A01234", "ABCDEF", "123456", "A12345", "1A3425", "0123AB"};
 
     public:
-        State run();
+        UnitTest() : BaseTest<std::string, IdCode>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+        {
+        }
     };
 }
 

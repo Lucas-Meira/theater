@@ -1,29 +1,22 @@
 #ifndef CAPACITY_TESTS_H
 #define CAPACITY_TESTS_H
 
+#include "../basetest.h"
 #include "capacity.h"
-#include "../state.h"
 
 namespace CapacityTest
 {
-    class UnitTest
+    class UnitTest : public BaseTest<uint16_t, Capacity>
     {
     private:
-        Capacity *capacity;
-
-        static constexpr std::array<uint16_t, 5> VALID_VALUES{100, 200, 300, 400, 500};
-        static constexpr std::array<uint16_t, 5> INVALID_VALUES{0, 50, 250, 600, 1200};
-
-        State _state;
-
-        void _setUp();
-        void _tearDown();
-        bool _testSuccessScenario();
-        bool _testFailureScenario();
-        void _printTestStatusMessage(std::string testName, bool passed);
+        inline static const std::string _classUnderTest{"[CapacityTest]"};
+        inline static const std::vector<uint16_t> VALID_VALUES{100, 200, 300, 400, 500};
+        inline static const std::vector<uint16_t> INVALID_VALUES{0, 50, 250, 600, 1200};
 
     public:
-        State run();
+        UnitTest() : BaseTest<uint16_t, Capacity>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+        {
+        }
     };
 }
 
