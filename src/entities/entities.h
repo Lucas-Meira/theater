@@ -15,77 +15,77 @@ private:
     Role _role;
 
 public:
-    inline Immatriculation setImmatriculation(Immatriculation immatriculation)
+    Immatriculation setImmatriculation(Immatriculation immatriculation)
     {
         _immatriculation = immatriculation;
     }
 
-    inline Immatriculation getImmatriculation()
+    Immatriculation getImmatriculation()
     {
         return _immatriculation;
     }
 
-    inline Name setFirstName(Name name)
+    Name setFirstName(Name name)
     {
         _firstName = name;
     }
 
-    inline Name getFirstName()
+    Name getFirstName()
     {
         return _firstName;
     }
 
-    inline Name setLastName(Name name)
+    Name setLastName(Name name)
     {
         _lastName = name;
     }
 
-    inline Name getLastName()
+    Name getLastName()
     {
         return _lastName;
     }
 
-    inline Name getFullName()
+    Name getFullName()
     {
         return _firstName.get() + " " + _lastName.get();
     }
 
-    inline Email setEmail(Email email)
+    Email setEmail(Email email)
     {
         _email = email;
     }
 
-    inline Email getEmail()
+    Email getEmail()
     {
         return _email;
     }
 
-    inline PhoneNumber setPhoneNumber(PhoneNumber phoneNumber)
+    PhoneNumber setPhoneNumber(PhoneNumber phoneNumber)
     {
         _phoneNumber = phoneNumber;
     }
 
-    inline PhoneNumber getPhoneNumber()
+    PhoneNumber getPhoneNumber()
     {
         return _phoneNumber;
     }
 
-    inline Password setPassword(Password password)
+    Password setPassword(Password password)
     {
         _password = password;
     }
 
-    inline Password getPassword()
+    Password getPassword()
     {
         return _password;
     }
 
-    inline Role setRole(Role role)
+    Role setRole(Role role)
     {
         _role = role;
     }
 
-    inline Role getRole()
+    Role getRole()
     {
         return _role;
     }
@@ -100,42 +100,42 @@ private:
     Rating _rating;
 
 public:
-    inline IdCode setId(IdCode id)
+    IdCode setId(IdCode id)
     {
         _id = id;
     }
 
-    inline IdCode getId()
+    IdCode getId()
     {
         return _id;
     }
 
-    inline Name setName(Name name)
+    Name setName(Name name)
     {
         _name = name;
     }
 
-    inline Name getName()
+    Name getName()
     {
         return _name;
     }
 
-    inline PlayType setType(PlayType type)
+    PlayType setType(PlayType type)
     {
         _type = type;
     }
 
-    inline PlayType getType()
+    PlayType getType()
     {
         return _type;
     }
 
-    inline Rating setRating(Rating rating)
+    Rating setRating(Rating rating)
     {
         _rating = rating;
     }
 
-    inline Rating getRating()
+    Rating getRating()
     {
         return _rating;
     }
@@ -149,32 +149,32 @@ private:
     Time _time;
 
 public:
-    inline IdCode setId(IdCode id)
+    IdCode setId(IdCode id)
     {
         _id = id;
     }
 
-    inline IdCode getId()
+    IdCode getId()
     {
         return _id;
     }
 
-    inline Date setDate(Date date)
+    Date setDate(Date date)
     {
         _date = date;
     }
 
-    inline Date getDate()
+    Date getDate()
     {
         return _date;
     }
 
-    inline Time setTime(Time time)
+    Time setTime(Time time)
     {
         _time = time;
     }
 
-    inline Time getTime()
+    Time getTime()
     {
         return _time;
     }
@@ -188,32 +188,32 @@ private:
     Capacity _capacity;
 
 public:
-    inline IdCode setId(IdCode id)
+    IdCode setId(IdCode id)
     {
         _id = id;
     }
 
-    inline IdCode getId()
+    IdCode getId()
     {
         return _id;
     }
 
-    inline Name setName(Name name)
+    Name setName(Name name)
     {
         _name = name;
     }
 
-    inline Name getName()
+    Name getName()
     {
         return _name;
     }
 
-    inline Capacity setCapacity(Capacity capacity)
+    Capacity setCapacity(Capacity capacity)
     {
         _capacity = capacity;
     }
 
-    inline Capacity getCapacity()
+    Capacity getCapacity()
     {
         return _capacity;
     }
