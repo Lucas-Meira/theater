@@ -47,18 +47,18 @@ int8_t runEntitiesTests()
 int8_t runDomainTests()
 {
     std::cout << "Running Domain Tests\n\n";
-    CapacityTest::UnitTest capacityTest;
-    DateTest::UnitTest dateTest;
-    EmailTest::UnitTest emailTest;
-    IdCodeTest::UnitTest idTest;
-    RegistrationTest::UnitTest registrationTest;
-    NameTest::UnitTest nameTest;
-    PasswordTest::UnitTest passwordTest;
-    PhoneNumberTest::UnitTest phoneNumberTest;
-    PlayTypeTest::UnitTest playTypeTest;
-    RatingTest::UnitTest ratingTest;
-    RoleTest::UnitTest roleTest;
-    TimeTest::UnitTest timeTest;
+    CapacityTest capacityTest;
+    DateTest dateTest;
+    EmailTest emailTest;
+    IdCodeTest idTest;
+    RegistrationTest registrationTest;
+    NameTest nameTest;
+    PasswordTest passwordTest;
+    PhoneNumberTest phoneNumberTest;
+    PlayTypeTest playTypeTest;
+    RatingTest ratingTest;
+    RoleTest roleTest;
+    TimeTest timeTest;
 
     std::vector<State> testResults{};
 
