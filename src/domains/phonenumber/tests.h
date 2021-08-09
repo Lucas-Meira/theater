@@ -1,7 +1,7 @@
 #ifndef PHONE_NUMBER_TESTS_H
 #define PHONE_NUMBER_TESTS_H
 
-#include "../basetest.h"
+#include "../../basetest.h"
 #include "phonenumber.h"
 
 namespace PhoneNumberTest

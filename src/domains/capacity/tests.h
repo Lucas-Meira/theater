@@ -1,7 +1,7 @@
 #ifndef CAPACITY_TESTS_H
 #define CAPACITY_TESTS_H
 
-#include "../basetest.h"
+#include "../../basetest.h"
 #include "capacity.h"
 
 namespace CapacityTest

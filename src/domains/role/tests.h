@@ -1,7 +1,7 @@
 #ifndef ROLE_TEST_H
 #define ROLE_TEST_H
 
-#include "../basetest.h"
+#include "../../basetest.h"
 #include "role.h"
 
 namespace RoleTest

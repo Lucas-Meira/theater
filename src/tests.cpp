@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "domains/tests.h"
-#include "domains/state.h"
+#include "state.h"
 
 int8_t runTests();
 int8_t checkResults(std::vector<State> &testResults);

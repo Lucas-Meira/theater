@@ -1,7 +1,7 @@
 #ifndef REGISTRATION_TESTS_H
 #define REGISTRATION_TESTS_H
 
-#include "../basetest.h"
+#include "../../basetest.h"
 #include "registration.h"
 
 namespace RegistrationTest

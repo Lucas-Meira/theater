@@ -1,7 +1,7 @@
 #ifndef PASSWORD_TESTS_H
 #define PASSWORD_TESTS_H
 
-#include "../basetest.h"
+#include "../../basetest.h"
 #include "password.h"
 
 namespace PasswordTest

@@ -21,6 +21,6 @@ message(STATUS "Sources list: ${domain_source_list}")
 
 
 add_library(domains domains.h basedomain.h ${domain_source_list} ${domain_headers_list})
-add_library(domains_tests basetest.h tests.h state.h ${tests_header_list})
+add_library(domains_tests ../basetest.h tests.h ../state.h ${tests_header_list})
 
 target_link_libraries(domains_tests domains)

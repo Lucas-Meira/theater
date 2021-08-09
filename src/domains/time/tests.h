@@ -1,7 +1,7 @@
 #ifndef TIME_TEST_H
 #define TIME_TEST_H
 
-#include "../basetest.h"
+#include "../../basetest.h"
 #include "time.h"
 
 namespace TimeTest
