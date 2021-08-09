@@ -1,12 +1,12 @@
 #ifndef ENTITIES_H
 #define ENTITIES_H
 
-#include "domains/domains.h"
+#include "../domains/domains.h"
 
 class Participant
 {
 private:
-    Immatriculation _immatriculation;
+    Registration _registration;
     Name _firstName;
     Name _lastName;
     Email _email;
@@ -15,14 +15,14 @@ private:
     Role _role;
 
 public:
-    Immatriculation setImmatriculation(Immatriculation immatriculation)
+    Registration setRegistration(Registration registration)
     {
-        _immatriculation = immatriculation;
+        _registration = registration;
     }
 
-    Immatriculation getImmatriculation()
+    Registration getRegistration()
     {
-        return _immatriculation;
+        return _registration;
     }
 
     Name setFirstName(Name name)

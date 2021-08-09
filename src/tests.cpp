@@ -17,7 +17,7 @@ int8_t runTests()
     DateTest::UnitTest dateTest;
     EmailTest::UnitTest emailTest;
     IdCodeTest::UnitTest idTest;
-    ImmatriculationTest::UnitTest immatriculationTest;
+    RegistrationTest::UnitTest registrationTest;
     NameTest::UnitTest nameTest;
     PasswordTest::UnitTest passwordTest;
     PhoneNumberTest::UnitTest phoneNumberTest;
@@ -36,7 +36,7 @@ int8_t runTests()
     testResults.push_back(state);
     state = idTest.run();
     testResults.push_back(state);
-    state = immatriculationTest.run();
+    state = registrationTest.run();
     testResults.push_back(state);
     state = nameTest.run();
     testResults.push_back(state);

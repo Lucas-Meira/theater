@@ -5,7 +5,7 @@
 #include "date/tests.h"
 #include "email/tests.h"
 #include "idcode/tests.h"
-#include "immatriculation/tests.h"
+#include "registration/tests.h"
 #include "name/tests.h"
 #include "password/tests.h"
 #include "phonenumber/tests.h"
