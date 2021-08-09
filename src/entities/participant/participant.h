@@ -26,12 +26,29 @@ public:
         setPassword(password);
         setRole(role);
     }
+
+    Participant(const std::string &registration, const std::string &firstName, const std::string &lastName,
+                const std::string &email, const std::string &phoneNumber, const std::string &password, const std::string &role)
+    {
+        setRegistration(registration);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+        setPhoneNumber(phoneNumber);
+        setPassword(password);
+        setRole(role);
+    }
+
     Participant() {}
 
-    void
-    setRegistration(Registration registration)
+    void setRegistration(Registration registration)
     {
         _registration = registration;
+    }
+
+    void setRegistration(std::string registration)
+    {
+        _registration = Registration(registration);
     }
 
     Registration getRegistration()
@@ -44,6 +61,11 @@ public:
         _firstName = name;
     }
 
+    void setFirstName(std::string name)
+    {
+        _firstName = Name(name);
+    }
+
     Name getFirstName()
     {
         return _firstName;
@@ -52,6 +74,11 @@ public:
     void setLastName(Name name)
     {
         _lastName = name;
+    }
+
+    void setLastName(std::string name)
+    {
+        _lastName = Name(name);
     }
 
     Name getLastName()
@@ -69,6 +96,11 @@ public:
         _email = email;
     }
 
+    void setEmail(std::string email)
+    {
+        _email = Email(email);
+    }
+
     Email getEmail()
     {
         return _email;
@@ -77,6 +109,11 @@ public:
     void setPhoneNumber(PhoneNumber phoneNumber)
     {
         _phoneNumber = phoneNumber;
+    }
+
+    void setPhoneNumber(std::string phoneNumber)
+    {
+        _phoneNumber = PhoneNumber(phoneNumber);
     }
 
     PhoneNumber getPhoneNumber()
@@ -89,6 +126,11 @@ public:
         _password = password;
     }
 
+    void setPassword(std::string password)
+    {
+        _password = Password(password);
+    }
+
     Password getPassword()
     {
         return _password;
@@ -97,6 +139,11 @@ public:
     void setRole(Role role)
     {
         _role = role;
+    }
+
+    void setRole(std::string role)
+    {
+        _role = Role(role);
     }
 
     Role getRole()
