@@ -2,4 +2,10 @@
 build/
 .vscode/
 
+bin/
+obj/
+.objs/
+
+
 # File extensions
+*.depend

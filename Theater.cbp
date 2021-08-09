@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Theater" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Theater" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++17" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Theater" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="Tests">
+				<Option output="Tests/tests" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="src/basetest.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/basedomain.h" />
+		<Unit filename="src/domains/capacity/capacity.cpp" />
+		<Unit filename="src/domains/capacity/capacity.h" />
+		<Unit filename="src/domains/capacity/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/date/date.cpp" />
+		<Unit filename="src/domains/date/date.h" />
+		<Unit filename="src/domains/date/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/domains.h" />
+		<Unit filename="src/domains/email/email.cpp" />
+		<Unit filename="src/domains/email/email.h" />
+		<Unit filename="src/domains/email/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/idcode/idcode.cpp" />
+		<Unit filename="src/domains/idcode/idcode.h" />
+		<Unit filename="src/domains/idcode/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/name/name.cpp" />
+		<Unit filename="src/domains/name/name.h" />
+		<Unit filename="src/domains/name/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/password/password.cpp" />
+		<Unit filename="src/domains/password/password.h" />
+		<Unit filename="src/domains/password/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/phonenumber/phonenumber.cpp" />
+		<Unit filename="src/domains/phonenumber/phonenumber.h" />
+		<Unit filename="src/domains/phonenumber/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/playtype/playtype.cpp" />
+		<Unit filename="src/domains/playtype/playtype.h" />
+		<Unit filename="src/domains/playtype/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/rating/rating.cpp" />
+		<Unit filename="src/domains/rating/rating.h" />
+		<Unit filename="src/domains/rating/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/registration/registration.cpp" />
+		<Unit filename="src/domains/registration/registration.h" />
+		<Unit filename="src/domains/registration/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/role/role.cpp" />
+		<Unit filename="src/domains/role/role.h" />
+		<Unit filename="src/domains/role/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/time/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/domains/time/time.cpp" />
+		<Unit filename="src/domains/time/time.h" />
+		<Unit filename="src/entities/entities.h" />
+		<Unit filename="src/entities/participant/participant.cpp" />
+		<Unit filename="src/entities/participant/participant.h" />
+		<Unit filename="src/entities/participant/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/entities/play/play.cpp" />
+		<Unit filename="src/entities/play/play.h" />
+		<Unit filename="src/entities/play/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/entities/room/room.cpp" />
+		<Unit filename="src/entities/room/room.h" />
+		<Unit filename="src/entities/room/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/entities/session/session.cpp" />
+		<Unit filename="src/entities/session/session.h" />
+		<Unit filename="src/entities/session/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/entities/tests.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/state.h">
+			<Option target="Tests" />
+		</Unit>
+		<Unit filename="src/tests.cpp">
+			<Option target="Tests" />
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
