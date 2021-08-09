@@ -16,7 +16,7 @@ int main(void)
 
 int8_t runTests()
 {
-    return ((runDomainTests() == State::SUCCESS) && (runEntitiesTests() == State::SUCCESS));
+    return !((runDomainTests() == State::SUCCESS) && (runEntitiesTests() == State::SUCCESS));
 }
 
 int8_t runEntitiesTests()
