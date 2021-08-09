@@ -25,12 +25,18 @@ int8_t runEntitiesTests()
 
     ParticipantTest::UnitTest participantTest;
     PlayTest::UnitTest playTest;
+    RoomTest::UnitTest roomTest;
+    SessionTest::UnitTest sessionTest;
 
     std::vector<State> testResults{};
 
     State state = participantTest.run();
     testResults.push_back(state);
     state = playTest.run();
+    testResults.push_back(state);
+    state = roomTest.run();
+    testResults.push_back(state);
+    state = sessionTest.run();
     testResults.push_back(state);
 
     std::cout << "\n";
