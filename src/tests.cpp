@@ -16,7 +16,7 @@ int main(void)
 
 int8_t runTests()
 {
-    return ((runEntitiesTests() == State::SUCCESS) && (runDomainTests() == State::SUCCESS));
+    return ((runDomainTests() == State::SUCCESS) && (runEntitiesTests() == State::SUCCESS));
 }
 
 int8_t runEntitiesTests()
@@ -24,10 +24,18 @@ int8_t runEntitiesTests()
     std::cout << "Running Entities Tests\n\n";
 
     ParticipantTest::UnitTest participantTest;
+    PlayTest::UnitTest playTest;
+
+    std::vector<State> testResults{};
+
+    State state = participantTest.run();
+    testResults.push_back(state);
+    state = playTest.run();
+    testResults.push_back(state);
 
     std::cout << "\n";
 
-    return participantTest.run().get();
+    return checkResults(testResults);
 }
 
 int8_t runDomainTests()
