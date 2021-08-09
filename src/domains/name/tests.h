@@ -1,7 +1,7 @@
 #ifndef NAME_TESTS_H
 #define NAME_TESTS_H
 
-#include "../basetest.h"
+#include "../../basetest.h"
 #include "name.h"
 
 namespace NameTest

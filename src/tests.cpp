@@ -1,9 +1,12 @@
 #include <iostream>
 
 #include "domains/tests.h"
-#include "domains/state.h"
+#include "entities/tests.h"
+#include "state.h"
 
 int8_t runTests();
+int8_t runDomainTests();
+int8_t runEntitiesTests();
 int8_t checkResults(std::vector<State> &testResults);
 
 int main(void)
@@ -13,11 +16,42 @@ int main(void)
 
 int8_t runTests()
 {
+    return !((runDomainTests() == State::SUCCESS) && (runEntitiesTests() == State::SUCCESS));
+}
+
+int8_t runEntitiesTests()
+{
+    std::cout << "Running Entities Tests\n\n";
+
+    ParticipantTest::UnitTest participantTest;
+    PlayTest::UnitTest playTest;
+    RoomTest::UnitTest roomTest;
+    SessionTest::UnitTest sessionTest;
+
+    std::vector<State> testResults{};
+
+    State state = participantTest.run();
+    testResults.push_back(state);
+    state = playTest.run();
+    testResults.push_back(state);
+    state = roomTest.run();
+    testResults.push_back(state);
+    state = sessionTest.run();
+    testResults.push_back(state);
+
+    std::cout << "\n";
+
+    return checkResults(testResults);
+}
+
+int8_t runDomainTests()
+{
+    std::cout << "Running Domain Tests\n\n";
     CapacityTest::UnitTest capacityTest;
     DateTest::UnitTest dateTest;
     EmailTest::UnitTest emailTest;
     IdCodeTest::UnitTest idTest;
-    ImmatriculationTest::UnitTest immatriculationTest;
+    RegistrationTest::UnitTest registrationTest;
     NameTest::UnitTest nameTest;
     PasswordTest::UnitTest passwordTest;
     PhoneNumberTest::UnitTest phoneNumberTest;
@@ -36,7 +70,7 @@ int8_t runTests()
     testResults.push_back(state);
     state = idTest.run();
     testResults.push_back(state);
-    state = immatriculationTest.run();
+    state = registrationTest.run();
     testResults.push_back(state);
     state = nameTest.run();
     testResults.push_back(state);
@@ -53,6 +87,8 @@ int8_t runTests()
     state = timeTest.run();
     testResults.push_back(state);
 
+    std::cout << "\n";
+
     return checkResults(testResults);
 }
 
@@ -62,7 +98,7 @@ int8_t checkResults(std::vector<State> &testResults)
     {
         if (state.get() != state.SUCCESS)
         {
-            return state.get();
+            return State::FAILURE;
         }
     }
 

@@ -1,7 +1,7 @@
 #ifndef RATING_TEST_H
 #define RATING_TEST_H
 
-#include "../basetest.h"
+#include "../../basetest.h"
 #include "rating.h"
 
 namespace RatingTest

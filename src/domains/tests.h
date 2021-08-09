@@ -1,11 +1,11 @@
-#ifndef TESTS_H
-#define TESTS_H
+#ifndef DOMAIN_TESTS_H
+#define DOMAIN_TESTS_H
 
 #include "capacity/tests.h"
 #include "date/tests.h"
 #include "email/tests.h"
 #include "idcode/tests.h"
-#include "immatriculation/tests.h"
+#include "registration/tests.h"
 #include "name/tests.h"
 #include "password/tests.h"
 #include "phonenumber/tests.h"

@@ -1,7 +1,7 @@
 #ifndef IDCODE_TESTS_H
 #define IDCODE_TESTS_H
 
-#include "../basetest.h"
+#include "../../basetest.h"
 #include "idcode.h"
 
 namespace IdCodeTest

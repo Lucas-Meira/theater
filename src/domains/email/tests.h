@@ -1,7 +1,7 @@
 #ifndef EMAIL_TESTS_H
 #define EMAIL_TESTS_H
 
-#include "../basetest.h"
+#include "../../basetest.h"
 #include "email.h"
 
 namespace EmailTest

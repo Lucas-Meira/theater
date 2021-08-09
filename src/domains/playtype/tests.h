@@ -1,7 +1,7 @@
 #ifndef PLAY_TYPE_TESTS_H
 #define PLAY_TYPE_TESTS_H
 
-#include "../basetest.h"
+#include "../../basetest.h"
 #include "playtype.h"
 
 namespace PlayTypeTest
