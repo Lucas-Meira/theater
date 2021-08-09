@@ -11,6 +11,15 @@ private:
     Capacity _capacity;
 
 public:
+    Room(IdCode id, Name name, Capacity capacity)
+    {
+        setId(id);
+        setName(name);
+        setCapacity(capacity);
+    }
+
+    Room() {}
+
     void setId(IdCode id)
     {
         _id = id;

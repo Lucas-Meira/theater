@@ -12,7 +12,18 @@ private:
     Rating _rating;
 
 public:
-    void setId(IdCode id)
+    Play(IdCode id, Name name, PlayType type, Rating rating)
+    {
+        setId(id);
+        setName(name);
+        setType(type);
+        setRating(rating);
+    }
+
+    Play() {}
+
+    void
+    setId(IdCode id)
     {
         _id = id;
     }

@@ -11,6 +11,15 @@ private:
     Time _time;
 
 public:
+    Session(IdCode id, Date date, Time time)
+    {
+        setId(id);
+        setDate(date);
+        setTime(time);
+    }
+
+    Session() {}
+
     void setId(IdCode id)
     {
         _id = id;

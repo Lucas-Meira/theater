@@ -15,7 +15,21 @@ private:
     Role _role;
 
 public:
-    void setRegistration(Registration registration)
+    Participant(const Registration &registration, const Name &firstName, const Name &lastName,
+                const Email &email, const PhoneNumber &phoneNumber, const Password &password, const Role &role)
+    {
+        setRegistration(registration);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+        setPhoneNumber(phoneNumber);
+        setPassword(password);
+        setRole(role);
+    }
+    Participant() {}
+
+    void
+    setRegistration(Registration registration)
     {
         _registration = registration;
     }
