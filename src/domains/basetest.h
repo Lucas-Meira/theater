@@ -4,7 +4,7 @@
 #include <vector>
 #include <iostream>
 
-#include "state.h"
+#include "../state.h"
 
 template <typename T, class C>
 class BaseTest

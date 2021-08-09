@@ -92,7 +92,7 @@ namespace PlayTest
             play->setId(invalidId);
             _state.set(false);
         }
-        catch (...)
+        catch (std::invalid_argument &exception)
         {
             if (play->getId().get() == invalidId)
             {
