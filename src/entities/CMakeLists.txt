@@ -24,6 +24,6 @@ add_library(entities entities.h ${entities_source_list} ${entities_headers_list}
 
 target_link_libraries(entities domains)
 
-#add_library(entities_tests basetest.h tests.h state.h ${tests_header_list})
+add_library(entities_tests tests.h ../state.h ${tests_header_list})
 
-#target_link_libraries(entities_tests entities)
+target_link_libraries(entities_tests entities)

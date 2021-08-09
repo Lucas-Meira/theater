@@ -1,5 +1,5 @@
-#ifndef TESTS_H
-#define TESTS_H
+#ifndef DOMAIN_TESTS_H
+#define DOMAIN_TESTS_H
 
 #include "capacity/tests.h"
 #include "date/tests.h"

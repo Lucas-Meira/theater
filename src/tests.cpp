@@ -1,9 +1,12 @@
 #include <iostream>
 
 #include "domains/tests.h"
+#include "entities/tests.h"
 #include "state.h"
 
 int8_t runTests();
+int8_t runDomainTests();
+int8_t runEntitiesTests();
 int8_t checkResults(std::vector<State> &testResults);
 
 int main(void)
@@ -13,6 +16,23 @@ int main(void)
 
 int8_t runTests()
 {
+    return ((runEntitiesTests() == State::SUCCESS) && (runDomainTests() == State::SUCCESS));
+}
+
+int8_t runEntitiesTests()
+{
+    std::cout << "Running Entities Tests\n\n";
+
+    ParticipantTest::UnitTest participantTest;
+
+    std::cout << "\n";
+
+    return participantTest.run().get();
+}
+
+int8_t runDomainTests()
+{
+    std::cout << "Running Domain Tests\n\n";
     CapacityTest::UnitTest capacityTest;
     DateTest::UnitTest dateTest;
     EmailTest::UnitTest emailTest;
@@ -53,6 +73,8 @@ int8_t runTests()
     state = timeTest.run();
     testResults.push_back(state);
 
+    std::cout << "\n";
+
     return checkResults(testResults);
 }
 
@@ -62,7 +84,7 @@ int8_t checkResults(std::vector<State> &testResults)
     {
         if (state.get() != state.SUCCESS)
         {
-            return state.get();
+            return State::FAILURE;
         }
     }
 

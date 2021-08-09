@@ -1,4 +1,5 @@
 #include "domains/domains.h"
+#include "entities/entities.h"
 
 #include <iostream>
 
