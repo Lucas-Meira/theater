@@ -18,11 +18,23 @@ public:
         setTime(time);
     }
 
+    Session(std::string id, std::string date, std::string time)
+    {
+        setId(id);
+        setDate(date);
+        setTime(time);
+    }
+
     Session() {}
 
     void setId(IdCode id)
     {
         _id = id;
+    }
+
+    void setId(std::string id)
+    {
+        _id = IdCode(id);
     }
 
     IdCode getId()
@@ -35,6 +47,11 @@ public:
         _date = date;
     }
 
+    void setDate(std::string date)
+    {
+        _date = Date(date);
+    }
+
     Date getDate()
     {
         return _date;
@@ -43,6 +60,11 @@ public:
     void setTime(Time time)
     {
         _time = time;
+    }
+
+    void setTime(std::string time)
+    {
+        _time = Time(time);
     }
 
     Time getTime()

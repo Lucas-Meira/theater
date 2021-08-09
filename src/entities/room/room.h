@@ -18,11 +18,23 @@ public:
         setCapacity(capacity);
     }
 
+    Room(std::string id, std::string name, uint16_t capacity)
+    {
+        setId(id);
+        setName(name);
+        setCapacity(capacity);
+    }
+
     Room() {}
 
     void setId(IdCode id)
     {
         _id = id;
+    }
+    
+    void setId(std::string id)
+    {
+        _id = IdCode(id);
     }
 
     IdCode getId()
@@ -34,6 +46,11 @@ public:
     {
         _name = name;
     }
+    
+    void setName(std::string name)
+    {
+        _name = Name(name);
+    }
 
     Name getName()
     {
@@ -43,6 +60,11 @@ public:
     void setCapacity(Capacity capacity)
     {
         _capacity = capacity;
+    }
+    
+    void setCapacity(uint16_t capacity)
+    {
+        _capacity = Capacity(capacity);
     }
 
     Capacity getCapacity()

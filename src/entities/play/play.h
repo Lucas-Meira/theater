@@ -20,12 +20,24 @@ public:
         setRating(rating);
     }
 
+    Play(std::string id, std::string name, PlayType type, std::string rating)
+    {
+        setId(id);
+        setName(name);
+        setType(type);
+        setRating(rating);
+    }
+
     Play() {}
 
-    void
-    setId(IdCode id)
+    void setId(IdCode id)
     {
         _id = id;
+    }
+
+    void setId(std::string id)
+    {
+        _id = IdCode(id);
     }
 
     IdCode getId()
@@ -38,6 +50,11 @@ public:
         _name = name;
     }
 
+    void setName(std::string name)
+    {
+        _name = Name(name);
+    }
+
     Name getName()
     {
         return _name;
@@ -48,6 +65,11 @@ public:
         _type = type;
     }
 
+    void setType(std::string type)
+    {
+        _type = PlayType(type);
+    }
+
     PlayType getType()
     {
         return _type;
@@ -56,6 +78,11 @@ public:
     void setRating(Rating rating)
     {
         _rating = rating;
+    }
+
+    void setRating(std::string rating)
+    {
+        _rating = Rating(rating);
     }
 
     Rating getRating()
