@@ -23,7 +23,7 @@ int8_t runEntitiesTests()
 {
     std::cout << "Running Entities Tests\n\n";
 
-    ParticipantTest::UnitTest participantTest;
+    ParticipantTest participantTest;
     PlayTest::UnitTest playTest;
     RoomTest::UnitTest roomTest;
     SessionTest::UnitTest sessionTest;

@@ -110,6 +110,9 @@
 		</Unit>
 		<Unit filename="src/domains/time/time.cpp" />
 		<Unit filename="src/domains/time/time.h" />
+		<Unit filename="src/entities/basetest.h">
+			<Option target="Tests" />
+		</Unit>
 		<Unit filename="src/entities/entities.h" />
 		<Unit filename="src/entities/participant/participant.cpp" />
 		<Unit filename="src/entities/participant/participant.h" />
