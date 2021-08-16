@@ -42,10 +42,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="src/basetest.h">
+		<Unit filename="src/domains/basedomain.h" />
+		<Unit filename="src/domains/basetest.h">
 			<Option target="Tests" />
 		</Unit>
-		<Unit filename="src/domains/basedomain.h" />
 		<Unit filename="src/domains/capacity/capacity.cpp" />
 		<Unit filename="src/domains/capacity/capacity.h" />
 		<Unit filename="src/domains/capacity/tests.h">
