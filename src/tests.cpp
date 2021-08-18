@@ -23,10 +23,10 @@ int8_t runEntitiesTests()
 {
     std::cout << "Running Entities Tests\n\n";
 
-    ParticipantTest::UnitTest participantTest;
-    PlayTest::UnitTest playTest;
-    RoomTest::UnitTest roomTest;
-    SessionTest::UnitTest sessionTest;
+    ParticipantTest participantTest;
+    PlayTest playTest;
+    RoomTest roomTest;
+    SessionTest sessionTest;
 
     std::vector<State> testResults{};
 

@@ -4,7 +4,7 @@
 #include "../basetest.h"
 #include "email.h"
 
-class EmailTest : public BaseTest<std::string, Email>
+class EmailTest : public DomainBaseTest<std::string, Email>
 {
 private:
     inline static const std::string _classUnderTest{"[EmailTest]"};
@@ -12,7 +12,7 @@ private:
     inline static const std::vector<std::string> INVALID_VALUES{".email@email.com", "email.@email.com", "email@.email.com", "email@email.", "email..email@email.com", "a@email.com", "abcdef@em"};
 
 public:
-    EmailTest() : BaseTest<std::string, Email>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+    EmailTest() : DomainBaseTest<std::string, Email>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
     {
     }
 };

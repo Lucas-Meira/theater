@@ -4,7 +4,7 @@
 #include "../basetest.h"
 #include "phonenumber.h"
 
-class PhoneNumberTest : public BaseTest<std::string, PhoneNumber>
+class PhoneNumberTest : public DomainBaseTest<std::string, PhoneNumber>
 {
 private:
     inline static const std::string _classUnderTest{"[PhoneNumberTest]"};
@@ -12,7 +12,7 @@ private:
     inline static const std::vector<std::string> INVALID_VALUES{"(10)-123456789", "(44)-12345678", "(89)-0123456789", "(11)-000000000"};
 
 public:
-    PhoneNumberTest() : BaseTest<std::string, PhoneNumber>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+    PhoneNumberTest() : DomainBaseTest<std::string, PhoneNumber>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
     {
     }
 };

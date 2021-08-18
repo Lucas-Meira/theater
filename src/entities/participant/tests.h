@@ -1,248 +1,198 @@
 #ifndef PARTICIPANT_TEST_H
 #define PARTICIPANT_TEST_H
 
+#include "../basetest.h"
 #include "participant.h"
 #include "../../state.h"
 
-namespace ParticipantTest
+class ParticipantTest : public EntityBaseTest<Participant>
 {
-    class UnitTest
+private:
+    inline static const std::string _classUnderTest{"[ParticipantTest]"};
+
+    inline static const Registration validRegistration{"97864"};
+    inline static const Name validFirstName{"Mr. John"};
+    inline static const Name validLastName{"Dupont"};
+    inline static const Email validEmail{"john@example.com"};
+    inline static const PhoneNumber validPhoneNumber{"(11)-123456789"};
+    inline static const Password validPassword{"AbCdEF9!"};
+    inline static const Role validRole{"Actor"};
+
+    inline static const std::string invalidRegistration{"A1234"};
+    inline static const std::string invalidFirstName{"John"};
+    inline static const std::string invalidLastName{"Doe"};
+    inline static const std::string invalidEmail{".john@example.com"};
+    inline static const std::string invalidPhoneNumber{"(00)-123456789"};
+    inline static const std::string invalidPassword{"AbCdEF9"};
+    inline static const std::string invalidRole{"Driver"};
+
+    void _testSuccessScenario();
+    void _testFailureScenario();
+
+public:
+    ParticipantTest() : EntityBaseTest<Participant>(_classUnderTest)
     {
-    private:
-        Participant *participant;
-        State _state;
+    }
+};
 
-        inline static const std::string _classUnderTest{"[ParticipantTest]"};
+void ParticipantTest::_testSuccessScenario()
+{
+    object->setRegistration(validRegistration);
 
-        inline static const Registration validRegistration{"97864"};
-        inline static const Name validFirstName{"Mr. John"};
-        inline static const Name validLastName{"Dupont"};
-        inline static const Email validEmail{"john@example.com"};
-        inline static const PhoneNumber validPhoneNumber{"(11)-123456789"};
-        inline static const Password validPassword{"AbCdEF9!"};
-        inline static const Role validRole{"Actor"};
-
-        inline static const std::string invalidRegistration{"A1234"};
-        inline static const std::string invalidFirstName{"John"};
-        inline static const std::string invalidLastName{"Doe"};
-        inline static const std::string invalidEmail{".john@example.com"};
-        inline static const std::string invalidPhoneNumber{"(00)-123456789"};
-        inline static const std::string invalidPassword{"AbCdEF9"};
-        inline static const std::string invalidRole{"Driver"};
-
-        void _setUp();
-        void _tearDown();
-        void _testSuccessScenario();
-        void _testFailureScenario();
-        void _printTestStatusMessage();
-
-    public:
-        UnitTest()
-        {
-        }
-
-        State run();
-    };
-
-    void UnitTest::_setUp()
+    if (object->getRegistration().get() != validRegistration.get())
     {
-        participant = new Participant();
-
-        _state.set(true);
+        _state.set(false);
+        throw std::invalid_argument("Got '" + object->getRegistration().get() + "', expected '" + validRegistration.get() + +"'.");
     }
 
-    void UnitTest::_tearDown()
+    object->setFirstName(validFirstName);
+
+    if (object->getFirstName().get() != validFirstName.get())
     {
-        delete participant;
+        _state.set(false);
+        throw std::invalid_argument("Got '" + object->getFirstName().get() + "', expected '" + validFirstName.get() + "'.");
     }
 
-    void UnitTest::_testSuccessScenario()
+    object->setLastName(validLastName);
+
+    if (object->getLastName().get() != validLastName.get())
     {
-        participant->setRegistration(validRegistration);
-
-        if (participant->getRegistration().get() != validRegistration.get())
-        {
-            _state.set(false);
-            throw std::invalid_argument("Got '" + participant->getRegistration().get() + "', expected '" + validRegistration.get() + +"'.");
-        }
-
-        participant->setFirstName(validFirstName);
-
-        if (participant->getFirstName().get() != validFirstName.get())
-        {
-            _state.set(false);
-            throw std::invalid_argument("Got '" + participant->getFirstName().get() + "', expected '" + validFirstName.get() + "'.");
-        }
-
-        participant->setLastName(validLastName);
-
-        if (participant->getLastName().get() != validLastName.get())
-        {
-            _state.set(false);
-            throw std::invalid_argument("Got '" + participant->getLastName().get() + "', expected '" + validLastName.get() + "'.");
-        }
-
-        participant->setEmail(validEmail);
-
-        if (participant->getEmail().get() != validEmail.get())
-        {
-            _state.set(false);
-            throw std::invalid_argument("Got '" + participant->getEmail().get() + "', expected '" + validEmail.get() + "'.");
-        }
-
-        participant->setPhoneNumber(validPhoneNumber);
-
-        if (participant->getPhoneNumber().get() != validPhoneNumber.get())
-        {
-            _state.set(false);
-            throw std::invalid_argument("Got '" + participant->getPhoneNumber().get() + "', expected '" + validPhoneNumber.get() + "'.");
-        }
-
-        participant->setPassword(validPassword);
-
-        if (participant->getPassword().get() != validPassword.get())
-        {
-            _state.set(false);
-            throw std::invalid_argument("Got '" + participant->getPassword().get() + "', expected '" + validPassword.get() + "'.");
-        }
-
-        participant->setRole(validRole);
-
-        if (participant->getRole().get() != validRole.get())
-        {
-            _state.set(false);
-            throw std::invalid_argument("Got '" + participant->getRole().get() + "', expected '" + validRole.get() + "'.");
-        }
+        _state.set(false);
+        throw std::invalid_argument("Got '" + object->getLastName().get() + "', expected '" + validLastName.get() + "'.");
     }
 
-    void UnitTest::_testFailureScenario()
+    object->setEmail(validEmail);
+
+    if (object->getEmail().get() != validEmail.get())
     {
-        try
-        {
-            participant->setRegistration(invalidRegistration);
-            _state.set(false);
-        }
-        catch (...)
-        {
-            if (participant->getRegistration().get() == invalidRegistration)
-            {
-                _state.set(false);
-                throw std::invalid_argument("Got '" + participant->getRegistration().get() + "', expected nothing.");
-            }
-        }
-
-        try
-        {
-            participant->setFirstName(invalidFirstName);
-            _state.set(false);
-        }
-        catch (std::invalid_argument &exception)
-        {
-            if (participant->getFirstName().get() == invalidFirstName)
-            {
-                _state.set(false);
-                throw std::invalid_argument("Got '" + participant->getFirstName().get() + "', expected nothing.");
-            }
-        }
-
-        try
-        {
-            participant->setLastName(invalidLastName);
-            _state.set(false);
-        }
-        catch (std::invalid_argument &exception)
-        {
-            if (participant->getLastName().get() == invalidLastName)
-            {
-                _state.set(false);
-                throw std::invalid_argument("Got '" + participant->getLastName().get() + "', expected nothing.");
-            }
-        }
-
-        try
-        {
-            participant->setEmail(invalidEmail);
-            _state.set(false);
-        }
-        catch (std::invalid_argument &exception)
-        {
-            if (participant->getEmail().get() == invalidEmail)
-            {
-                _state.set(false);
-                throw std::invalid_argument("Got '" + participant->getEmail().get() + "', expected nothing.'");
-            }
-        }
-
-        try
-        {
-            participant->setPhoneNumber(invalidPhoneNumber);
-            _state.set(false);
-        }
-        catch (std::invalid_argument &exception)
-        {
-            if (participant->getPhoneNumber().get() == invalidPhoneNumber)
-            {
-                _state.set(false);
-                throw std::invalid_argument("Got '" + participant->getPhoneNumber().get() + "', expected nothing.");
-            }
-        }
-
-        try
-        {
-            participant->setPassword(invalidPassword);
-            _state.set(false);
-        }
-        catch (std::invalid_argument &exception)
-        {
-            if (participant->getPassword().get() == invalidPassword)
-            {
-                _state.set(false);
-                throw std::invalid_argument("Got '" + participant->getPassword().get() + "', expected nothing.");
-            }
-        }
-
-        try
-        {
-            participant->setRole(invalidRole);
-            _state.set(false);
-        }
-        catch (std::invalid_argument &exception)
-        {
-            if (participant->getRole().get() == invalidRole)
-            {
-                _state.set(false);
-                throw std::invalid_argument("Got '" + participant->getRole().get() + "', expected nothing.'");
-            }
-        }
+        _state.set(false);
+        throw std::invalid_argument("Got '" + object->getEmail().get() + "', expected '" + validEmail.get() + "'.");
     }
 
-    void UnitTest::_printTestStatusMessage()
+    object->setPhoneNumber(validPhoneNumber);
+
+    if (object->getPhoneNumber().get() != validPhoneNumber.get())
     {
-        if (_state.get() == _state.SUCCESS)
-        {
-            std::cout << _classUnderTest << " \u001b[32m[  PASSED  ]\u001b[0m " << std::endl;
-        }
-        else
-        {
-            std::cout << _classUnderTest << " \u001b[31m[  FAILED  ]\u001b[0m " << std::endl;
-        }
+        _state.set(false);
+        throw std::invalid_argument("Got '" + object->getPhoneNumber().get() + "', expected '" + validPhoneNumber.get() + "'.");
     }
 
-    State UnitTest::run()
+    object->setPassword(validPassword);
+
+    if (object->getPassword().get() != validPassword.get())
     {
-        std::cout << _classUnderTest << " [ RUN      ]" << std::endl;
+        _state.set(false);
+        throw std::invalid_argument("Got '" + object->getPassword().get() + "', expected '" + validPassword.get() + "'.");
+    }
 
-        _setUp();
-        _testSuccessScenario();
-        _testFailureScenario();
-        _tearDown();
+    object->setRole(validRole);
 
-        _printTestStatusMessage();
-
-        std::cout << _classUnderTest << " [     DONE ]" << std::endl;
-
-        return _state;
+    if (object->getRole().get() != validRole.get())
+    {
+        _state.set(false);
+        throw std::invalid_argument("Got '" + object->getRole().get() + "', expected '" + validRole.get() + "'.");
     }
 }
+
+void ParticipantTest::_testFailureScenario()
+{
+    try
+    {
+        object->setRegistration(invalidRegistration);
+        _state.set(false);
+    }
+    catch (...)
+    {
+        if (object->getRegistration().get() == invalidRegistration)
+        {
+            _state.set(false);
+            throw std::invalid_argument("Got '" + object->getRegistration().get() + "', expected nothing.");
+        }
+    }
+
+    try
+    {
+        object->setFirstName(invalidFirstName);
+        _state.set(false);
+    }
+    catch (std::invalid_argument &exception)
+    {
+        if (object->getFirstName().get() == invalidFirstName)
+        {
+            _state.set(false);
+            throw std::invalid_argument("Got '" + object->getFirstName().get() + "', expected nothing.");
+        }
+    }
+
+    try
+    {
+        object->setLastName(invalidLastName);
+        _state.set(false);
+    }
+    catch (std::invalid_argument &exception)
+    {
+        if (object->getLastName().get() == invalidLastName)
+        {
+            _state.set(false);
+            throw std::invalid_argument("Got '" + object->getLastName().get() + "', expected nothing.");
+        }
+    }
+
+    try
+    {
+        object->setEmail(invalidEmail);
+        _state.set(false);
+    }
+    catch (std::invalid_argument &exception)
+    {
+        if (object->getEmail().get() == invalidEmail)
+        {
+            _state.set(false);
+            throw std::invalid_argument("Got '" + object->getEmail().get() + "', expected nothing.'");
+        }
+    }
+
+    try
+    {
+        object->setPhoneNumber(invalidPhoneNumber);
+        _state.set(false);
+    }
+    catch (std::invalid_argument &exception)
+    {
+        if (object->getPhoneNumber().get() == invalidPhoneNumber)
+        {
+            _state.set(false);
+            throw std::invalid_argument("Got '" + object->getPhoneNumber().get() + "', expected nothing.");
+        }
+    }
+
+    try
+    {
+        object->setPassword(invalidPassword);
+        _state.set(false);
+    }
+    catch (std::invalid_argument &exception)
+    {
+        if (object->getPassword().get() == invalidPassword)
+        {
+            _state.set(false);
+            throw std::invalid_argument("Got '" + object->getPassword().get() + "', expected nothing.");
+        }
+    }
+
+    try
+    {
+        object->setRole(invalidRole);
+        _state.set(false);
+    }
+    catch (std::invalid_argument &exception)
+    {
+        if (object->getRole().get() == invalidRole)
+        {
+            _state.set(false);
+            throw std::invalid_argument("Got '" + object->getRole().get() + "', expected nothing.'");
+        }
+    }
+};
 
 #endif

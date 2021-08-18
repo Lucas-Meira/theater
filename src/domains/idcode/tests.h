@@ -4,7 +4,7 @@
 #include "../basetest.h"
 #include "idcode.h"
 
-class IdCodeTest : public BaseTest<std::string, IdCode>
+class IdCodeTest : public DomainBaseTest<std::string, IdCode>
 {
 private:
     inline static const std::string _classUnderTest{"[IdCodeTest]"};
@@ -12,7 +12,7 @@ private:
     inline static const std::vector<std::string> INVALID_VALUES{"ABC012", "A01234", "ABCDEF", "123456", "A12345", "1A3425", "0123AB"};
 
 public:
-    IdCodeTest() : BaseTest<std::string, IdCode>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+    IdCodeTest() : DomainBaseTest<std::string, IdCode>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
     {
     }
 };

@@ -4,7 +4,7 @@
 #include "../basetest.h"
 #include "date.h"
 
-class DateTest : public BaseTest<std::string, Date>
+class DateTest : public DomainBaseTest<std::string, Date>
 {
 private:
     inline static const std::string _classUnderTest{"[DateTest]"};
@@ -12,7 +12,7 @@ private:
     inline static const std::vector<std::string> INVALID_VALUES{"29/02/2021", "32/01/2000", "9/12/2500", "25/13/2000", "00/10/2000", "01/01/10000", "01/01/1999"};
 
 public:
-    DateTest() : BaseTest<std::string, Date>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+    DateTest() : DomainBaseTest<std::string, Date>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
     {
     }
 };

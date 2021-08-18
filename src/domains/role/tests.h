@@ -4,7 +4,7 @@
 #include "../basetest.h"
 #include "role.h"
 
-class RoleTest : public BaseTest<std::string, Role>
+class RoleTest : public DomainBaseTest<std::string, Role>
 {
 private:
     inline static const std::string _classUnderTest{"[RoleTest]"};
@@ -14,7 +14,7 @@ private:
     inline static const std::vector<std::string> INVALID_VALUES{"actor", "musician", "", "Musician"};
 
 public:
-    RoleTest() : BaseTest<std::string, Role>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+    RoleTest() : DomainBaseTest<std::string, Role>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
     {
     }
 };
