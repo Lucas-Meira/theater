@@ -4,7 +4,7 @@
 #include "../basetest.h"
 #include "time.h"
 
-class TimeTest : public BaseTest<std::string, Time>
+class TimeTest : public DomainBaseTest<std::string, Time>
 {
 private:
     inline static const std::string _classUnderTest{"[TimeTest]"};
@@ -13,7 +13,7 @@ private:
     inline static const std::vector<std::string> INVALID_VALUES{"24:00", "00:10", "9:45"};
 
 public:
-    TimeTest() : BaseTest<std::string, Time>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+    TimeTest() : DomainBaseTest<std::string, Time>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
     {
     }
 };

@@ -1,5 +1,5 @@
-#ifndef BASETEST_H
-#define BASETEST_H
+#ifndef DOMAIN_BASETEST_H
+#define DOMAIN_BASETEST_H
 
 #include <vector>
 #include <iostream>
@@ -7,7 +7,7 @@
 #include "../state.h"
 
 template <typename T, class C>
-class BaseTest
+class DomainBaseTest
 {
 protected:
     C *object;
@@ -24,10 +24,10 @@ protected:
     void _printTestStatusMessage();
 
 public:
-    BaseTest(std::string classUnderTest,
-             const std::vector<T> &validValues,
-             const std::vector<T> &invalidValues) : _classUnderTest(classUnderTest),
-                                                    _validValues(validValues), _invalidValues(invalidValues)
+    DomainBaseTest(std::string classUnderTest,
+                   const std::vector<T> &validValues,
+                   const std::vector<T> &invalidValues) : _classUnderTest(classUnderTest),
+                                                          _validValues(validValues), _invalidValues(invalidValues)
     {
     }
 
@@ -35,7 +35,7 @@ public:
 };
 
 template <typename T, class C>
-void BaseTest<T, C>::_setUp()
+void DomainBaseTest<T, C>::_setUp()
 {
     object = new C();
 
@@ -43,13 +43,13 @@ void BaseTest<T, C>::_setUp()
 }
 
 template <typename T, class C>
-void BaseTest<T, C>::_tearDown()
+void DomainBaseTest<T, C>::_tearDown()
 {
     delete object;
 }
 
 template <typename T, class C>
-void BaseTest<T, C>::_testSuccessScenario()
+void DomainBaseTest<T, C>::_testSuccessScenario()
 {
     for (const T &validValue : _validValues)
     {
@@ -75,7 +75,7 @@ void BaseTest<T, C>::_testSuccessScenario()
 }
 
 template <typename T, class C>
-void BaseTest<T, C>::_testFailureScenario()
+void DomainBaseTest<T, C>::_testFailureScenario()
 {
     for (const T &invalidValue : _invalidValues)
     {
@@ -95,7 +95,7 @@ void BaseTest<T, C>::_testFailureScenario()
 }
 
 template <typename T, class C>
-void BaseTest<T, C>::_printTestStatusMessage()
+void DomainBaseTest<T, C>::_printTestStatusMessage()
 {
     if (_state.get() == _state.SUCCESS)
     {
@@ -108,7 +108,7 @@ void BaseTest<T, C>::_printTestStatusMessage()
 }
 
 template <typename T, class C>
-State BaseTest<T, C>::run()
+State DomainBaseTest<T, C>::run()
 {
     std::cout << _classUnderTest << " [ RUN      ]" << std::endl;
 

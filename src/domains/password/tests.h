@@ -4,7 +4,7 @@
 #include "../basetest.h"
 #include "password.h"
 
-class PasswordTest : public BaseTest<std::string, Password>
+class PasswordTest : public DomainBaseTest<std::string, Password>
 {
 private:
     inline static const std::string _classUnderTest{"[PasswordTest]"};
@@ -12,7 +12,7 @@ private:
     inline static const std::vector<std::string> INVALID_VALUES{"ABC123!", "ABC123!@#", "aab123!@", "abcdef12", "abcDef!@", "123456!@", "abc11d!@", "abc123!!"};
 
 public:
-    PasswordTest() : BaseTest<std::string, Password>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+    PasswordTest() : DomainBaseTest<std::string, Password>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
     {
     }
 };

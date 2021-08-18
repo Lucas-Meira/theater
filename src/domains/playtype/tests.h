@@ -4,7 +4,7 @@
 #include "../basetest.h"
 #include "playtype.h"
 
-class PlayTypeTest : public BaseTest<std::string, PlayType>
+class PlayTypeTest : public DomainBaseTest<std::string, PlayType>
 {
 private:
     inline static const std::string _classUnderTest{"[PlayTypeTest]"};
@@ -15,7 +15,7 @@ private:
                                                                 "comedy", "musical"};
 
 public:
-    PlayTypeTest() : BaseTest<std::string, PlayType>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+    PlayTypeTest() : DomainBaseTest<std::string, PlayType>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
     {
     }
 };

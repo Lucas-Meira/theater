@@ -4,7 +4,7 @@
 #include "../basetest.h"
 #include "name.h"
 
-class NameTest : public BaseTest<std::string, Name>
+class NameTest : public DomainBaseTest<std::string, Name>
 {
 private:
     inline static const std::string _classUnderTest{"[NameTest]"};
@@ -12,7 +12,7 @@ private:
     inline static const std::vector<std::string> INVALID_VALUES{"John", "Mr. John Doe LongName", ".John", "Mr. John doe", "John  Doe", "John . Doe"};
 
 public:
-    NameTest() : BaseTest<std::string, Name>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
+    NameTest() : DomainBaseTest<std::string, Name>(_classUnderTest, VALID_VALUES, INVALID_VALUES)
     {
     }
 };
