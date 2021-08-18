@@ -5,12 +5,9 @@
 #include "participant.h"
 #include "../../state.h"
 
-
-class  ParticipantTest : public EntityBaseTest <Participant>
+class ParticipantTest : public EntityBaseTest<Participant>
 {
 private:
-    State _state;
-
     inline static const std::string _classUnderTest{"[ParticipantTest]"};
 
     inline static const Registration validRegistration{"97864"};
@@ -29,16 +26,14 @@ private:
     inline static const std::string invalidPassword{"AbCdEF9"};
     inline static const std::string invalidRole{"Driver"};
 
-
     void _testSuccessScenario();
     void _testFailureScenario();
 
 public:
-    ParticipantTest():EntityBaseTest <Participant> (_classUnderTest)
+    ParticipantTest() : EntityBaseTest<Participant>(_classUnderTest)
     {
     }
 };
-
 
 void ParticipantTest::_testSuccessScenario()
 {
@@ -199,6 +194,5 @@ void ParticipantTest::_testFailureScenario()
         }
     }
 };
-
 
 #endif

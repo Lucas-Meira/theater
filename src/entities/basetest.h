@@ -1,5 +1,5 @@
-#ifndef BASETEST_E_H_INCLUDED
-#define BASETEST_E_H_INCLUDED
+#ifndef ENTITY_BASETEST_H
+#define ENTITY_BASETEST_H
 
 #include <vector>
 #include <iostream>
@@ -23,31 +23,29 @@ protected:
     void _printTestStatusMessage();
 
 public:
-
     EntityBaseTest(std::string classUnderTest) : _classUnderTest(classUnderTest)
-
     {
     }
 
     State run();
 };
 
-template < class C>
-void EntityBaseTest< C> :: _setUp()
+template <class C>
+void EntityBaseTest<C>::_setUp()
 {
-        object = new C();
+    object = new C();
 
-        _state.set(true);
-    }
+    _state.set(true);
+}
 
 template <class C>
-void EntityBaseTest< C>::_tearDown()
- {
-        delete object;
-    }
+void EntityBaseTest<C>::_tearDown()
+{
+    delete object;
+}
 
-template < class C>
-void EntityBaseTest< C>::_printTestStatusMessage()
+template <class C>
+void EntityBaseTest<C>::_printTestStatusMessage()
 {
     if (_state.get() == _state.SUCCESS)
     {
@@ -60,9 +58,9 @@ void EntityBaseTest< C>::_printTestStatusMessage()
 }
 
 template <class C>
-State EntityBaseTest< C>::run()
+State EntityBaseTest<C>::run()
 {
-    std::cout << _classUnderTest << " [ RUN      ]" << std::endl;
+    std::cout << _classUnderTest << " [ RUN     ]" << std::endl;
 
     _setUp();
 
