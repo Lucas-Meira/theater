@@ -25,6 +25,11 @@
 var NAVTREE =
 [
   [ "Theater", "index.html", [
+    [ "Installation", "index.html#autotoc_md1", [
+      [ "CodeBlocks", "index.html#autotoc_md2", null ],
+      [ "CMake", "index.html#autotoc_md3", null ]
+    ] ],
+    [ "Running Tests", "index.html#autotoc_md4", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

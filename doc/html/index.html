@@ -85,7 +85,23 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
   <div class="headertitle"><div class="title">Theater </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_README"></a> This project is a university assignment at the University of Brasilia, for the Programming Techniques 1 course. </p>
+<div class="textblock"><p ><a class="anchor" id="md_C__Users_Lucas_OneDrive_Documents_Codes_TP1_Theater_README"></a> This project is a university assignment at the University of Brasilia, for the Programming Techniques 1 course.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Installation</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+CodeBlocks</h2>
+<p >CodeBlocks is mandatory for this project. You can open <code>Theater.cbp</code> in CodeBlocks and select the target to run.</p>
+<p >The project contains domains (base types) and entities for a Theater. Each one of these elements are placed in their folder alongside with their tests.</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
+CMake</h2>
+<p >You can use CMake instead. Just run</p>
+<div class="fragment"><div class="line">mkdir build</div>
+<div class="line">cmake -G &quot;&lt;GENERATOR&gt;&quot; -S ./src -B ./build</div>
+<div class="line">cmake --build ./build</div>
+</div><!-- fragment --><p >If you are using Windows, <code>&lt;GENERATOR&gt;</code> will be "MinGW Makefiles".</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Running Tests</h1>
+<p >The tests have been added to <code>GitHub Actions</code> for automatic testing. However, you can run the tests manually by compiling the Tests target and running the executable. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
