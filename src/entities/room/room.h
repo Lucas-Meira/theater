@@ -48,7 +48,7 @@ public:
     }
 
     ///
-    /// Creates an instance of the class Room.
+    /// Creates an instance of the classRoom.
     ///
 
     Room() {}

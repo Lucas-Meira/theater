@@ -7,6 +7,10 @@
 #include <array>
 #include <regex>
 
+///
+/// This is a base class that all the domain classes inherit from.
+///
+
 template <typename T>
 class BaseDomain
 {
@@ -18,10 +22,22 @@ public:
     BaseDomain() = default;
     virtual ~BaseDomain() {}
 
+    ///
+    /// Returns the stored value.
+    ///
+    /// @return _value
+    ///
+
     T get() const
     {
         return _value;
     }
+
+    ///
+    /// Verifies if value is valid, and stores it if it is valid.
+    ///
+    /// @param value
+    ///
 
     virtual void set(T value)
     {

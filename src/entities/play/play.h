@@ -54,7 +54,7 @@ public:
     }
 
     ///
-    /// Creates an instance of the class Play.
+    /// Creates an instance of the classPlay.
     ///
 
     Play() {}

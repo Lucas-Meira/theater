@@ -74,7 +74,7 @@ public:
     }
 
     ///
-    /// Creates an instance of the class Participant.
+    /// Creates an instance of the classParticipant.
     ///
 
     Participant() {}

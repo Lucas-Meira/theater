@@ -48,7 +48,7 @@ public:
     }
 
     ///
-    /// Creates an instance of the class Session.
+    /// Creates an instance of the classSession.
     ///
 
     Session() {}
