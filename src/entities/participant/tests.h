@@ -39,7 +39,7 @@ void ParticipantTest::_testSuccessScenario()
 {
     object->setRegistration(validRegistration);
 
-    if (object->getRegistration().get() != validRegistration.get())
+    if (object->getRegistration() != validRegistration)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getRegistration().get() + "', expected '" + validRegistration.get() + +"'.");
@@ -47,7 +47,7 @@ void ParticipantTest::_testSuccessScenario()
 
     object->setFirstName(validFirstName);
 
-    if (object->getFirstName().get() != validFirstName.get())
+    if (object->getFirstName() != validFirstName)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getFirstName().get() + "', expected '" + validFirstName.get() + "'.");
@@ -55,7 +55,7 @@ void ParticipantTest::_testSuccessScenario()
 
     object->setLastName(validLastName);
 
-    if (object->getLastName().get() != validLastName.get())
+    if (object->getLastName() != validLastName)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getLastName().get() + "', expected '" + validLastName.get() + "'.");
@@ -63,7 +63,7 @@ void ParticipantTest::_testSuccessScenario()
 
     object->setEmail(validEmail);
 
-    if (object->getEmail().get() != validEmail.get())
+    if (object->getEmail() != validEmail)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getEmail().get() + "', expected '" + validEmail.get() + "'.");
@@ -71,7 +71,7 @@ void ParticipantTest::_testSuccessScenario()
 
     object->setPhoneNumber(validPhoneNumber);
 
-    if (object->getPhoneNumber().get() != validPhoneNumber.get())
+    if (object->getPhoneNumber() != validPhoneNumber)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getPhoneNumber().get() + "', expected '" + validPhoneNumber.get() + "'.");
@@ -79,7 +79,7 @@ void ParticipantTest::_testSuccessScenario()
 
     object->setPassword(validPassword);
 
-    if (object->getPassword().get() != validPassword.get())
+    if (object->getPassword() != validPassword)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getPassword().get() + "', expected '" + validPassword.get() + "'.");
@@ -87,7 +87,7 @@ void ParticipantTest::_testSuccessScenario()
 
     object->setRole(validRole);
 
-    if (object->getRole().get() != validRole.get())
+    if (object->getRole() != validRole)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getRole().get() + "', expected '" + validRole.get() + "'.");
@@ -101,9 +101,9 @@ void ParticipantTest::_testFailureScenario()
         object->setRegistration(invalidRegistration);
         _state.set(false);
     }
-    catch (...)
+    catch (std::invalid_argument &exception)
     {
-        if (object->getRegistration().get() == invalidRegistration)
+        if (object->getRegistration() == invalidRegistration)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getRegistration().get() + "', expected nothing.");
@@ -117,7 +117,7 @@ void ParticipantTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getFirstName().get() == invalidFirstName)
+        if (object->getFirstName() == invalidFirstName)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getFirstName().get() + "', expected nothing.");
@@ -131,7 +131,7 @@ void ParticipantTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getLastName().get() == invalidLastName)
+        if (object->getLastName() == invalidLastName)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getLastName().get() + "', expected nothing.");
@@ -145,7 +145,7 @@ void ParticipantTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getEmail().get() == invalidEmail)
+        if (object->getEmail() == invalidEmail)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getEmail().get() + "', expected nothing.'");
@@ -159,7 +159,7 @@ void ParticipantTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getPhoneNumber().get() == invalidPhoneNumber)
+        if (object->getPhoneNumber() == invalidPhoneNumber)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getPhoneNumber().get() + "', expected nothing.");
@@ -173,7 +173,7 @@ void ParticipantTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getPassword().get() == invalidPassword)
+        if (object->getPassword() == invalidPassword)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getPassword().get() + "', expected nothing.");
@@ -187,7 +187,7 @@ void ParticipantTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getRole().get() == invalidRole)
+        if (object->getRole() == invalidRole)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getRole().get() + "', expected nothing.'");

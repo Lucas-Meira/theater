@@ -33,7 +33,7 @@ void PlayTest::_testSuccessScenario()
 {
     object->setId(validId);
 
-    if (object->getId().get() != validId.get())
+    if (object->getId() != validId)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getId().get() + "', expected '" + validId.get() + +"'.");
@@ -41,7 +41,7 @@ void PlayTest::_testSuccessScenario()
 
     object->setName(validName);
 
-    if (object->getName().get() != validName.get())
+    if (object->getName() != validName)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getName().get() + "', expected '" + validName.get() + "'.");
@@ -49,7 +49,7 @@ void PlayTest::_testSuccessScenario()
 
     object->setType(validType);
 
-    if (object->getType().get() != validType.get())
+    if (object->getType() != validType)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getType().get() + "', expected '" + validType.get() + "'.");
@@ -57,7 +57,7 @@ void PlayTest::_testSuccessScenario()
 
     object->setRating(validRating);
 
-    if (object->getRating().get() != validRating.get())
+    if (object->getRating() != validRating)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getRating().get() + "', expected '" + validRating.get() + "'.");
@@ -73,7 +73,7 @@ void PlayTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getId().get() == invalidId)
+        if (object->getId() == invalidId)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getId().get() + "', expected nothing.");
@@ -87,7 +87,7 @@ void PlayTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getName().get() == invalidName)
+        if (object->getName() == invalidName)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getName().get() + "', expected nothing.");
@@ -101,7 +101,7 @@ void PlayTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getType().get() == invalidType)
+        if (object->getType() == invalidType)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getType().get() + "', expected nothing.");
@@ -115,7 +115,7 @@ void PlayTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getRating().get() == invalidRating)
+        if (object->getRating() == invalidRating)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getRating().get() + "', expected nothing.'");

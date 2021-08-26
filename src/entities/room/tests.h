@@ -31,7 +31,7 @@ void RoomTest::_testSuccessScenario()
 {
     object->setId(validId);
 
-    if (object->getId().get() != validId.get())
+    if (object->getId() != validId)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getId().get() + "', expected '" + validId.get() + +"'.");
@@ -39,7 +39,7 @@ void RoomTest::_testSuccessScenario()
 
     object->setName(validName);
 
-    if (object->getName().get() != validName.get())
+    if (object->getName() != validName)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getName().get() + "', expected '" + validName.get() + "'.");
@@ -47,7 +47,7 @@ void RoomTest::_testSuccessScenario()
 
     object->setCapacity(validCapacity);
 
-    if (object->getCapacity().get() != validCapacity.get())
+    if (object->getCapacity() != validCapacity)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + std::to_string(object->getCapacity().get()) + "', expected '" + std::to_string(validCapacity.get()) + "'.");
@@ -61,9 +61,9 @@ void RoomTest::_testFailureScenario()
         object->setId(invalidId);
         _state.set(false);
     }
-    catch (...)
+    catch (std::invalid_argument &exception)
     {
-        if (object->getId().get() == invalidId)
+        if (object->getId() == invalidId)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getId().get() + "', expected nothing.");
@@ -77,7 +77,7 @@ void RoomTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getName().get() == invalidName)
+        if (object->getName() == invalidName)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getName().get() + "', expected nothing.");
@@ -91,7 +91,7 @@ void RoomTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getCapacity().get() == invalidCapacity)
+        if (object->getCapacity() == invalidCapacity)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + std::to_string(object->getCapacity().get()) + "', expected nothing.");

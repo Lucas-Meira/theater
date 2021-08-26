@@ -45,6 +45,26 @@ public:
 
         _value = value;
     }
+
+    bool operator==(const BaseDomain &rhs)
+    {
+        return _value == rhs._value;
+    }
+
+    bool operator!=(const BaseDomain &rhs)
+    {
+        return _value != rhs._value;
+    }
+
+    bool operator==(const T &rhs)
+    {
+        return _value == rhs;
+    }
+
+    bool operator!=(const T &rhs)
+    {
+        return _value != rhs;
+    }
 };
 
 #endif
