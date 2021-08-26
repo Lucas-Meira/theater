@@ -21,14 +21,14 @@ protected:
     /// @param testedValue
     ///
 
-    bool _isValidCapacity(uint16_t testedValue);
+    bool _isValidCapacity(const uint16_t &testedValue);
 
     /// Checks the validity of the given input.
     /// @throw invalid_argument
     /// @param testedValue
     ///
 
-    void _validate(uint16_t testedValue) override;
+    void _validate(const uint16_t &testedValue) override;
 
     inline static constexpr std::array<const uint16_t, 5> VALID_VALUES{100, 200, 300, 400, 500};
 
@@ -45,7 +45,7 @@ public:
     /// @param capacity
     ///
 
-    Capacity(uint16_t capacity)
+    Capacity(const uint16_t &capacity)
     {
         set(capacity);
     }

@@ -1,6 +1,6 @@
 #include "date.h"
 
-void Date::_validate(std::string testedDate)
+void Date::_validate(const std::string &testedDate)
 {
     if (!_isRightPattern(testedDate))
     {
@@ -13,12 +13,12 @@ void Date::_validate(std::string testedDate)
     }
 }
 
-bool Date::_isRightPattern(std::string testedValue)
+bool Date::_isRightPattern(const std::string &testedValue)
 {
     return std::regex_match(testedValue, VALID_PATTERN);
 }
 
-bool Date::_isValidDate(std::string date)
+bool Date::_isValidDate(const std::string &date)
 {
     unsigned int day = std::stoi(date.substr(0, 2));
     unsigned int month = std::stoi(date.substr(3, 2));
@@ -49,7 +49,7 @@ bool Date::_isLeapYear(unsigned int year)
     return false;
 }
 
-void Date::set(std::string date)
+void Date::set(const std::string &date)
 {
     _validate(date);
 

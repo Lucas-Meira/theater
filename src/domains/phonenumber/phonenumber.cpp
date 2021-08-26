@@ -1,24 +1,24 @@
 #include "phonenumber.h"
 
-bool PhoneNumber::_isRightPattern(std::string number)
+bool PhoneNumber::_isRightPattern(const std::string &number)
 {
     return std::regex_match(number, VALID_PATTERN);
 }
 
-bool PhoneNumber::_isValidAreacode(std::string number)
+bool PhoneNumber::_isValidAreacode(const std::string &number)
 {
     int code = std::stoi(number.substr(1, 2).c_str());
 
     return (std::find(VALID_AREA_CODES.begin(), VALID_AREA_CODES.end(), code) != VALID_AREA_CODES.end());
 }
-bool PhoneNumber::_isPhoneNumberZeroes(std::string number)
+bool PhoneNumber::_isPhoneNumberZeroes(const std::string &number)
 {
     int phone = std::stoi(number.substr(5, 9).c_str());
 
     return (phone == 0);
 }
 
-void PhoneNumber::_validate(std::string number)
+void PhoneNumber::_validate(const std::string &number)
 {
     if (!_isRightPattern(number))
     {
@@ -36,7 +36,7 @@ void PhoneNumber::_validate(std::string number)
     }
 }
 
-void PhoneNumber::set(std::string number)
+void PhoneNumber::set(const std::string &number)
 {
     _validate(number);
 

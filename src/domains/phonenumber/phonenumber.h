@@ -24,7 +24,7 @@ protected:
     /// @param number
     ///
 
-    bool _isRightPattern(std::string number);
+    bool _isRightPattern(const std::string &number);
 
     ///
     /// Returns true if the part XX of the number is one of the allowed numbers, and returns false otherwise.
@@ -32,7 +32,7 @@ protected:
     /// @param number
     ///
 
-    bool _isValidAreacode(std::string number);
+    bool _isValidAreacode(const std::string &number);
 
     ///
     /// Returns true if the body of the number has just zeroes, and returns false otherwise.
@@ -40,7 +40,7 @@ protected:
     /// @param number
     ///
 
-    bool _isPhoneNumberZeroes(std::string number);
+    bool _isPhoneNumberZeroes(const std::string &number);
 
     ///
     /// Checks the validity of the given input.
@@ -48,7 +48,7 @@ protected:
     /// @param testedValue
     ///
 
-    void _validate(std::string testedValue) override;
+    void _validate(const std::string &testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^\\([0-9]{2}\\)-[0-9]{9}$")};
     inline static constexpr std::array<uint8_t, 66> VALID_AREA_CODES{11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 32, 33,
@@ -71,7 +71,7 @@ public:
     /// @param date
     ///
 
-    PhoneNumber(std::string number)
+    PhoneNumber(const std::string &number)
     {
         set(number);
     }
@@ -98,7 +98,7 @@ public:
         return _number;
     }
 
-    void set(std::string number) override;
+    void set(const std::string &number) override;
 };
 
 #endif

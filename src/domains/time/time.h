@@ -23,7 +23,7 @@ protected:
     /// @param time
     ///
 
-    bool _isRightPattern(std::string time);
+    bool _isRightPattern(const std::string &time);
 
     ///
     /// Checks the validity of the given input.
@@ -31,7 +31,7 @@ protected:
     /// @param testedValue
     ///
 
-    void _validate(std::string testedValue) override;
+    void _validate(const std::string &testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^([01][0-9]|2[0-3]):(00|15|30|45)$")};
 
@@ -51,7 +51,7 @@ public:
     /// @param time
     ///
 
-    Time(std::string time)
+    Time(const std::string &time)
     {
         set(time);
     }

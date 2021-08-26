@@ -25,7 +25,7 @@ private:
     /// @param name
     ///
 
-    bool _isFirstLetterCapitalized(std::string name);
+    bool _isFirstLetterCapitalized(const std::string &name);
 
     ///
     /// Returns true if the name have more than an empty space in sequence, and returns true otherwise.
@@ -33,7 +33,7 @@ private:
     /// @param name
     ///
 
-    bool _containsSpaceSequence(std::string name);
+    bool _containsSpaceSequence(const std::string &name);
 
     ///
     /// Returns false if the first letter is a period or the character preceding the period is not a letter, and returns true otherwise.
@@ -41,7 +41,7 @@ private:
     /// @param name
     ///
 
-    bool _isPeriodPrecededByLetter(std::string name);
+    bool _isPeriodPrecededByLetter(const std::string &name);
 
     ///
     /// Returns true if name have nothing else but letters, empty spaces or periods. Returns false otherwise.
@@ -49,14 +49,14 @@ private:
     /// @param name
     ///
 
-    bool _containsOnlyValidCharacters(std::string name);
+    bool _containsOnlyValidCharacters(const std::string &name);
 
     /// Checks the validity of the given input.
     /// @throw invalid_argument
     /// @param testedValue
     ///
 
-    void _validate(std::string testedValue) override;
+    void _validate(const std::string &testedValue) override;
 
     inline static const std::regex VALID_CHARACTERS{std::regex("^[a-zA-Z. ]{5,20}$")};
 
@@ -73,7 +73,7 @@ public:
     /// @param name
     ///
 
-    Name(std::string name)
+    Name(const std::string &name)
     {
         set(name);
     }

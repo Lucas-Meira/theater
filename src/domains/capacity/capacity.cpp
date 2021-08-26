@@ -1,11 +1,11 @@
 #include "capacity.h"
 
-bool Capacity::_isValidCapacity(uint16_t testedValue)
+bool Capacity::_isValidCapacity(const uint16_t &testedValue)
 {
     return (std::find(VALID_VALUES.begin(), VALID_VALUES.end(), testedValue) != VALID_VALUES.end());
 }
 
-void Capacity::_validate(uint16_t testedValue)
+void Capacity::_validate(const uint16_t &testedValue)
 {
     if (!_isValidCapacity(testedValue))
     {

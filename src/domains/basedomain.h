@@ -16,7 +16,7 @@ class BaseDomain
 {
 protected:
     T _value;
-    virtual void _validate(T testedValue) = 0;
+    virtual void _validate(const T &testedValue) = 0;
 
 public:
     BaseDomain() = default;
@@ -39,7 +39,7 @@ public:
     /// @param value
     ///
 
-    virtual void set(T value)
+    virtual void set(const T &value)
     {
         _validate(value);
 
