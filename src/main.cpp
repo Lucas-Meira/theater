@@ -1,14 +1,12 @@
-#include "domains/domains.h"
-#include "entities/entities.h"
+#include "presentation/PageHandler.h"
 
 #include <iostream>
 
 int main(void)
 {
-    int testedValue;
+    PageHandler pageHandler;
 
-    std::cin >> testedValue;
-    std::cout << Capacity(testedValue).get() << std::endl;
+    pageHandler.handle();
 
     return 0;
 }
