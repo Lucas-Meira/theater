@@ -4,13 +4,11 @@ project(Theater)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Curses REQUIRED)
-include_directories(${CURSES_INCLUDE_DIRS})
-link_directories(${CURSES_INCLUDE_DIRS})
+include_directories("C:/PDCurses")
+link_directories("C:/PDCurses")
 
-MESSAGE(STATUS "Curses found in ${CURSES_INCLUDE_DIRS}")
+set(CMAKE_CXX_FLAGS "-Wall")
 
-set(CMAKE_CXX_FLAGS "-Wall -lcurses")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
