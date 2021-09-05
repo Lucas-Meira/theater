@@ -3,7 +3,7 @@
 #include "ParticipantHandler.h"
 #include "../db/DBHandler.h"
 
-bool ParticipantHandler::create(const Participant &participant)
+SQLResult ParticipantHandler::create(const Participant &participant)
 {
     std::stringstream query;
 
@@ -21,7 +21,7 @@ bool ParticipantHandler::create(const Participant &participant)
     return dbHandler->execute(query);
 }
 
-bool ParticipantHandler::unregister(const Participant &participant)
+SQLResult ParticipantHandler::unregister(const Participant &participant)
 {
     std::stringstream query;
 
@@ -45,7 +45,24 @@ bool ParticipantHandler::search(const Name &firstName)
 {
     return false;
 }
-bool ParticipantHandler::authenticate(const Registration &registration, const Password &password)
+std::map<std::string, std::string> ParticipantHandler::authenticate(const Registration &registration, const Password &password)
 {
-    return false;
+    std::stringstream query;
+
+    query << "SELECT first_name, last_name, registration, password FROM Participants WHERE registration='" << registration.get() << "';";
+
+    SQLResult result = DBHandler::getInstance()->execute(query);
+
+    if (result.rows.size() > 0)
+    {
+        for (auto &row : result.rows)
+        {
+            if (row["registration"] == registration.get())
+            {
+                return row["password"] == password.get() ? row : std::map<std::string, std::string>{};
+            }
+        }
+    }
+
+    return std::map<std::string, std::string>{};
 }

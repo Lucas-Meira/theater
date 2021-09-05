@@ -6,11 +6,11 @@
 class ParticipantHandler : public ParticipantInterface
 {
 public:
-    bool create(const Participant &participant);
-    bool unregister(const Participant &participant);
+    SQLResult create(const Participant &participant);
+    SQLResult unregister(const Participant &participant);
     bool search(const Participant &participant);
     bool search(const Registration &registration);
     bool search(const Name &firstName);
-    bool authenticate(const Registration &registration, const Password &password);
+    std::map<std::string, std::string> authenticate(const Registration &registration, const Password &password);
 };
 #endif
