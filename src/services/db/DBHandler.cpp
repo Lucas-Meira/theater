@@ -2,6 +2,22 @@
 
 DBHandler *DBHandler::_instance = nullptr;
 
+int DBHandler::_formatResult(void *_result, int nbEntries, char **columnEntries, char **columnNames)
+{
+    SQLResult *result = static_cast<SQLResult *>(_result);
+
+    std::map<std::string, std::string> row;
+
+    for (int i = 0; i < nbEntries; i++)
+    {
+        row[columnNames[i]] = columnEntries[i];
+    }
+
+    result->rows.push_back(row);
+
+    return 0;
+}
+
 DBHandler *DBHandler::getInstance()
 {
     if (_instance == nullptr)
@@ -22,11 +38,13 @@ bool DBHandler::_close()
     return sqlite3_close(_db) == SQLITE_OK;
 }
 
-bool DBHandler::execute(const std::string &query)
+SQLResult DBHandler::execute(const std::string &query)
 {
+    SQLResult result;
+
     _open();
-    char *buffer;
-    sqlite3_exec(_db, query.c_str(), NULL, NULL, &buffer);
+
+    result.status = sqlite3_exec(_db, query.c_str(), _formatResult, &result, &result.errorMessage);
 
     _close();
 
@@ -34,14 +52,16 @@ bool DBHandler::execute(const std::string &query)
 
     _log << "[Q] " << query << std::endl;
 
-    if (buffer)
+    if (result.status != SQLResult::SUCCESS)
     {
-        _log << "[E] " << buffer << std::endl;
+        _log << "[E] " << result.errorMessage << std::endl;
     }
     _log.close();
+
+    return result;
 }
 
-bool DBHandler::execute(const std::stringstream &query)
+SQLResult DBHandler::execute(const std::stringstream &query)
 {
     return execute(query.str());
 }
