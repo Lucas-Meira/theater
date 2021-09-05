@@ -13,3 +13,6 @@ obj/
 
 #db
 theater.db
+
+#log file
+*.log

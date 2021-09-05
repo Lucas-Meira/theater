@@ -1,16 +1,18 @@
-#include "../Pages.h"
+#include "../../Pages.h"
 
-Page *InitPage::show(PageHandler *handler)
+Page *AuthenticatedInitPage::show(PageHandler *handler)
 {
     unsigned int option;
 
-    handler->print("Welcome to UnB Theater!");
+    handler->print("Hello, " + _firstName.get() + " " + _lastName.get() + "!");
     handler->print("");
 
     const std::vector<std::string> options{
-        "Sign In",
-        "Register",
         "List Items",
+        "Include Items",
+        "Delete Items",
+        "Edit Items",
+        "View Items",
         "Quit"};
 
     while (true)
@@ -22,8 +24,6 @@ Page *InitPage::show(PageHandler *handler)
         {
         case 0:
             return nullptr;
-        case 1:
-            return new LogInPage;
         case 2:
             return new RegisterPage;
 

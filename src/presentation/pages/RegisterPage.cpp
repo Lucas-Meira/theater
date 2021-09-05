@@ -31,9 +31,9 @@ Page *RegisterPage::show(PageHandler *handler)
             }
             catch (const std::invalid_argument &)
             {
-                handler->print("Invalid input. Try again? [S/N] ");
+                handler->print("Invalid input. Try again? [Yy/Nn] ");
                 int option = getch();
-                bool tryAgain = option == 'S' || option == 's';
+                bool tryAgain = option == 'Y' || option == 'y';
 
                 if (!tryAgain)
                 {
@@ -55,9 +55,9 @@ Page *RegisterPage::show(PageHandler *handler)
             }
             catch (const std::invalid_argument &)
             {
-                handler->print("Invalid input. Try again? [S/N] ");
+                handler->print("Invalid input. Try again? [Yy/Nn] ");
                 int option = getch();
-                bool tryAgain = option == 'S' || option == 's';
+                bool tryAgain = option == 'Y' || option == 'y';
 
                 if (!tryAgain)
                 {
@@ -79,10 +79,10 @@ Page *RegisterPage::show(PageHandler *handler)
             }
             catch (const std::invalid_argument &)
             {
-                handler->print("Invalid input. Try again? [S/N]");
+                handler->print("Invalid input. Try again? [Yy/Nn]");
 
                 int option = getch();
-                bool tryAgain = option == 'S' || option == 's';
+                bool tryAgain = option == 'Y' || option == 'y';
 
                 if (!tryAgain)
                 {
@@ -104,9 +104,9 @@ Page *RegisterPage::show(PageHandler *handler)
             }
             catch (const std::invalid_argument &)
             {
-                handler->print("Invalid input. Try again? [S/N]");
+                handler->print("Invalid input. Try again? [Yy/Nn]");
                 int option = getch();
-                bool tryAgain = option == 'S' || option == 's';
+                bool tryAgain = option == 'Y' || option == 'y';
 
                 if (!tryAgain)
                 {
@@ -128,9 +128,9 @@ Page *RegisterPage::show(PageHandler *handler)
             }
             catch (const std::invalid_argument &)
             {
-                handler->print("Invalid input. Try again? [S/N]");
+                handler->print("Invalid input. Try again? [Yy/Nn]");
                 int option = getch();
-                bool tryAgain = option == 'S' || option == 's';
+                bool tryAgain = option == 'Y' || option == 'y';
 
                 if (!tryAgain)
                 {
@@ -152,9 +152,9 @@ Page *RegisterPage::show(PageHandler *handler)
             }
             catch (const std::invalid_argument &)
             {
-                handler->print("Invalid input. Try again? [S/N]");
+                handler->print("Invalid input. Try again? [Yy/Nn]");
                 int option = getch();
-                bool tryAgain = option == 'S' || option == 's';
+                bool tryAgain = option == 'Y' || option == 'y';
 
                 if (!tryAgain)
                 {
@@ -176,9 +176,9 @@ Page *RegisterPage::show(PageHandler *handler)
             }
             catch (const std::invalid_argument &)
             {
-                handler->print("Invalid input. Try again? [S/N]");
+                handler->print("Invalid input. Try again? [Yy/Nn]");
                 int option = getch();
-                bool tryAgain = option == 'S' || option == 's';
+                bool tryAgain = option == 'Y' || option == 'y';
 
                 if (!tryAgain)
                 {
@@ -199,7 +199,7 @@ Page *RegisterPage::show(PageHandler *handler)
         handler->print("Phone Number: " + phoneNumber.get());
         handler->print("Password: " + password.get());
         handler->print("Role: " + role.get());
-        handler->print("Is the info provided correct? [S/N]");
+        handler->print("Is the info provided correct? [Yy/Nn]");
 
         int option = getch();
         bool tryAgain = option == 'N' || option == 'n';
@@ -214,7 +214,28 @@ Page *RegisterPage::show(PageHandler *handler)
 
     ServicesInterface *services = handler->getServices();
 
-    services->getParticipantHandler()->create(Participant(registration, firstName, lastName, email, phoneNumber, password, role));
+    SQLResult result = services->getParticipantHandler()->create(Participant(registration, firstName, lastName, email, phoneNumber, password, role));
+
+    if (result.status != SQLResult::SUCCESS)
+    {
+        handler->clearScreen();
+
+        handler->print("Failed to create user.");
+        handler->print(result.errorMessage);
+        handler->print("");
+
+        handler->print("Try again? [Yy/Nn]");
+
+        int option = getch();
+        bool tryAgain = option == 'Y' || option == 'y';
+
+        if (!tryAgain)
+        {
+            return new InitPage;
+        }
+
+        return new RegisterPage;
+    }
 
     return new InitPage;
 }
