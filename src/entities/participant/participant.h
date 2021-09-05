@@ -104,9 +104,9 @@ public:
     /// @return _registration
     ///
 
-    std::string getRegistration() const
+    Registration getRegistration() const
     {
-        return _registration.get();
+        return _registration;
     }
 
     ///
@@ -134,9 +134,9 @@ public:
     /// @return _firstName
     ///
 
-    std::string getFirstName() const
+    Name getFirstName() const
     {
-        return _firstName.get();
+        return _firstName;
     }
 
     ///
@@ -164,9 +164,9 @@ public:
     /// @return _lastName
     ///
 
-    std::string getLastName() const
+    Name getLastName() const
     {
-        return _lastName.get();
+        return _lastName;
     }
 
     ///
@@ -204,9 +204,9 @@ public:
     /// @return _email
     ///
 
-    std::string getEmail() const
+    Email getEmail() const
     {
-        return _email.get();
+        return _email;
     }
 
     ///
@@ -234,9 +234,9 @@ public:
     /// @return _phoneNumber
     ///
 
-    std::string getPhoneNumber() const
+    PhoneNumber getPhoneNumber() const
     {
-        return _phoneNumber.get();
+        return _phoneNumber;
     }
 
     ///
@@ -264,9 +264,9 @@ public:
     /// @return _password
     ///
 
-    std::string getPassword() const
+    Password getPassword() const
     {
-        return _password.get();
+        return _password;
     }
 
     ///
@@ -294,9 +294,9 @@ public:
     /// @return _role
     ///
 
-    std::string getRole() const
+    Role getRole() const
     {
-        return _role.get();
+        return _role;
     }
 };
 
