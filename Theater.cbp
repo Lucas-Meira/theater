@@ -24,9 +24,15 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++17" />
+					<Add directory="C:/PDCurses" />
 				</Compiler>
+				<ResourceCompiler>
+					<Add directory="C:/PDCurses" />
+				</ResourceCompiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="C:/PDCurses/libcurses.a" />
+					<Add directory="C:/PDCurses" />
 				</Linker>
 			</Target>
 			<Target title="Tests">
@@ -114,22 +120,18 @@
 			<Option target="Tests" />
 		</Unit>
 		<Unit filename="src/entities/entities.h" />
-		<Unit filename="src/entities/participant/participant.cpp" />
 		<Unit filename="src/entities/participant/participant.h" />
 		<Unit filename="src/entities/participant/tests.h">
 			<Option target="Tests" />
 		</Unit>
-		<Unit filename="src/entities/play/play.cpp" />
 		<Unit filename="src/entities/play/play.h" />
 		<Unit filename="src/entities/play/tests.h">
 			<Option target="Tests" />
 		</Unit>
-		<Unit filename="src/entities/room/room.cpp" />
 		<Unit filename="src/entities/room/room.h" />
 		<Unit filename="src/entities/room/tests.h">
 			<Option target="Tests" />
 		</Unit>
-		<Unit filename="src/entities/session/session.cpp" />
 		<Unit filename="src/entities/session/session.h" />
 		<Unit filename="src/entities/session/tests.h">
 			<Option target="Tests" />
@@ -138,6 +140,115 @@
 			<Option target="Tests" />
 		</Unit>
 		<Unit filename="src/main.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/PageHandler.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/PageHandler.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/Pages.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/InitPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/LogInPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/RegisterPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/AuthenticatedInitPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/controllers/ParticipantHandler.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/controllers/ParticipantHandler.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/controllers/PlayHandler.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/controllers/PlayHandler.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/controllers/RoomHandler.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/controllers/RoomHandler.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/controllers/SessionHandler.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/controllers/SessionHandler.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/controllers/controllers.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/db/DBHandler.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/db/DBHandler.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/db/sql/participant.sql">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/db/sqlite3.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/db/sqlite3.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/interfaces/ParticipantInterface.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/interfaces/PlayInterface.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/interfaces/RoomInterface.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/interfaces/ServicesInterfaces.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/interfaces/SessionInterface.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/services.h">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
