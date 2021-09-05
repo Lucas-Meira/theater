@@ -48,12 +48,12 @@ public:
 
     bool operator==(const BaseDomain &rhs)
     {
-        return _value == rhs._value;
+        return _value == rhs.get();
     }
 
     bool operator!=(const BaseDomain &rhs)
     {
-        return _value != rhs._value;
+        return _value != rhs.get();
     }
 
     bool operator==(const T &rhs)
