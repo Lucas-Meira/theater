@@ -8,6 +8,8 @@
 #include <iomanip>
 #include <curses.h>
 
+#include "../services/services.h"
+
 class PageHandler
 {
 private:
@@ -16,17 +18,22 @@ private:
     unsigned int _currentLine = 0;
     unsigned int _lines;
     unsigned int _columns;
+    ServicesInterface *_services;
 
     void _loadScreenDimensions();
 
 public:
-    PageHandler(){};
+    PageHandler(ServicesInterface *services) : _services(services)
+    {
+    }
 
     void handle();
     void clearScreen();
     void print(const std::string &message);
     unsigned int renderMenu(const std::vector<std::string> &options);
     std::string readInput();
+
+    ServicesInterface *getServices() { return _services; }
 };
 
 #endif

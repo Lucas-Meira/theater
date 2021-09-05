@@ -14,7 +14,10 @@ void PageHandler::handle()
         clearScreen();
         try
         {
-            page = page->show(this);
+            Page *newPage = page->show(this);
+            delete page;
+
+            page = newPage;
         }
         catch (const std::exception &)
         {

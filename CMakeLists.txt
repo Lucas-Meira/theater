@@ -25,6 +25,6 @@ add_subdirectory(src)
 add_executable(main src/main.cpp)
 add_executable(tests src/tests.cpp)
 
-target_link_libraries(main entities presentation)
+target_link_libraries(main entities presentation services)
 target_link_libraries(main ${CURSES_LIBRARY})
 target_link_libraries(tests domains_tests)

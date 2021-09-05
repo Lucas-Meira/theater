@@ -22,6 +22,8 @@ Page *InitPage::show(PageHandler *handler)
         {
         case 0:
             return nullptr;
+        case 2:
+            return new RegisterPage;
 
         default:
             handler->clearScreen();

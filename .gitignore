@@ -10,3 +10,6 @@ obj/
 # File extensions
 *.depend
 *.layout
+
+#db
+theater.db

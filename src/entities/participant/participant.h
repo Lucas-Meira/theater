@@ -104,9 +104,9 @@ public:
     /// @return _registration
     ///
 
-    Registration getRegistration() const
+    std::string getRegistration() const
     {
-        return _registration;
+        return _registration.get();
     }
 
     ///
@@ -134,9 +134,9 @@ public:
     /// @return _firstName
     ///
 
-    Name getFirstName() const
+    std::string getFirstName() const
     {
-        return _firstName;
+        return _firstName.get();
     }
 
     ///
@@ -164,9 +164,9 @@ public:
     /// @return _lastName
     ///
 
-    Name getLastName() const
+    std::string getLastName() const
     {
-        return _lastName;
+        return _lastName.get();
     }
 
     ///
@@ -174,7 +174,7 @@ public:
     /// @return _firstName.get() + " " + _lastName.get()
     ///
 
-    Name getFullName() const
+    std::string getFullName() const
     {
         return _firstName.get() + " " + _lastName.get();
     }
@@ -204,9 +204,9 @@ public:
     /// @return _email
     ///
 
-    Email getEmail() const
+    std::string getEmail() const
     {
-        return _email;
+        return _email.get();
     }
 
     ///
@@ -234,9 +234,9 @@ public:
     /// @return _phoneNumber
     ///
 
-    PhoneNumber getPhoneNumber() const
+    std::string getPhoneNumber() const
     {
-        return _phoneNumber;
+        return _phoneNumber.get();
     }
 
     ///
@@ -264,9 +264,9 @@ public:
     /// @return _password
     ///
 
-    Password getPassword() const
+    std::string getPassword() const
     {
-        return _password;
+        return _password.get();
     }
 
     ///
@@ -294,9 +294,9 @@ public:
     /// @return _role
     ///
 
-    Role getRole() const
+    std::string getRole() const
     {
-        return _role;
+        return _role.get();
     }
 };
 
