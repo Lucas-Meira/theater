@@ -8,13 +8,13 @@ SQLResult ParticipantHandler::create(const Participant &participant)
     std::stringstream query;
 
     query << "INSERT INTO Participants (registration, first_name, last_name, email, phone_number, password, role) VALUES ("
-          << '\'' << participant.getRegistration() << "\',"
-          << '\'' << participant.getFirstName() << "\',"
-          << '\'' << participant.getLastName() << "\',"
-          << '\'' << participant.getEmail() << "\',"
-          << '\'' << participant.getPhoneNumber() << "\',"
-          << '\'' << participant.getPassword() << "\',"
-          << '\'' << participant.getRole() << "\');";
+          << '\'' << participant.getRegistration().get() << "\',"
+          << '\'' << participant.getFirstName().get() << "\',"
+          << '\'' << participant.getLastName().get() << "\',"
+          << '\'' << participant.getEmail().get() << "\',"
+          << '\'' << participant.getPhoneNumber().get() << "\',"
+          << '\'' << participant.getPassword().get() << "\',"
+          << '\'' << participant.getRole().get() << "\');";
 
     DBHandler *dbHandler = DBHandler::getInstance();
 
@@ -26,7 +26,7 @@ SQLResult ParticipantHandler::unregister(const Participant &participant)
     std::stringstream query;
 
     query << "DELETE FROM Participant WHERE registration="
-          << '\'' << participant.getRegistration() << "\';";
+          << '\'' << participant.getRegistration().get() << "\';";
 
     DBHandler *dbHandler = DBHandler::getInstance();
 
