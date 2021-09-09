@@ -37,15 +37,17 @@ private:
 
     DBHandler()
     {
-        std::ifstream file("src/services/db/sql/Participant.sql");
+        const std::vector<std::string> pathsToSqlFiles{"src/services/db/sql/Type.sql", "src/services/db/sql/Play.sql", "src/services/db/sql/Participant.sql", "src/services/db/sql/Room.sql", "src/services/db/sql/Session.sql"};
 
-        std::stringstream query;
+        for (unsigned int i = 0; i < pathsToSqlFiles.size(); i++)
+        {
 
-        query << file.rdbuf();
-
-        file.close();
-
-        execute(query);
+            std::ifstream file(pathsToSqlFiles[i]);
+            std::stringstream query;
+            query << file.rdbuf();
+            file.close();
+            execute(query);
+        }
     };
 
 public:

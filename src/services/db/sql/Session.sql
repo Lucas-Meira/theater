@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "Session" (
+CREATE TABLE IF NOT EXISTS "Sessions" (
 	"id_sessaion"	INTEGER NOT NULL,
 	"date"	TEXT NOT NULL,
 	"time"	TEXT NOT NULL,

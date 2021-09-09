@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "Play" (
+CREATE TABLE IF NOT EXISTS "Plays" (
 	"id_play"	INTEGER NOT NULL,
 	"name"	TEXT NOT NULL,
 	"classification"	TEXT NOT NULL,

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "Participant" (
+CREATE TABLE IF NOT EXISTS "Participants" (
 	"registration"	INTEGER NOT NULL,
 	"first_name"	TEXT NOT NULL,
 	"last_name"	TEXT NOT NULL,
