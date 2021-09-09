@@ -37,7 +37,7 @@ private:
 
     DBHandler()
     {
-        std::ifstream file("src/services/db/sql/participant.sql");
+        std::ifstream file("src/services/db/sql/Participant.sql");
 
         std::stringstream query;
 
