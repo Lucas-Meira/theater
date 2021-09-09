@@ -13,6 +13,9 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
         "Delete Items",
         "Edit Items",
         "View Items",
+        "Modify Profile",
+        "Delete Profile",
+        "Enroll in a Play",
         "Quit"};
 
     while (true)

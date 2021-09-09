@@ -11,6 +11,7 @@ public:
     bool search(const Participant &participant);
     bool search(const Registration &registration);
     bool search(const Name &firstName);
+    bool update(const Participant &participant);
     std::map<std::string, std::string> authenticate(const Registration &registration, const Password &password);
 };
 #endif

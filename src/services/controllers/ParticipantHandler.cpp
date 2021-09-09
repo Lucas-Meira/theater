@@ -16,9 +16,7 @@ SQLResult ParticipantHandler::create(const Participant &participant)
           << '\'' << participant.getPassword().get() << "\',"
           << '\'' << participant.getRole().get() << "\');";
 
-    DBHandler *dbHandler = DBHandler::getInstance();
-
-    return dbHandler->execute(query);
+    return DBHandler::getInstance()->execute(query);
 }
 
 SQLResult ParticipantHandler::unregister(const Participant &participant)
@@ -28,9 +26,7 @@ SQLResult ParticipantHandler::unregister(const Participant &participant)
     query << "DELETE FROM Participant WHERE registration="
           << '\'' << participant.getRegistration().get() << "\';";
 
-    DBHandler *dbHandler = DBHandler::getInstance();
-
-    return dbHandler->execute(query);
+    return DBHandler::getInstance()->execute(query);
 }
 
 bool ParticipantHandler::search(const Participant &participant)
@@ -65,4 +61,9 @@ std::map<std::string, std::string> ParticipantHandler::authenticate(const Regist
     }
 
     return std::map<std::string, std::string>{};
+}
+
+bool ParticipantHandler::update(const Participant &participant)
+{
+    return false;
 }

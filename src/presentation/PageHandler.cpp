@@ -21,7 +21,7 @@ void PageHandler::handle()
         }
         catch (const std::exception &)
         {
-            // Display error page
+            // TODO: Display error page
         }
     } while (page);
 }
