@@ -8,5 +8,5 @@ CREATE TABLE IF NOT EXISTS "Participants" (
 	"role"	TEXT NOT NULL,
 	"play_id_play" INTEGER,
 	FOREIGN KEY ("play_id_play") REFERENCES Play("id_play"),
-	PRIMARY KEY("registration" AUTOINCREMENT)
+	PRIMARY KEY("registration" )
 );

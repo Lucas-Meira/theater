@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS "Plays" (
 	"classification"	TEXT NOT NULL,
 	"type_id_type" INTEGER,
 	FOREIGN KEY ("type_id_type") REFERENCES Type("id_type"),
-	PRIMARY KEY("id_play" AUTOINCREMENT)
+	PRIMARY KEY("id_play" )
 );
