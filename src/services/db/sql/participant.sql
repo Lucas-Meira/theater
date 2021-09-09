@@ -1,9 +1,12 @@
-CREATE TABLE IF NOT EXISTS Participants (
-    registration VARCHAR(5) NOT NULL PRIMARY KEY,
-    first_name VARCHAR(20) NOT NULL,
-    last_name VARCHAR(20) NOT NULL,
-    email VARCHAR(330) NOT NULL,
-    phone_number VARCHAR(20) NOT NULL,
-    password VARCHAR(8) NOT NULL,
-    role VARCHAR(20) NOT NULL
-    );
+CREATE TABLE IF NOT EXISTS "Participant" (
+	"registration"	INTEGER NOT NULL,
+	"first_name"	TEXT NOT NULL,
+	"last_name"	TEXT NOT NULL,
+	"email"	TEXT NOT NULL,
+	"phone_number"	NUMERIC NOT NULL,
+	"password"	TEXT NOT NULL,
+	"role"	TEXT NOT NULL,
+	"play_id_play" INTEGER,
+	FOREIGN KEY ("play_id_play") REFERENCES Play("id_play"),
+	PRIMARY KEY("registration" AUTOINCREMENT)
+);
