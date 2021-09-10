@@ -39,10 +39,9 @@ private:
     {
         const std::vector<std::string> pathsToSqlFiles{"src/services/db/sql/Type.sql", "src/services/db/sql/Play.sql", "src/services/db/sql/Participant.sql", "src/services/db/sql/Room.sql", "src/services/db/sql/Session.sql"};
 
-        for (unsigned int i = 0; i < pathsToSqlFiles.size(); i++)
+        for (const std::string &path : pathsToSqlFiles)
         {
-
-            std::ifstream file(pathsToSqlFiles[i]);
+            std::ifstream file(path);
             std::stringstream query;
             query << file.rdbuf();
             file.close();
