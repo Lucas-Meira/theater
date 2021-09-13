@@ -19,13 +19,30 @@ public:
     ~InitPage(){};
 };
 
-class RegisterPage : public Page
+class RegisterUserPage : public Page
 {
 public:
     Page *show(PageHandler *handler);
 
-    ~RegisterPage(){};
+    ~RegisterUserPage(){};
 };
+
+class RegisterItemPage : public Page
+{
+public:
+    Page *show(PageHandler *handler);
+
+    ~RegisterItemPage(){};
+};
+
+class ListItemsPage : public Page
+{
+public:
+    Page *show(PageHandler *handler);
+
+    ~ListItemsPage(){};
+};
+
 
 class LogInPage : public Page
 {

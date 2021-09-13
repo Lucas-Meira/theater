@@ -1,6 +1,6 @@
 project(Presentation)
 
-SET(presentation_source_list "PageHandler.cpp;pages/InitPage.cpp;pages/RegisterPage.cpp;pages/LogInPage.cpp;pages/authenticated/AuthenticatedInitPage.cpp")
+SET(presentation_source_list "PageHandler.cpp;pages/InitPage.cpp;pages/RegisterUserPage.cpp;pages/LogInPage.cpp;pages/authenticated/AuthenticatedInitPage.cpp")
 SET(presentation_header_list "PageHandler.h;Pages.h")
 
 add_library(presentation ${presentation_source_list} ${presentation_header_list})

@@ -27,8 +27,10 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
         {
         case 0:
             return nullptr;
+        case 1:
+            return new ListItemsPage;
         case 2:
-            return new RegisterPage;
+            return new RegisterItemPage;
 
         default:
             handler->clearScreen();
