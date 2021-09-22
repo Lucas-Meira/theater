@@ -158,6 +158,7 @@
 		<Unit filename="src/presentation/pages/InitPage.cpp" />
 		<Unit filename="src/presentation/pages/ListItemsPage.cpp" />
 		<Unit filename="src/presentation/pages/LogInPage.cpp" />
+		<Unit filename="src/presentation/pages/RegisterItemPage.cpp" />
 		<Unit filename="src/presentation/pages/RegisterUserPage.cpp" />
 		<Unit filename="src/presentation/pages/authenticated/AuthenticatedInitPage.cpp" />
 		<Unit filename="src/services/controllers/ParticipantHandler.cpp">
