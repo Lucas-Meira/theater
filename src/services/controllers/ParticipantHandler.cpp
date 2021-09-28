@@ -29,18 +29,15 @@ SQLResult ParticipantHandler::unregister(const Participant &participant)
     return DBHandler::getInstance()->execute(query);
 }
 
-bool ParticipantHandler::search(const Participant &participant)
+SQLResult ParticipantHandler::search(const Registration &registration)
 {
-    return false;
+    std::stringstream query;
+
+    query << "SELECT first_name, last_name, registration, email, phone_number, role FROM Participants WHERE registration='" << registration.get() << "';";
+
+    return DBHandler::getInstance()->execute(query);
 }
-bool ParticipantHandler::search(const Registration &registration)
-{
-    return false;
-}
-bool ParticipantHandler::search(const Name &firstName)
-{
-    return false;
-}
+
 std::map<std::string, std::string> ParticipantHandler::authenticate(const Registration &registration, const Password &password)
 {
     std::stringstream query;
@@ -60,10 +57,28 @@ std::map<std::string, std::string> ParticipantHandler::authenticate(const Regist
         }
     }
 
+    // Not found. Returns empty map
     return std::map<std::string, std::string>{};
 }
 
-bool ParticipantHandler::update(const Participant &participant)
+SQLResult ParticipantHandler::update(const Participant &participant)
 {
-    return false;
+    std::stringstream query;
+
+    query << "UPDATE Participants SET"
+          << "first_name = '"
+          << participant.getFirstName().get()
+          << "' last_name = '"
+          << participant.getLastName().get()
+          << "' email = '"
+          << participant.getEmail().get()
+          << "' phone_number = '"
+          << participant.getPhoneNumber().get()
+          << "' password = '"
+          << participant.getPassword().get()
+          << "' role = '"
+          << participant.getRole().get()
+          << "' WHERE registration = '" << participant.getRegistration().get() << '\'';
+
+    return DBHandler::getInstance()->execute(query);
 }
