@@ -19,7 +19,7 @@ SQLResult ParticipantHandler::create(const Participant &participant)
     return DBHandler::getInstance()->execute(query);
 }
 
-SQLResult ParticipantHandler::unregister(const Participant &participant)
+SQLResult ParticipantHandler::remove(const Participant &participant)
 {
     std::stringstream query;
 

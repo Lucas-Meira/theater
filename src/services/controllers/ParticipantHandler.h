@@ -7,7 +7,7 @@ class ParticipantHandler : public ParticipantInterface
 {
 public:
     SQLResult create(const Participant &participant);
-    SQLResult unregister(const Participant &participant);
+    SQLResult remove(const Participant &participant);
     SQLResult search(const Registration &registration);
     SQLResult update(const Participant &participant);
     std::map<std::string, std::string> authenticate(const Registration &registration, const Password &password);
