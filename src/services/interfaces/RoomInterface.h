@@ -6,7 +6,7 @@
 #include "../../domains/domains.h"
 #include "../../entities/entities.h"
 
-class PlayInterface
+class RoomInterface
 {
 public:
     virtual SQLResult create(const Room &room) = 0;
