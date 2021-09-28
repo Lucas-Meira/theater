@@ -8,7 +8,7 @@ class PlayHandler : public PlayInterface
 public:
     SQLResult create(const Play &play);
     SQLResult remove(const Play &play);
-    SQLResult search(const Id &id);
+    SQLResult search(const IdCode &id);
     SQLResult update(const Play &play);
 };
 #endif

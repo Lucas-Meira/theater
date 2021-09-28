@@ -7,7 +7,7 @@ SQLResult PlayHandler::create(const Play &play)
 {
     std::stringstream query;
 
-    query << "INSERT INTO Plays (id_plays, name, rating, types) VALUES ("
+    query << "INSERT INTO Plays (id_plays, name, rating, type) VALUES ("
           << '\'' << play.getId().get() << "\',"
           << '\'' << play.getName().get() << "\',"
           << '\'' << play.getRating().get() << "\',"
@@ -26,11 +26,11 @@ SQLResult PlayHandler::remove(const Play &play)
     return DBHandler::getInstance()->execute(query);
 }
 
-SQLResult PlayHandler::search(const Id &id)
+SQLResult PlayHandler::search(const IdCode &id)
 {
     std::stringstream query;
 
-    query << "SELECT id_plays, name, rating, types  FROM Plays WHERE id_plays='" << id.get() << "';";
+    query << "SELECT id_plays, name, rating, type  FROM Plays WHERE id_plays='" << id.get() << "';";
 
     return DBHandler::getInstance()->execute(query);
 }
@@ -44,7 +44,7 @@ SQLResult PlayHandler::update(const Play &play)
           << play.getName().get()
           << "' rating = '"
           << play.getRating().get()
-          << "' types = '"
+          << "' type = '"
           << play.getType().get()
           << "' WHERE id_plays = '" << play.getId().get() << '\'';
 
