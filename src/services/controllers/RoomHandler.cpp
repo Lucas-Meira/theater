@@ -20,7 +20,7 @@ SQLResult RoomHandler::remove(const Room &room)
     std::stringstream query;
 
     query << "DELETE FROM Rooms WHERE id_rooms="
-          << '\'' << Room.getId().get() << "\';";
+          << '\'' << room.getId().get() << "\';";
 
     return DBHandler::getInstance()->execute(query);
 }

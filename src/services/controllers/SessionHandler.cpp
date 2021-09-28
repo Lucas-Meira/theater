@@ -3,7 +3,7 @@
 #include "SessionHandler.h"
 #include "../db/DBHandler.h"
 
-SQLResult SessionHandler::create(const Session &session, Play &play, Room &room)
+SQLResult SessionHandler::create(const Session &session, const Play &play, const Room &room)
 {
     std::stringstream query;
 
@@ -36,7 +36,7 @@ SQLResult SessionHandler::search(const IdCode &id)
     return DBHandler::getInstance()->execute(query);
 }
 
-SQLResult SessionHandler::update(const Session &session)
+SQLResult SessionHandler::update(const Session &session,  const Play &play, const Room &room)
 {
     std::stringstream query;
 

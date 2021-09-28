@@ -9,10 +9,10 @@
 class SessionInterface
 {
 public:
-    virtual SQLResult create(const Session &session) = 0;
+    virtual SQLResult create(const Session &session, const Play &play, const Room &room) = 0;
     virtual SQLResult remove(const Session &session) = 0;
     virtual SQLResult search(const IdCode &id) = 0;
-    virtual SQLResult update(const Session &session) = 0;
+    virtual SQLResult update(const Session &session, const Play &play, const Room &room) = 0;
 };
 
 #endif
