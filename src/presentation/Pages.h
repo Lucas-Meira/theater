@@ -27,6 +27,22 @@ public:
     ~RegisterUserPage(){};
 };
 
+class RegisterItemPage : public Page
+{
+public:
+    Page *show(PageHandler *handler);
+
+    ~RegisterItemPage(){};
+};
+
+class ListItemsPage : public Page
+{
+public:
+    Page *show(PageHandler *handler);
+
+    ~ListItemsPage(){};
+};
+
 class LogInPage : public Page
 {
 public:

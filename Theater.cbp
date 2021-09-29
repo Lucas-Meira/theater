@@ -155,22 +155,12 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="src/presentation/pages/InitPage.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="src/presentation/pages/LogInPage.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="src/presentation/pages/RegisterPage.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="src/presentation/pages/authenticated/AuthenticatedInitPage.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="src/presentation/pages/InitPage.cpp" />
+		<Unit filename="src/presentation/pages/ListItemsPage.cpp" />
+		<Unit filename="src/presentation/pages/LogInPage.cpp" />
+		<Unit filename="src/presentation/pages/RegisterItemPage.cpp" />
+		<Unit filename="src/presentation/pages/RegisterUserPage.cpp" />
+		<Unit filename="src/presentation/pages/authenticated/AuthenticatedInitPage.cpp" />
 		<Unit filename="src/services/controllers/ParticipantHandler.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
@@ -215,10 +205,11 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="src/services/db/sql/participant.sql">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="src/services/db/sql/Participant.sql" />
+		<Unit filename="src/services/db/sql/Play.sql" />
+		<Unit filename="src/services/db/sql/Room.sql" />
+		<Unit filename="src/services/db/sql/Session.sql" />
+		<Unit filename="src/services/db/sql/Type.sql" />
 		<Unit filename="src/services/db/sqlite3.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
