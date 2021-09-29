@@ -19,12 +19,12 @@ SQLResult ParticipantHandler::create(const Participant &participant)
     return DBHandler::getInstance()->execute(query);
 }
 
-SQLResult ParticipantHandler::remove(const Participant &participant)
+SQLResult ParticipantHandler::remove(const Registration &registration)
 {
     std::stringstream query;
 
-    query << "DELETE FROM Participant WHERE registration="
-          << '\'' << participant.getRegistration().get() << "\';";
+    query << "DELETE FROM Participants WHERE registration="
+          << '\'' << registration.get() << "\';";
 
     return DBHandler::getInstance()->execute(query);
 }
@@ -33,18 +33,14 @@ SQLResult ParticipantHandler::search(const Registration &registration)
 {
     std::stringstream query;
 
-    query << "SELECT first_name, last_name, registration, email, phone_number, role FROM Participants WHERE registration='" << registration.get() << "';";
+    query << "SELECT * FROM Participants WHERE registration='" << registration.get() << "';";
 
     return DBHandler::getInstance()->execute(query);
 }
 
 std::map<std::string, std::string> ParticipantHandler::authenticate(const Registration &registration, const Password &password)
 {
-    std::stringstream query;
-
-    query << "SELECT first_name, last_name, registration, password FROM Participants WHERE registration='" << registration.get() << "';";
-
-    SQLResult result = DBHandler::getInstance()->execute(query);
+    SQLResult result = search(registration);
 
     if (result.rows.size() > 0)
     {
@@ -66,17 +62,17 @@ SQLResult ParticipantHandler::update(const Participant &participant)
     std::stringstream query;
 
     query << "UPDATE Participants SET"
-          << "first_name = '"
+          << " first_name = '"
           << participant.getFirstName().get()
-          << "' last_name = '"
+          << "', last_name = '"
           << participant.getLastName().get()
-          << "' email = '"
+          << "', email = '"
           << participant.getEmail().get()
-          << "' phone_number = '"
+          << "', phone_number = '"
           << participant.getPhoneNumber().get()
-          << "' password = '"
+          << "', password = '"
           << participant.getPassword().get()
-          << "' role = '"
+          << "', role = '"
           << participant.getRole().get()
           << "' WHERE registration = '" << participant.getRegistration().get() << '\'';
 

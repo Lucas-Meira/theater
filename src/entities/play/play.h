@@ -1,8 +1,8 @@
 #ifndef PLAY_H
 #define PLAY_H
 
+#include <vector>
 #include "../../domains/domains.h"
-
 ///
 /// This class stores all the information of the play in the theater.
 /// Types of information:
@@ -19,6 +19,11 @@ private:
     Name _name;
     PlayType _type;
     Rating _rating;
+    std::vector<IdCode> _participants;
+    std::vector<IdCode> _sessions;
+
+    const size_t MAX_PARTICIPANTS = 10;
+    const size_t MAX_SESSIONS = 5;
 
 public:
     ///
@@ -177,6 +182,40 @@ public:
     Rating getRating() const
     {
         return _rating;
+    }
+
+    bool addParticipant(const IdCode &id)
+    {
+        if (_participants.size() < MAX_PARTICIPANTS)
+        {
+            _participants.push_back(id);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    std::vector<IdCode> getParticipants()
+    {
+        return _participants;
+    }
+
+    bool addSession(const IdCode &id)
+    {
+        if (_sessions.size() < MAX_SESSIONS)
+        {
+            _sessions.push_back(id);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    std::vector<IdCode> getSessions()
+    {
+        return _sessions;
     }
 };
 

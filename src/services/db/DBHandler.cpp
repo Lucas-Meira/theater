@@ -10,7 +10,7 @@ int DBHandler::_formatResult(void *_result, int nbEntries, char **columnEntries,
 
     for (int i = 0; i < nbEntries; i++)
     {
-        row[columnNames[i]] = columnEntries[i];
+        row[columnNames[i]] = columnEntries[i] ? columnEntries[i] : "NULL";
     }
 
     result->rows.push_back(row);

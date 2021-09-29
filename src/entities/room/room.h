@@ -17,6 +17,7 @@ private:
     IdCode _id;
     Name _name;
     Capacity _capacity;
+    std::vector<IdCode> _sessions;
 
 public:
     ///
@@ -141,6 +142,18 @@ public:
     Capacity getCapacity() const
     {
         return _capacity;
+    }
+
+    bool addSession(const IdCode &id)
+    {
+        _sessions.push_back(id);
+
+        return true;
+    }
+
+    std::vector<IdCode> getSessions()
+    {
+        return _sessions;
     }
 };
 

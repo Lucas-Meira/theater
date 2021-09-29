@@ -16,6 +16,7 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
         "Modify Profile",
         "Delete Profile",
         "Enroll in a Play",
+        "Disenroll from a Play",
         "Quit"};
 
     while (true)
@@ -30,7 +31,11 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
         case 1:
             return new ListItemsPage;
         case 2:
-            return new RegisterItemPage;
+            return new RegisterUserPage;
+        case 6:
+            return new UpdateUserPage(_registration);
+        case 7:
+            return new DeleteUserPage(_registration);
 
         default:
             handler->clearScreen();
