@@ -31,7 +31,7 @@ void SessionTest::_testSuccessScenario()
 {
     object->setId(validId);
 
-    if (object->getId().get() != validId.get())
+    if (object->getId() != validId)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getId().get() + "', expected '" + validId.get() + +"'.");
@@ -39,7 +39,7 @@ void SessionTest::_testSuccessScenario()
 
     object->setDate(validDate);
 
-    if (object->getDate().get() != validDate.get())
+    if (object->getDate() != validDate)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getDate().get() + "', expected '" + validDate.get() + "'.");
@@ -47,7 +47,7 @@ void SessionTest::_testSuccessScenario()
 
     object->setTime(validTime);
 
-    if (object->getTime().get() != validTime.get())
+    if (object->getTime() != validTime)
     {
         _state.set(false);
         throw std::invalid_argument("Got '" + object->getTime().get() + "', expected '" + validTime.get() + "'.");
@@ -61,9 +61,9 @@ void SessionTest::_testFailureScenario()
         object->setId(invalidId);
         _state.set(false);
     }
-    catch (...)
+    catch (std::invalid_argument &exception)
     {
-        if (object->getId().get() == invalidId)
+        if (object->getId() == invalidId)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getId().get() + "', expected nothing.");
@@ -77,7 +77,7 @@ void SessionTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getDate().get() == invalidDate)
+        if (object->getDate() == invalidDate)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getDate().get() + "', expected nothing.");
@@ -91,7 +91,7 @@ void SessionTest::_testFailureScenario()
     }
     catch (std::invalid_argument &exception)
     {
-        if (object->getTime().get() == invalidTime)
+        if (object->getTime() == invalidTime)
         {
             _state.set(false);
             throw std::invalid_argument("Got '" + object->getTime().get() + "', expected nothing.");

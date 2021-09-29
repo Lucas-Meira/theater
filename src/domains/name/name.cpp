@@ -1,11 +1,11 @@
 #include "name.h"
 
-bool Name::_containsSpaceSequence(std::string name)
+bool Name::_containsSpaceSequence(const std::string &name)
 {
     return std::regex_search(name, std::regex("[\\ ]{2,}"));
 }
 
-bool Name::_isPeriodPrecededByLetter(std::string name)
+bool Name::_isPeriodPrecededByLetter(const std::string &name)
 {
     for (std::size_t i = 0; i < name.length(); i++)
     {
@@ -25,12 +25,12 @@ bool Name::_isPeriodPrecededByLetter(std::string name)
     return true;
 }
 
-bool Name::_containsOnlyValidCharacters(std::string name)
+bool Name::_containsOnlyValidCharacters(const std::string &name)
 {
     return std::regex_match(name, VALID_CHARACTERS);
 }
 
-bool Name::_isFirstLetterCapitalized(std::string name)
+bool Name::_isFirstLetterCapitalized(const std::string &name)
 {
     std::istringstream ss(name);
 
@@ -48,7 +48,7 @@ bool Name::_isFirstLetterCapitalized(std::string name)
     return true;
 }
 
-void Name::_validate(std::string name)
+void Name::_validate(const std::string &name)
 {
     if (!_containsOnlyValidCharacters(name) or _containsSpaceSequence(name) or
         !_isPeriodPrecededByLetter(name) or !_isFirstLetterCapitalized(name))

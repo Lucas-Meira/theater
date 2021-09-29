@@ -1,6 +1,6 @@
 #include "email.h"
 
-void Email::set(std::string address)
+void Email::set(const std::string &address)
 {
     _validate(address);
 
@@ -13,7 +13,7 @@ void Email::set(std::string address)
     _domain = matches[2];
 }
 
-void Email::_validate(std::string testedAddress)
+void Email::_validate(const std::string &testedAddress)
 {
     if (!_isRightPattern(testedAddress) or !_isValidPeriods(testedAddress))
     {
@@ -21,22 +21,22 @@ void Email::_validate(std::string testedAddress)
     }
 }
 
-bool Email::_isRightPattern(std::string testedAddress)
+bool Email::_isRightPattern(const std::string &testedAddress)
 {
     return std::regex_match(testedAddress, VALID_PATTERN);
 }
 
-bool Email::_isValidPeriods(std::string testedAddress)
+bool Email::_isValidPeriods(const std::string &testedAddress)
 {
     return !_isPeriodSequence(testedAddress) and !_isPeriodAtBeginningOrEnd(testedAddress);
 }
 
-bool Email::_isPeriodSequence(std::string testedAddress)
+bool Email::_isPeriodSequence(const std::string &testedAddress)
 {
     return std::regex_search(testedAddress, std::regex("\\.{2,}"));
 }
 
-bool Email::_isPeriodAtBeginningOrEnd(std::string testedAddress)
+bool Email::_isPeriodAtBeginningOrEnd(const std::string &testedAddress)
 {
     std::smatch matches;
     std::regex_search(testedAddress, matches, VALID_PATTERN);

@@ -24,7 +24,7 @@ protected:
     void _printTestStatusMessage();
 
 public:
-    DomainBaseTest(std::string classUnderTest,
+    DomainBaseTest(const std::string classUnderTest,
                    const std::vector<T> &validValues,
                    const std::vector<T> &invalidValues) : _classUnderTest(classUnderTest),
                                                           _validValues(validValues), _invalidValues(invalidValues)

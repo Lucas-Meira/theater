@@ -17,6 +17,7 @@ private:
     IdCode _id;
     Name _name;
     Capacity _capacity;
+    std::vector<IdCode> _sessions;
 
 public:
     ///
@@ -40,7 +41,7 @@ public:
     /// @param capacity
     ///
 
-    Room(std::string id, std::string name, uint16_t capacity)
+    Room(const std::string &id, const std::string &name, const uint16_t &capacity)
     {
         setId(id);
         setName(name);
@@ -58,7 +59,7 @@ public:
     /// @param id
     ///
 
-    void setId(IdCode id)
+    void setId(const IdCode &id)
     {
         _id = id;
     }
@@ -68,7 +69,7 @@ public:
     /// @param id
     ///
 
-    void setId(std::string id)
+    void setId(const std::string &id)
     {
         _id = IdCode(id);
     }
@@ -78,7 +79,7 @@ public:
     /// @return _id
     ///
 
-    IdCode getId()
+    IdCode getId() const
     {
         return _id;
     }
@@ -88,7 +89,7 @@ public:
     /// @param name
     ///
 
-    void setName(Name name)
+    void setName(const Name &name)
     {
         _name = name;
     }
@@ -98,7 +99,7 @@ public:
     /// @param name
     ///
 
-    void setName(std::string name)
+    void setName(const std::string &name)
     {
         _name = Name(name);
     }
@@ -108,7 +109,7 @@ public:
     /// @return _name
     ///
 
-    Name getName()
+    Name getName() const
     {
         return _name;
     }
@@ -118,7 +119,7 @@ public:
     /// @param capacity
     ///
 
-    void setCapacity(Capacity capacity)
+    void setCapacity(const Capacity &capacity)
     {
         _capacity = capacity;
     }
@@ -128,7 +129,7 @@ public:
     /// @param capacity
     ///
 
-    void setCapacity(uint16_t capacity)
+    void setCapacity(const uint16_t &capacity)
     {
         _capacity = Capacity(capacity);
     }
@@ -138,9 +139,21 @@ public:
     /// @return _capacity
     ///
 
-    Capacity getCapacity()
+    Capacity getCapacity() const
     {
         return _capacity;
+    }
+
+    bool addSession(const IdCode &id)
+    {
+        _sessions.push_back(id);
+
+        return true;
+    }
+
+    std::vector<IdCode> getSessions()
+    {
+        return _sessions;
     }
 };
 

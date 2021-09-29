@@ -21,7 +21,7 @@ jobs:
           cmake -G "CodeBlocks - MinGW Makefiles" -S ${{github.workspace}} -B ${{github.workspace}}/build
 
       - name: Build targets
-        run: cmake --build ${{github.workspace}}/build
+        run: cmake --build ${{github.workspace}}/build --target tests
 
       - name: Run tests
         run: |

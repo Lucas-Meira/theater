@@ -1,6 +1,6 @@
 #include "registration.h"
 
-void Registration::_validate(std::string registration)
+void Registration::_validate(const std::string &registration)
 {
     if (!_isRightPattern(registration))
     {
@@ -8,7 +8,7 @@ void Registration::_validate(std::string registration)
     }
 }
 
-bool Registration::_isRightPattern(std::string registration)
+bool Registration::_isRightPattern(const std::string &registration)
 {
     return std::regex_match(registration, VALID_PATTERN);
 }

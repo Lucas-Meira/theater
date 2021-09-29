@@ -1,14 +1,13 @@
-#include "domains/domains.h"
-#include "entities/entities.h"
-
+#include "presentation/PageHandler.h"
+#include "services/services.h"
 #include <iostream>
 
 int main(void)
 {
-    int testedValue;
+    ServicesInterface *services = new ServicesInterface(new ParticipantHandler);
+    PageHandler pageHandler(services);
 
-    std::cin >> testedValue;
-    std::cout << Capacity(testedValue).get() << std::endl;
+    pageHandler.handle();
 
     return 0;
 }

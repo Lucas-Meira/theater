@@ -28,7 +28,7 @@ protected:
     /// @param value
     ///
 
-    bool _isRightPattern(std::string value);
+    bool _isRightPattern(const std::string &value);
 
     ///
     /// Returns true if the quantity of days is less than the maximum of days of each month, and returns false otherwise.
@@ -36,7 +36,7 @@ protected:
     /// @param date
     ///
 
-    bool _isValidDate(std::string date);
+    bool _isValidDate(const std::string &date);
 
     ///
     /// Returns true if the given year is a leap year, false otherwise.
@@ -51,7 +51,7 @@ protected:
     /// @param testedValue
     ///
 
-    void _validate(std::string testedValue) override;
+    void _validate(const std::string &testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[0-2])/([2-9][0-9]{3})$")};
     inline static constexpr std::array<unsigned int, 13> DAYS_PER_MONTH{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -73,7 +73,7 @@ public:
     /// @param date
     ///
 
-    Date(std::string date)
+    Date(const std::string &date)
     {
         set(date);
     }
@@ -110,7 +110,7 @@ public:
         return _year;
     }
 
-    void set(std::string date) override;
+    void set(const std::string &date) override;
 };
 
 #endif

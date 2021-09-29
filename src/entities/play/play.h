@@ -1,8 +1,8 @@
 #ifndef PLAY_H
 #define PLAY_H
 
+#include <vector>
 #include "../../domains/domains.h"
-
 ///
 /// This class stores all the information of the play in the theater.
 /// Types of information:
@@ -19,6 +19,11 @@ private:
     Name _name;
     PlayType _type;
     Rating _rating;
+    std::vector<IdCode> _participants;
+    std::vector<IdCode> _sessions;
+
+    const size_t MAX_PARTICIPANTS = 10;
+    const size_t MAX_SESSIONS = 5;
 
 public:
     ///
@@ -29,7 +34,7 @@ public:
     /// @param rating
     ///
 
-    Play(IdCode id, Name name, PlayType type, Rating rating)
+    Play(const IdCode &id, const Name &name, const PlayType &type, const Rating &rating)
     {
         setId(id);
         setName(name);
@@ -45,7 +50,7 @@ public:
     /// @param rating
     ///
 
-    Play(std::string id, std::string name, PlayType type, std::string rating)
+    Play(const std::string &id, const std::string &name, const PlayType &type, const std::string &rating)
     {
         setId(id);
         setName(name);
@@ -64,7 +69,7 @@ public:
     /// @param id
     ///
 
-    void setId(IdCode id)
+    void setId(const IdCode &id)
     {
         _id = id;
     }
@@ -74,7 +79,7 @@ public:
     /// @param id
     ///
 
-    void setId(std::string id)
+    void setId(const std::string &id)
     {
         _id = IdCode(id);
     }
@@ -84,7 +89,7 @@ public:
     /// @return _id
     ///
 
-    IdCode getId()
+    IdCode getId() const
     {
         return _id;
     }
@@ -94,7 +99,7 @@ public:
     /// @param name
     ///
 
-    void setName(Name name)
+    void setName(const Name &name)
     {
         _name = name;
     }
@@ -104,7 +109,7 @@ public:
     /// @param name
     ///
 
-    void setName(std::string name)
+    void setName(const std::string &name)
     {
         _name = Name(name);
     }
@@ -114,7 +119,7 @@ public:
     /// @return _name
     ///
 
-    Name getName()
+    Name getName() const
     {
         return _name;
     }
@@ -124,7 +129,7 @@ public:
     /// @param type
     ///
 
-    void setType(PlayType type)
+    void setType(const PlayType &type)
     {
         _type = type;
     }
@@ -134,7 +139,7 @@ public:
     /// @param type
     ///
 
-    void setType(std::string type)
+    void setType(const std::string &type)
     {
         _type = PlayType(type);
     }
@@ -144,7 +149,7 @@ public:
     /// @return _type
     ///
 
-    PlayType getType()
+    PlayType getType() const
     {
         return _type;
     }
@@ -154,7 +159,7 @@ public:
     /// @param rating
     ///
 
-    void setRating(Rating rating)
+    void setRating(const Rating &rating)
     {
         _rating = rating;
     }
@@ -164,7 +169,7 @@ public:
     /// @param rating
     ///
 
-    void setRating(std::string rating)
+    void setRating(const std::string &rating)
     {
         _rating = Rating(rating);
     }
@@ -174,9 +179,43 @@ public:
     /// @return _rating
     ///
 
-    Rating getRating()
+    Rating getRating() const
     {
         return _rating;
+    }
+
+    bool addParticipant(const IdCode &id)
+    {
+        if (_participants.size() < MAX_PARTICIPANTS)
+        {
+            _participants.push_back(id);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    std::vector<IdCode> getParticipants()
+    {
+        return _participants;
+    }
+
+    bool addSession(const IdCode &id)
+    {
+        if (_sessions.size() < MAX_SESSIONS)
+        {
+            _sessions.push_back(id);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    std::vector<IdCode> getSessions()
+    {
+        return _sessions;
     }
 };
 

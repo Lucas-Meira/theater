@@ -84,7 +84,7 @@ public:
     /// @param registration
     ///
 
-    void setRegistration(Registration registration)
+    void setRegistration(const Registration &registration)
     {
         _registration = registration;
     }
@@ -94,7 +94,7 @@ public:
     /// @param registration
     ///
 
-    void setRegistration(std::string registration)
+    void setRegistration(const std::string &registration)
     {
         _registration = Registration(registration);
     }
@@ -104,7 +104,7 @@ public:
     /// @return _registration
     ///
 
-    Registration getRegistration()
+    Registration getRegistration() const
     {
         return _registration;
     }
@@ -114,7 +114,7 @@ public:
     /// @param name
     ///
 
-    void setFirstName(Name name)
+    void setFirstName(const Name &name)
     {
         _firstName = name;
     }
@@ -124,7 +124,7 @@ public:
     /// @param name
     ///
 
-    void setFirstName(std::string name)
+    void setFirstName(const std::string &name)
     {
         _firstName = Name(name);
     }
@@ -134,7 +134,7 @@ public:
     /// @return _firstName
     ///
 
-    Name getFirstName()
+    Name getFirstName() const
     {
         return _firstName;
     }
@@ -144,7 +144,7 @@ public:
     /// @param name
     ///
 
-    void setLastName(Name name)
+    void setLastName(const Name &name)
     {
         _lastName = name;
     }
@@ -154,7 +154,7 @@ public:
     /// @param name
     ///
 
-    void setLastName(std::string name)
+    void setLastName(const std::string &name)
     {
         _lastName = Name(name);
     }
@@ -164,7 +164,7 @@ public:
     /// @return _lastName
     ///
 
-    Name getLastName()
+    Name getLastName() const
     {
         return _lastName;
     }
@@ -174,7 +174,7 @@ public:
     /// @return _firstName.get() + " " + _lastName.get()
     ///
 
-    Name getFullName()
+    std::string getFullName() const
     {
         return _firstName.get() + " " + _lastName.get();
     }
@@ -184,7 +184,7 @@ public:
     /// @param email
     ///
 
-    void setEmail(Email email)
+    void setEmail(const Email &email)
     {
         _email = email;
     }
@@ -194,7 +194,7 @@ public:
     /// @param email
     ///
 
-    void setEmail(std::string email)
+    void setEmail(const std::string &email)
     {
         _email = Email(email);
     }
@@ -204,7 +204,7 @@ public:
     /// @return _email
     ///
 
-    Email getEmail()
+    Email getEmail() const
     {
         return _email;
     }
@@ -214,7 +214,7 @@ public:
     /// @param phoneNumber
     ///
 
-    void setPhoneNumber(PhoneNumber phoneNumber)
+    void setPhoneNumber(const PhoneNumber &phoneNumber)
     {
         _phoneNumber = phoneNumber;
     }
@@ -224,7 +224,7 @@ public:
     /// @param phoneNumber
     ///
 
-    void setPhoneNumber(std::string phoneNumber)
+    void setPhoneNumber(const std::string &phoneNumber)
     {
         _phoneNumber = PhoneNumber(phoneNumber);
     }
@@ -234,7 +234,7 @@ public:
     /// @return _phoneNumber
     ///
 
-    PhoneNumber getPhoneNumber()
+    PhoneNumber getPhoneNumber() const
     {
         return _phoneNumber;
     }
@@ -244,7 +244,7 @@ public:
     /// @param password
     ///
 
-    void setPassword(Password password)
+    void setPassword(const Password &password)
     {
         _password = password;
     }
@@ -254,7 +254,7 @@ public:
     /// @param password
     ///
 
-    void setPassword(std::string password)
+    void setPassword(const std::string &password)
     {
         _password = Password(password);
     }
@@ -264,7 +264,7 @@ public:
     /// @return _password
     ///
 
-    Password getPassword()
+    Password getPassword() const
     {
         return _password;
     }
@@ -274,7 +274,7 @@ public:
     /// @param role
     ///
 
-    void setRole(Role role)
+    void setRole(const Role &role)
     {
         _role = role;
     }
@@ -284,7 +284,7 @@ public:
     /// @param role
     ///
 
-    void setRole(std::string role)
+    void setRole(const std::string &role)
     {
         _role = Role(role);
     }
@@ -294,7 +294,7 @@ public:
     /// @return _role
     ///
 
-    Role getRole()
+    Role getRole() const
     {
         return _role;
     }

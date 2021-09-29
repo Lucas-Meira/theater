@@ -21,14 +21,14 @@ protected:
     /// @param rating
     ///
 
-    bool _isValidRating(std::string rating);
+    bool _isValidRating(const std::string &rating);
 
     /// Checks the validity of the given input.
     /// @throw invalid_argument
     /// @param testedValue
     ///
 
-    void _validate(std::string testedValue) override;
+    void _validate(const std::string &testedValue) override;
 
     inline static const std::array<const std::string, 6> VALID_VALUES{"general", "10", "12", "14", "16", "18"};
 
@@ -45,7 +45,7 @@ public:
     /// @param rating
     ///
 
-    Rating(std::string rating)
+    Rating(const std::string &rating)
     {
         set(rating);
     }

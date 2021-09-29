@@ -26,7 +26,7 @@ public:
     /// @param time
     ///
 
-    Session(IdCode id, Date date, Time time)
+    Session(const IdCode &id, const Date &date, const Time &time)
     {
         setId(id);
         setDate(date);
@@ -40,7 +40,7 @@ public:
     /// @param time
     ///
 
-    Session(std::string id, std::string date, std::string time)
+    Session(const std::string &id, const std::string &date, const std::string &time)
     {
         setId(id);
         setDate(date);
@@ -58,7 +58,7 @@ public:
     /// @param id
     ///
 
-    void setId(IdCode id)
+    void setId(const IdCode &id)
     {
         _id = id;
     }
@@ -68,7 +68,7 @@ public:
     /// @param id
     ///
 
-    void setId(std::string id)
+    void setId(const std::string &id)
     {
         _id = IdCode(id);
     }
@@ -78,7 +78,7 @@ public:
     /// @return _id
     ///
 
-    IdCode getId()
+    IdCode getId() const
     {
         return _id;
     }
@@ -88,7 +88,7 @@ public:
     /// @param date
     ///
 
-    void setDate(Date date)
+    void setDate(const Date &date)
     {
         _date = date;
     }
@@ -98,7 +98,7 @@ public:
     /// @param date
     ///
 
-    void setDate(std::string date)
+    void setDate(const std::string &date)
     {
         _date = Date(date);
     }
@@ -108,7 +108,7 @@ public:
     /// @return _date
     ///
 
-    Date getDate()
+    Date getDate() const
     {
         return _date;
     }
@@ -118,7 +118,7 @@ public:
     /// @param time
     ///
 
-    void setTime(Time time)
+    void setTime(const Time &time)
     {
         _time = time;
     }
@@ -128,7 +128,7 @@ public:
     /// @param time
     ///
 
-    void setTime(std::string time)
+    void setTime(const std::string &time)
     {
         _time = Time(time);
     }
@@ -138,7 +138,7 @@ public:
     /// @return _time
     ///
 
-    Time getTime()
+    Time getTime() const
     {
         return _time;
     }

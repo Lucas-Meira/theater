@@ -26,7 +26,7 @@ protected:
     /// @param testedAddress
     ///
 
-    bool _isPeriodSequence(std::string testedAddress);
+    bool _isPeriodSequence(const std::string &testedAddress);
 
     ///
     /// Returns true if testedAddress have period in the first character or in the last of each part of email, and returns false otherwise.
@@ -34,7 +34,7 @@ protected:
     /// @param testedAddress
     ///
 
-    bool _isPeriodAtBeginningOrEnd(std::string testedAddress);
+    bool _isPeriodAtBeginningOrEnd(const std::string &testedAddress);
 
     ///
     /// Returns true if the periods follows the format rules, and returns false otherwise.
@@ -42,7 +42,7 @@ protected:
     /// @param testedAddress
     ///
 
-    bool _isValidPeriods(std::string testedAddress);
+    bool _isValidPeriods(const std::string &testedAddress);
 
     ///
     /// Returns true if testedAddress follows all the format rules, and returns false otherwise.
@@ -50,14 +50,14 @@ protected:
     /// @param testedAddress
     ///
 
-    bool _isRightPattern(std::string testedAddress);
+    bool _isRightPattern(const std::string &testedAddress);
 
     /// Checks the validity of the given input.
     /// @throw invalid_argument
     /// @param testedValue
     ///
 
-    void _validate(std::string testedValue) override;
+    void _validate(const std::string &testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^([a-zA-Z0-9!#$%&'*+\\-/=?^_`{|}~.]{3,64})@([a-zA-Z0-9!#$%&'*+\\-/=?^_`{|}~.]{5,255})$")};
 
@@ -77,7 +77,7 @@ public:
     /// @param address
     ///
 
-    Email(std::string address)
+    Email(const std::string &address)
     {
         set(address);
     }
@@ -98,7 +98,7 @@ public:
 
     std::string getDomain() const { return _domain; };
 
-    void set(std::string address) override;
+    void set(const std::string &address) override;
 };
 
 #endif

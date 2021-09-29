@@ -22,14 +22,14 @@ protected:
     /// @param registration
     ///
 
-    bool _isRightPattern(std::string registration);
+    bool _isRightPattern(const std::string &registration);
 
     /// Checks the validity of the given input.
     /// @throw invalid_argument
     /// @param testedValue
     ///
 
-    void _validate(std::string testedValue) override;
+    void _validate(const std::string &testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^(?!.*(.).*\\1)\\d{5}$")};
 
@@ -46,7 +46,7 @@ public:
     /// @param registration
     ///
 
-    Registration(std::string registration)
+    Registration(const std::string &registration)
     {
         set(registration);
     }

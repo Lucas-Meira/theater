@@ -1,6 +1,6 @@
 #include "time.h"
 
-void Time::_validate(std::string time)
+void Time::_validate(const std::string &time)
 {
     if (!_isRightPattern(time))
     {
@@ -8,7 +8,7 @@ void Time::_validate(std::string time)
     }
 }
 
-bool Time::_isRightPattern(std::string time)
+bool Time::_isRightPattern(const std::string &time)
 {
     return std::regex_match(time, VALID_PATTERN);
 }

@@ -20,7 +20,7 @@ protected:
     /// @param testedValue
     ///
 
-    bool _isValidRole(std::string testedValue);
+    bool _isValidRole(const std::string &testedValue);
 
     ///
     /// Throw a exception if _isValidRole if false.
@@ -28,7 +28,7 @@ protected:
     /// @param testedValue
     ///
 
-    void _validate(std::string testedValue) override;
+    void _validate(const std::string &testedValue) override;
 
     inline static const std::array<std::string, 6> VALID_VALUES{"Actor", "Cenographist", "Figurinist",
                                                                 "Makeup Artist", "Sound Designer", "Lighting Designer"};
@@ -46,7 +46,7 @@ public:
     /// @param role
     ///
 
-    Role(std::string role)
+    Role(const std::string &role)
     {
         set(role);
     }

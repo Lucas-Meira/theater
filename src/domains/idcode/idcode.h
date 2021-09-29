@@ -23,14 +23,14 @@ protected:
     /// @param value
     ///
 
-    bool _isRightPattern(std::string value);
+    bool _isRightPattern(const std::string &value);
 
     /// Checks the validity of the given input.
     /// @throw invalid_argument
     /// @param testedValue
     ///
 
-    void _validate(std::string testedValue) override;
+    void _validate(const std::string &testedValue) override;
 
     inline static const std::regex VALID_PATTERN{std::regex("^[a-zA-Z]{2}[0-9]{4}$")};
 
@@ -47,7 +47,7 @@ public:
     /// @param value
     ///
 
-    IdCode(std::string value)
+    IdCode(const std::string &value)
     {
         set(value);
     }
