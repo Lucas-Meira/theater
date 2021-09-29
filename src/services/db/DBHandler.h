@@ -37,7 +37,7 @@ private:
 
     DBHandler()
     {
-        const std::vector<std::string> pathsToSqlFiles{"src/services/db/sql/Type.sql", "src/services/db/sql/Play.sql", "src/services/db/sql/Participant.sql", "src/services/db/sql/Room.sql", "src/services/db/sql/Session.sql"};
+        const std::vector<std::string> pathsToSqlFiles{"src/services/db/sql/Rooms.sql", "src/services/db/sql/Plays.sql", "src/services/db/sql/Participants.sql", "src/services/db/sql/Sessions.sql"};
 
         for (const std::string &path : pathsToSqlFiles)
         {
