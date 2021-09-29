@@ -19,12 +19,12 @@ public:
     ~InitPage(){};
 };
 
-class RegisterPage : public Page
+class RegisterUserPage : public Page
 {
 public:
     Page *show(PageHandler *handler);
 
-    ~RegisterPage(){};
+    ~RegisterUserPage(){};
 };
 
 class LogInPage : public Page
@@ -39,16 +39,46 @@ class AuthenticatedInitPage : public Page
 {
     Name _firstName;
     Name _lastName;
+    Registration _registration;
 
 public:
-    AuthenticatedInitPage(const Name &firstName, const Name &lastName) : _firstName(firstName), _lastName(lastName)
+    AuthenticatedInitPage(const Name &firstName, const Name &lastName, const Registration &registration) : _firstName(firstName), _lastName(lastName), _registration(registration)
     {
     }
 
-    Page *
-    show(PageHandler *handler);
+    Page *show(PageHandler *handler);
 
     ~AuthenticatedInitPage(){};
+};
+
+class UpdateUserPage : public Page
+{
+private:
+    Registration _registration;
+
+public:
+    UpdateUserPage(const Registration &registration) : _registration(registration)
+    {
+    }
+
+    Page *show(PageHandler *handler);
+
+    ~UpdateUserPage(){};
+};
+
+class DeleteUserPage : public Page
+{
+private:
+    Registration _registration;
+
+public:
+    DeleteUserPage(const Registration &registration) : _registration(registration)
+    {
+    }
+
+    Page *show(PageHandler *handler);
+
+    ~DeleteUserPage(){};
 };
 
 #endif

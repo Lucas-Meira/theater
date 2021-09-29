@@ -28,7 +28,11 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
         case 0:
             return nullptr;
         case 2:
-            return new RegisterPage;
+            return new RegisterUserPage;
+        case 6:
+            return new UpdateUserPage(_registration);
+        case 7:
+            return new DeleteUserPage(_registration);
 
         default:
             handler->clearScreen();

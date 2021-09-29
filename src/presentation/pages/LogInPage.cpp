@@ -48,5 +48,5 @@ Page *LogInPage::show(PageHandler *handler)
         return new LogInPage;
     }
 
-    return new AuthenticatedInitPage(user["first_name"], user["last_name"]);
+    return new AuthenticatedInitPage(user["first_name"], user["last_name"], user["registration"]);
 }

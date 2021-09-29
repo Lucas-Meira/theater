@@ -25,7 +25,7 @@ Page *InitPage::show(PageHandler *handler)
         case 1:
             return new LogInPage;
         case 2:
-            return new RegisterPage;
+            return new RegisterUserPage;
 
         default:
             handler->clearScreen();
