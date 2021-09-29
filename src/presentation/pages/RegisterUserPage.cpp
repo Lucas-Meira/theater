@@ -2,7 +2,7 @@
 #include "../../domains/domains.h"
 #include "../../entities/entities.h"
 
-Page *RegisterPage::show(PageHandler *handler)
+Page *RegisterUserPage::show(PageHandler *handler)
 {
     std::string input;
 
@@ -234,7 +234,7 @@ Page *RegisterPage::show(PageHandler *handler)
             return new InitPage;
         }
 
-        return new RegisterPage;
+        return new RegisterUserPage;
     }
 
     return new InitPage;
