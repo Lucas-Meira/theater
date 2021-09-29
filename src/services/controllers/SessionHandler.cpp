@@ -7,7 +7,7 @@ SQLResult SessionHandler::create(const Session &session, const Play &play, const
 {
     std::stringstream query;
 
-    query << "INSERT INTO Sessions (id_sessions, date, time, id_Plays_id, id_rooms_id) VALUES ("
+    query << "INSERT INTO Sessions (id_sessions, date, time, id_plays_id, id_rooms_id) VALUES ("
           << '\'' << session.getId().get() << "\',"
           << '\'' << session.getDate().get() << "\',"
           << '\'' << session.getTime().get() << "\',"
@@ -31,7 +31,7 @@ SQLResult SessionHandler::search(const IdCode &id)
 {
     std::stringstream query;
 
-    query << "SELECT id_sessions, date, time, id_Plays_id, id_rooms_id  FROM Sessions WHERE id_sessions='" << id.get() << "';";
+    query << "SELECT id_sessions, date, time, id_plays_id, id_rooms_id  FROM Sessions WHERE id_sessions='" << id.get() << "';";
 
     return DBHandler::getInstance()->execute(query);
 }
@@ -45,7 +45,7 @@ SQLResult SessionHandler::update(const Session &session,  const Play &play, cons
           << session.getDate().get()
           << "' time = '"
           << session.getTime().get()
-          << "' id_Plays_id = '"
+          << "' id_plays_id = '"
           << play.getId().get()
           << "' id_rooms_id = '"
           << room.getId().get()
