@@ -7,7 +7,7 @@ class RoomHandler : public RoomInterface
 {
 public:
     SQLResult create(const Room &room);
-    SQLResult remove(const Room &room);
+    SQLResult remove(const IdCode &id);
     SQLResult search(const IdCode &id);
     SQLResult update(const Room &room);
 };

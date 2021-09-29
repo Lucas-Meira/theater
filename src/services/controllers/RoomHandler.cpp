@@ -15,12 +15,12 @@ SQLResult RoomHandler::create(const Room &room)
     return DBHandler::getInstance()->execute(query);
 }
 
-SQLResult RoomHandler::remove(const Room &room)
+SQLResult RoomHandler::remove(const IdCode &id)
 {
     std::stringstream query;
 
     query << "DELETE FROM Rooms WHERE id_rooms="
-          << '\'' << room.getId().get() << "\';";
+          << '\'' << id.get() << "\';";
 
     return DBHandler::getInstance()->execute(query);
 }
@@ -39,7 +39,7 @@ SQLResult RoomHandler::update(const Room &room)
     std::stringstream query;
 
     query << "UPDATE Rooms SET"
-          << "name = '"
+          << " name = '"
           << room.getName().get()
           << "' capacities = '"
           << room.getCapacity().get()

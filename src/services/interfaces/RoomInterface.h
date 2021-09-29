@@ -10,7 +10,7 @@ class RoomInterface
 {
 public:
     virtual SQLResult create(const Room &room) = 0;
-    virtual SQLResult remove(const Room &room) = 0;
+    virtual SQLResult remove(const IdCode &id) = 0;
     virtual SQLResult search(const IdCode &id) = 0;
     virtual SQLResult update(const Room &room) = 0;
 };
