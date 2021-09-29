@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS "Participants" (
     "phone_number" NUMERIC NOT NULL,
     "password" TEXT NOT NULL,
     "role" TEXT NOT NULL,
-    "play_id_play" VARCHAR(6),
-    FOREIGN KEY ("play_id_play") REFERENCES Play("id_play"),
+    "id_plays_id" VARCHAR(6),
+    FOREIGN KEY ("id_plays_id") REFERENCES Play("id_plays"),
     PRIMARY KEY("registration" )
 );
