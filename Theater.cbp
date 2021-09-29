@@ -161,6 +161,12 @@
 		<Unit filename="src/presentation/pages/RegisterItemPage.cpp" />
 		<Unit filename="src/presentation/pages/RegisterUserPage.cpp" />
 		<Unit filename="src/presentation/pages/authenticated/AuthenticatedInitPage.cpp" />
+		<Unit filename="src/presentation/pages/authenticated/DeleteUserPage.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/UpdateUserPage.cpp">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="src/services/controllers/ParticipantHandler.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
