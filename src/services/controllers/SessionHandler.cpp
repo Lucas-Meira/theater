@@ -17,12 +17,12 @@ SQLResult SessionHandler::create(const Session &session, const Play &play, const
     return DBHandler::getInstance()->execute(query);
 }
 
-SQLResult SessionHandler::remove(const Session &session)
+SQLResult SessionHandler::remove(const IdCode &id)
 {
     std::stringstream query;
 
     query << "DELETE FROM Sessions WHERE id_sessions="
-          << '\'' << session.getId().get() << "\';";
+          << '\'' << id.get() << "\';";
 
     return DBHandler::getInstance()->execute(query);
 }
@@ -41,15 +41,15 @@ SQLResult SessionHandler::update(const Session &session,  const Play &play, cons
     std::stringstream query;
 
     query << "UPDATE Sessions SET"
-          << "date = '"
+          << " date = '"
           << session.getDate().get()
-          << "time = '"
+          << "' time = '"
           << session.getTime().get()
-          << "id_Plays_id = '"
+          << "' id_Plays_id = '"
           << play.getId().get()
           << "' id_rooms_id = '"
           << room.getId().get()
-          << "' WHERE id_sessions = '" << session.getId().get() << '\'';
+          << "' WHERE id_sessions = '" << session.getId().get() << "\';";
 
     return DBHandler::getInstance()->execute(query);
 }
