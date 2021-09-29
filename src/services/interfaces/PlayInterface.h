@@ -10,7 +10,7 @@ class PlayInterface
 {
 public:
     virtual SQLResult create(const Play &play) = 0;
-    virtual SQLResult remove(const Play &play) = 0;
+    virtual SQLResult remove(const IdCode &id) = 0;
     virtual SQLResult search(const IdCode &id) = 0;
     virtual SQLResult update(const Play &play) = 0;
 };

@@ -16,12 +16,12 @@ SQLResult PlayHandler::create(const Play &play)
     return DBHandler::getInstance()->execute(query);
 }
 
-SQLResult PlayHandler::remove(const Play &play)
+SQLResult PlayHandler::remove(const IdCode &id)
 {
     std::stringstream query;
 
     query << "DELETE FROM Plays WHERE id_plays="
-          << '\'' << play.getId().get() << "\';";
+          << '\'' << id.get() << "\';";
 
     return DBHandler::getInstance()->execute(query);
 }
@@ -40,7 +40,7 @@ SQLResult PlayHandler::update(const Play &play)
     std::stringstream query;
 
     query << "UPDATE Plays SET"
-          << "name = '"
+          << " name = '"
           << play.getName().get()
           << "' rating = '"
           << play.getRating().get()
