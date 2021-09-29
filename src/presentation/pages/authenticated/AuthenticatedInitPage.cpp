@@ -16,6 +16,7 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
         "Modify Profile",
         "Delete Profile",
         "Enroll in a Play",
+        "Disenroll from a Play",
         "Quit"};
 
     while (true)
