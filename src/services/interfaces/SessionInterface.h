@@ -1,5 +1,5 @@
 #ifndef SESSION_INTERFACE_H
-#define SESSSION_INTERFACE_H
+#define SESSION_INTERFACE_H
 
 #include "../db/DBHandler.h"
 

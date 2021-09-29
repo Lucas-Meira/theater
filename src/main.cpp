@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    ServicesInterface *services = new ServicesInterface(new ParticipantHandler);
+    ServicesInterface *services = new ServicesInterface(new ParticipantHandler, new PlayHandler, new RoomHandler, new SessionHandler);
     PageHandler pageHandler(services);
 
     pageHandler.handle();
