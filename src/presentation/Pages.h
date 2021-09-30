@@ -53,6 +53,7 @@ public:
 
 class AuthenticatedInitPage : public Page
 {
+private:
     Name _firstName;
     Name _lastName;
     Registration _registration;
@@ -96,5 +97,55 @@ public:
 
     ~DeleteUserPage(){};
 };
+
+template <class C>
+class ItemsMenuPage : public Page
+{
+private:
+    std::string _action;
+
+public:
+    ItemsMenuPage(const std::string &action) : _action(action)
+    {
+    }
+
+    Page *show(PageHandler *handler);
+
+    ~ItemsMenuPage(){};
+};
+
+template <class C>
+Page *ItemsMenuPage<C>::show(PageHandler *handler)
+{
+    handler->print(_action + " items options");
+    handler->print("");
+
+    const std::vector<std::string> options{
+        "Play",
+        "Room",
+        "Session",
+        "Quit"};
+
+    while (true)
+    {
+        handler->print("");
+        unsigned int option = handler->renderMenu(options);
+
+        switch (option)
+        {
+        case 0:
+            return nullptr;
+        case 1:
+        case 2:
+        case 3:
+            return new C;
+        default:
+            handler->clearScreen();
+            handler->print("Invalid Option " + std::to_string(option));
+            handler->print("");
+            break;
+        }
+    }
+}
 
 #endif
