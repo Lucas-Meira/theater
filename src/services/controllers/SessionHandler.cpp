@@ -3,7 +3,7 @@
 #include "SessionHandler.h"
 #include "../db/DBHandler.h"
 
-SQLResult SessionHandler::create(const Session &session, const Play &play, const Room &room)
+SQLResult SessionHandler::create(const Session &session, const IdCode &playId, const IdCode &roomId)
 {
     std::stringstream query;
 
@@ -11,8 +11,8 @@ SQLResult SessionHandler::create(const Session &session, const Play &play, const
           << '\'' << session.getId().get() << "\',"
           << '\'' << session.getDate().get() << "\',"
           << '\'' << session.getTime().get() << "\',"
-          << '\'' << play.getId().get() << "\',"
-          << '\'' << room.getId().get() << "\');";
+          << '\'' << playId.get() << "\',"
+          << '\'' << roomId.get() << "\');";
 
     return DBHandler::getInstance()->execute(query);
 }
@@ -36,7 +36,7 @@ SQLResult SessionHandler::search(const IdCode &id)
     return DBHandler::getInstance()->execute(query);
 }
 
-SQLResult SessionHandler::update(const Session &session,  const Play &play, const Room &room)
+SQLResult SessionHandler::update(const Session &session, const IdCode &playId, const IdCode &roomId)
 {
     std::stringstream query;
 
@@ -46,9 +46,9 @@ SQLResult SessionHandler::update(const Session &session,  const Play &play, cons
           << "' time = '"
           << session.getTime().get()
           << "' id_plays_id = '"
-          << play.getId().get()
+          << playId.get()
           << "' id_rooms_id = '"
-          << room.getId().get()
+          << roomId.get()
           << "' WHERE id_sessions = '" << session.getId().get() << "\';";
 
     return DBHandler::getInstance()->execute(query);
