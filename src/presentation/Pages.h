@@ -98,11 +98,16 @@ public:
     ~DeleteUserPage(){};
 };
 
-template <class C>
 class ItemsMenuPage : public Page
 {
 private:
     std::string _action;
+
+    Page *_handleList(PageHandler *handler, unsigned int option);
+    Page *_handleInclude(PageHandler *handler, unsigned int option);
+    Page *_handleDelete(PageHandler *handler, unsigned int option);
+    Page *_handleEdit(PageHandler *handler, unsigned int option);
+    Page *_handleView(PageHandler *handler, unsigned int option);
 
 public:
     ItemsMenuPage(const std::string &action) : _action(action)
@@ -114,38 +119,19 @@ public:
     ~ItemsMenuPage(){};
 };
 
-template <class C>
-Page *ItemsMenuPage<C>::show(PageHandler *handler)
+class DeleteItemsPage : public Page
 {
-    handler->print(_action + " items options");
-    handler->print("");
+private:
+    std::string _entityToDelete;
 
-    const std::vector<std::string> options{
-        "Play",
-        "Room",
-        "Session",
-        "Quit"};
-
-    while (true)
+public:
+    DeleteItemsPage(const std::string &entityToDelete) : _entityToDelete(entityToDelete)
     {
-        handler->print("");
-        unsigned int option = handler->renderMenu(options);
-
-        switch (option)
-        {
-        case 0:
-            return nullptr;
-        case 1:
-        case 2:
-        case 3:
-            return new C;
-        default:
-            handler->clearScreen();
-            handler->print("Invalid Option " + std::to_string(option));
-            handler->print("");
-            break;
-        }
     }
-}
+
+    Page *show(PageHandler *handler);
+
+    ~DeleteItemsPage(){};
+};
 
 #endif
