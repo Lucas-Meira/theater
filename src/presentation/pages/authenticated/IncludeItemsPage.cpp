@@ -179,7 +179,7 @@ Page *IncludeItemsPage::_includePlay(PageHandler *handler)
             return new InitPage;
         }
 
-        return new RegisterUserPage;
+        return new IncludeItemsPage(_entityToInclude);
     }
 
     return new InitPage;
