@@ -119,6 +119,25 @@ public:
     ~ItemsMenuPage(){};
 };
 
+class IncludeItemsPage : public Page
+{
+private:
+    std::string _entityToInclude;
+
+    Page *_includePlay(PageHandler *handler);
+    Page *_includeRoom(PageHandler *handler);
+    Page *_includeSession(PageHandler *handler);
+
+public:
+    IncludeItemsPage(const std::string &entityToInclude) : _entityToInclude(entityToInclude)
+    {
+    }
+
+    Page *show(PageHandler *handler);
+
+    ~IncludeItemsPage(){};
+};
+
 class DeleteItemsPage : public Page
 {
 private:
