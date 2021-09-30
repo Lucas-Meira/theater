@@ -10,5 +10,6 @@ public:
     SQLResult remove(const IdCode &id);
     SQLResult search(const IdCode &id);
     SQLResult update(const Session &session, const IdCode &playId, const IdCode &roomId);
+    SQLResult list();
 };
 #endif

@@ -12,6 +12,7 @@ public:
     virtual SQLResult create(const Play &play) = 0;
     virtual SQLResult remove(const IdCode &id) = 0;
     virtual SQLResult search(const IdCode &id) = 0;
+    virtual SQLResult list() = 0;
     virtual SQLResult update(const Play &play) = 0;
 };
 

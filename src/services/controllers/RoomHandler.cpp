@@ -34,6 +34,15 @@ SQLResult RoomHandler::search(const IdCode &id)
     return DBHandler::getInstance()->execute(query);
 }
 
+SQLResult RoomHandler::list()
+{
+    std::stringstream query;
+
+    query << "SELECT * FROM Rooms;";
+
+    return DBHandler::getInstance()->execute(query);
+}
+
 SQLResult RoomHandler::update(const Room &room)
 {
     std::stringstream query;

@@ -10,6 +10,7 @@ public:
     SQLResult remove(const Registration &registration);
     SQLResult search(const Registration &registration);
     SQLResult update(const Participant &participant);
+    SQLResult list();
     std::map<std::string, std::string> authenticate(const Registration &registration, const Password &password);
 };
 #endif

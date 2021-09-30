@@ -36,7 +36,17 @@ SQLResult SessionHandler::search(const IdCode &id)
     return DBHandler::getInstance()->execute(query);
 }
 
+SQLResult SessionHandler::list()
+{
+    std::stringstream query;
+
+    query << "SELECT * FROM Sessions;";
+
+    return DBHandler::getInstance()->execute(query);
+}
+
 SQLResult SessionHandler::update(const Session &session, const IdCode &playId, const IdCode &roomId)
+
 {
     std::stringstream query;
 

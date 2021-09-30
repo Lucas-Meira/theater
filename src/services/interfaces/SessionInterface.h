@@ -13,6 +13,7 @@ public:
     virtual SQLResult remove(const IdCode &id) = 0;
     virtual SQLResult search(const IdCode &id) = 0;
     virtual SQLResult update(const Session &session, const IdCode &playId, const IdCode &roomId) = 0;
+    virtual SQLResult list() = 0;
 };
 
 #endif
