@@ -29,9 +29,15 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
         case 0:
             return nullptr;
         case 1:
-            return new ListItemsPage;
+            return new ItemsMenuPage<InitPage>("List");
         case 2:
-            return new RegisterUserPage;
+            return new ItemsMenuPage<InitPage>("Include");
+        case 3:
+            return new ItemsMenuPage<InitPage>("Delete");
+        case 4:
+            return new ItemsMenuPage<InitPage>("Edit");
+        case 5:
+            return new ItemsMenuPage<InitPage>("View");
         case 6:
             return new UpdateUserPage(_registration);
         case 7:

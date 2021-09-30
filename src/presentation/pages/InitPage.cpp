@@ -2,8 +2,6 @@
 
 Page *InitPage::show(PageHandler *handler)
 {
-    unsigned int option;
-
     handler->print("Welcome to UnB Theater!");
     handler->print("");
 
@@ -16,7 +14,7 @@ Page *InitPage::show(PageHandler *handler)
     while (true)
     {
         handler->print("");
-        option = handler->renderMenu(options);
+        unsigned int option = handler->renderMenu(options);
 
         switch (option)
         {

@@ -15,7 +15,7 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
     auto user = result.rows[0];
 
-    Registration registration;
+    Registration registration = Registration(user["registration"]);
     Name firstName;
     Name lastName;
     Email email;
@@ -24,41 +24,6 @@ Page *UpdateUserPage::show(PageHandler *handler)
     Role role;
 
     std::string input;
-
-    while (true)
-    {
-        handler->print("Update Registration? " + user["registration"] + " [Yy/Nn]");
-
-        int option = getch();
-        bool update = option == 'Y' || option == 'y';
-
-        if (!update)
-        {
-            registration = Registration(user["registration"]);
-            break;
-        }
-
-        handler->print("Enter registration: ");
-        input = handler->readInput();
-
-        try
-        {
-            registration = Registration(input);
-            break;
-        }
-        catch (const std::invalid_argument &)
-        {
-            handler->print("Invalid input. Try again? [Yy/Nn] ");
-            int option = getch();
-            bool tryAgain = option == 'Y' || option == 'y';
-
-            if (!tryAgain)
-            {
-                return new AuthenticatedInitPage(user["first_name"], user["last_name"], user["registration"]);
-            }
-            handler->clearScreen();
-        }
-    }
 
     while (true)
     {
@@ -274,7 +239,6 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
     handler->print("Please check the info provided");
     handler->print("");
-    handler->print("Registration: " + registration.get());
     handler->print("First Name: " + firstName.get());
     handler->print("Last Name: " + lastName.get());
     handler->print("Email: " + email.get());
