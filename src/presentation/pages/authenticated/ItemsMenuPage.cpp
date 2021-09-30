@@ -73,9 +73,11 @@ Page *ItemsMenuPage::_handleInclude(PageHandler *handler, unsigned int option)
     case 0:
         return nullptr;
     case 1:
+        return new IncludeItemsPage("Play");
     case 2:
+        return new IncludeItemsPage("Room");
     case 3:
-        return new InitPage;
+        return new IncludeItemsPage("Session");
     default:
         handler->clearScreen();
         handler->print("Invalid Option " + std::to_string(option));
