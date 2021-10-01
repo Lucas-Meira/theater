@@ -4,7 +4,7 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
 {
     unsigned int option;
 
-    handler->print("Hello, " + _firstName.get() + " " + _lastName.get() + "!");
+    handler->print("Hello, " + _user.getFirstName().get() + " " + _user.getLastName().get() + "!");
     handler->print("");
 
     const std::vector<std::string> options{
@@ -39,9 +39,9 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
         case 5:
             return new ItemsMenuPage("View");
         case 6:
-            return new UpdateUserPage(_registration);
+            return new UpdateUserPage(_user.getRegistration());
         case 7:
-            return new DeleteUserPage(_registration);
+            return new DeleteUserPage(_user.getRegistration());
 
         default:
             handler->clearScreen();

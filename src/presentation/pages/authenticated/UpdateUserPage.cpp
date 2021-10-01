@@ -54,7 +54,8 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(user["first_name"], user["last_name"], user["registration"]);
+                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
+                                                             user["email"], user["phone_number"], user["password"], user["role"]));
             }
             handler->clearScreen();
         }
@@ -89,7 +90,8 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(user["first_name"], user["last_name"], user["registration"]);
+                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
+                                                             user["email"], user["phone_number"], user["password"], user["role"]));
             }
             handler->clearScreen();
         }
@@ -124,7 +126,8 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(user["first_name"], user["last_name"], user["registration"]);
+                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
+                                                             user["email"], user["phone_number"], user["password"], user["role"]));
             }
             handler->clearScreen();
         }
@@ -159,7 +162,8 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(user["first_name"], user["last_name"], user["registration"]);
+                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
+                                                             user["email"], user["phone_number"], user["password"], user["role"]));
             }
             handler->clearScreen();
         }
@@ -194,7 +198,8 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(user["first_name"], user["last_name"], user["registration"]);
+                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
+                                                             user["email"], user["phone_number"], user["password"], user["role"]));
             }
             handler->clearScreen();
         }
@@ -229,7 +234,8 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(user["first_name"], user["last_name"], user["registration"]);
+                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
+                                                             user["email"], user["phone_number"], user["password"], user["role"]));
             }
             handler->clearScreen();
         }
@@ -274,11 +280,13 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
         if (!tryAgain)
         {
-            return new AuthenticatedInitPage(user["first_name"], user["last_name"], user["registration"]);
+            return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
+                                                         user["email"], user["phone_number"], user["password"], user["role"]));
         }
 
         return new UpdateUserPage(_registration);
     }
 
-    return new AuthenticatedInitPage(firstName.get(), lastName.get(), registration.get());
+    return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
+                                                 user["email"], user["phone_number"], user["password"], user["role"]));
 }

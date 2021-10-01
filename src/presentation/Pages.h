@@ -54,12 +54,10 @@ public:
 class AuthenticatedInitPage : public Page
 {
 private:
-    Name _firstName;
-    Name _lastName;
-    Registration _registration;
+    Participant _user;
 
 public:
-    AuthenticatedInitPage(const Name &firstName, const Name &lastName, const Registration &registration) : _firstName(firstName), _lastName(lastName), _registration(registration)
+    AuthenticatedInitPage(const Participant &user) : _user(user)
     {
     }
 
