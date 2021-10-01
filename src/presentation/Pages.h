@@ -69,10 +69,10 @@ public:
 class UpdateUserPage : public Page
 {
 private:
-    Registration _registration;
+    Participant _user;
 
 public:
-    UpdateUserPage(const Registration &registration) : _registration(registration)
+    UpdateUserPage(const Participant &user) : _user(user)
     {
     }
 
@@ -84,10 +84,10 @@ public:
 class DeleteUserPage : public Page
 {
 private:
-    Registration _registration;
+    Participant _user;
 
 public:
-    DeleteUserPage(const Registration &registration) : _registration(registration)
+    DeleteUserPage(const Participant &user) : _user(user)
     {
     }
 

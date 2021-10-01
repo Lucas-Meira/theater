@@ -4,7 +4,7 @@ Page *UpdateUserPage::show(PageHandler *handler)
 {
     handler->print("Update User Page");
 
-    SQLResult result = handler->getServices()->getParticipantHandler()->search(_registration);
+    SQLResult result = handler->getServices()->getParticipantHandler()->search(_user.getRegistration());
 
     if (result.rows.size() == 0)
     {
@@ -54,10 +54,9 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
-                                                             user["email"], user["phone_number"], user["password"], user["role"]));
+                return new AuthenticatedInitPage(_user);
             }
-            handler->clearLines(2);
+            handler->clearLines(3);
         }
     }
 
@@ -90,10 +89,9 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
-                                                             user["email"], user["phone_number"], user["password"], user["role"]));
+                return new AuthenticatedInitPage(_user);
             }
-            handler->clearLines(2);
+            handler->clearLines(3);
         }
     }
 
@@ -126,10 +124,9 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
-                                                             user["email"], user["phone_number"], user["password"], user["role"]));
+                return new AuthenticatedInitPage(_user);
             }
-            handler->clearLines(2);
+            handler->clearLines(3);
         }
     }
 
@@ -162,10 +159,9 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
-                                                             user["email"], user["phone_number"], user["password"], user["role"]));
+                return new AuthenticatedInitPage(_user);
             }
-            handler->clearLines(2);
+            handler->clearLines(3);
         }
     }
 
@@ -198,10 +194,9 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
-                                                             user["email"], user["phone_number"], user["password"], user["role"]));
+                return new AuthenticatedInitPage(_user);
             }
-            handler->clearLines(2);
+            handler->clearLines(3);
         }
     }
 
@@ -234,10 +229,9 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
-                                                             user["email"], user["phone_number"], user["password"], user["role"]));
+                return new AuthenticatedInitPage(_user);
             }
-            handler->clearLines(2);
+            handler->clearLines(3);
         }
     }
 
@@ -258,12 +252,14 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
     if (!isCorrect)
     {
-        return new UpdateUserPage(_registration);
+        return new UpdateUserPage(_user);
     }
 
     ServicesInterface *services = handler->getServices();
 
-    result = services->getParticipantHandler()->update(Participant(registration, firstName, lastName, email, phoneNumber, password, role));
+    Participant newUser = Participant(registration, firstName, lastName, email, phoneNumber, password, role);
+
+    result = services->getParticipantHandler()->update(newUser);
 
     if (result.status != SQLResult::SUCCESS)
     {
@@ -280,13 +276,11 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
         if (!tryAgain)
         {
-            return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
-                                                         user["email"], user["phone_number"], user["password"], user["role"]));
+            return new AuthenticatedInitPage(_user);
         }
 
-        return new UpdateUserPage(_registration);
+        return new UpdateUserPage(_user);
     }
 
-    return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
-                                                 user["email"], user["phone_number"], user["password"], user["role"]));
+    return new AuthenticatedInitPage(newUser);
 }

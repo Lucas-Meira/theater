@@ -39,9 +39,9 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
         case 5:
             return new ItemsMenuPage(_user, "View");
         case 6:
-            return new UpdateUserPage(_user.getRegistration());
+            return new UpdateUserPage(_user);
         case 7:
-            return new DeleteUserPage(_user.getRegistration());
+            return new DeleteUserPage(_user);
 
         default:
             handler->clearScreen();
