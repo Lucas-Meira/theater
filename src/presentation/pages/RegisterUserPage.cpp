@@ -214,7 +214,9 @@ Page *RegisterUserPage::show(PageHandler *handler)
 
     ServicesInterface *services = handler->getServices();
 
-    SQLResult result = services->getParticipantHandler()->create(Participant(registration, firstName, lastName, email, phoneNumber, password, role));
+    Participant newUser = Participant(registration, firstName, lastName, email, phoneNumber, password, role);
+
+    SQLResult result = services->getParticipantHandler()->create(newUser);
 
     if (result.status != SQLResult::SUCCESS)
     {
@@ -237,5 +239,5 @@ Page *RegisterUserPage::show(PageHandler *handler)
         return new RegisterUserPage;
     }
 
-    return new InitPage;
+    return new AuthenticatedInitPage(newUser);
 }
