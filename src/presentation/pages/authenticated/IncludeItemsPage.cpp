@@ -16,17 +16,13 @@ Page *IncludeItemsPage::show(PageHandler *handler)
     {
         return _includeSession(handler);
     }
-    else
-    {
-        handler->clearScreen();
-        handler->print("Error!");
 
-        getch();
+    handler->clearScreen();
+    handler->print("Error!");
 
-        return new InitPage;
-    }
+    getch();
 
-    return nullptr;
+    return new InitPage;
 }
 
 Page *IncludeItemsPage::_includePlay(PageHandler *handler)
@@ -227,6 +223,10 @@ Page *IncludeItemsPage::_includeSession(PageHandler *handler)
 
         return new IncludeItemsPage(_entityToInclude);
     }
+
+    handler->print("Successfully created a Session! Press any key to continue...");
+
+    getch();
 
     return new InitPage;
 }
