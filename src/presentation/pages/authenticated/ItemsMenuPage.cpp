@@ -9,7 +9,7 @@ Page *ItemsMenuPage::show(PageHandler *handler)
         "Play",
         "Room",
         "Session",
-        "Quit"};
+        "Return"};
 
     handler->print("");
     unsigned int option = handler->renderMenu(options);
@@ -40,11 +40,11 @@ Page *ItemsMenuPage::show(PageHandler *handler)
     else
     {
         handler->clearScreen();
-        handler->print("Error!");
+        handler->print("Error! Press any key to continue...");
 
         getch();
 
-        return new InitPage;
+        return new AuthenticatedInitPage(_user);
     }
 }
 
@@ -53,11 +53,11 @@ Page *ItemsMenuPage::_handleList(PageHandler *handler, unsigned int option)
     switch (option)
     {
     case 0:
-        return nullptr;
+        return new AuthenticatedInitPage(_user);
     case 1:
     case 2:
     case 3:
-        return new InitPage;
+        return new AuthenticatedInitPage(_user);
     default:
         handler->clearScreen();
         handler->print("Invalid Option " + std::to_string(option));
@@ -72,7 +72,7 @@ Page *ItemsMenuPage::_handleInclude(PageHandler *handler, unsigned int option)
     switch (option)
     {
     case 0:
-        return nullptr;
+        return new AuthenticatedInitPage(_user);
     case 1:
         return new IncludeItemsPage(_user, "Play");
     case 2:
@@ -93,7 +93,7 @@ Page *ItemsMenuPage::_handleDelete(PageHandler *handler, unsigned int option)
     switch (option)
     {
     case 0:
-        return nullptr;
+        return new AuthenticatedInitPage(_user);
     case 1:
         return new DeleteItemsPage(_user, "Play");
     case 2:
@@ -114,11 +114,11 @@ Page *ItemsMenuPage::_handleEdit(PageHandler *handler, unsigned int option)
     switch (option)
     {
     case 0:
-        return nullptr;
+        return new AuthenticatedInitPage(_user);
     case 1:
     case 2:
     case 3:
-        return new InitPage;
+        return new AuthenticatedInitPage(_user);
     default:
         handler->clearScreen();
         handler->print("Invalid Option " + std::to_string(option));
@@ -133,11 +133,11 @@ Page *ItemsMenuPage::_handleView(PageHandler *handler, unsigned int option)
     switch (option)
     {
     case 0:
-        return nullptr;
+        return new AuthenticatedInitPage(_user);
     case 1:
     case 2:
     case 3:
-        return new InitPage;
+        return new AuthenticatedInitPage(_user);
     default:
         handler->clearScreen();
         handler->print("Invalid Option " + std::to_string(option));

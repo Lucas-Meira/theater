@@ -18,11 +18,11 @@ Page *IncludeItemsPage::show(PageHandler *handler)
     }
 
     handler->clearScreen();
-    handler->print("Error!");
+    handler->print("Error! Press any key to continue...");
 
     getch();
 
-    return new InitPage;
+    return new IncludeItemsPage(_user, _entityToInclude);
 }
 
 Page *IncludeItemsPage::_includePlay(PageHandler *handler)
@@ -63,7 +63,7 @@ Page *IncludeItemsPage::_includeSession(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new InitPage;
+                return new AuthenticatedInitPage(_user);
             }
             handler->clearScreen();
         }
@@ -87,7 +87,7 @@ Page *IncludeItemsPage::_includeSession(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new InitPage;
+                return new AuthenticatedInitPage(_user);
             }
             handler->clearScreen();
         }
@@ -111,7 +111,7 @@ Page *IncludeItemsPage::_includeSession(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new InitPage;
+                return new AuthenticatedInitPage(_user);
             }
             handler->clearScreen();
         }
@@ -138,7 +138,7 @@ Page *IncludeItemsPage::_includeSession(PageHandler *handler)
 
                 if (!tryAgain)
                 {
-                    return new InitPage;
+                    return new AuthenticatedInitPage(_user);
                 }
             }
             else
@@ -154,7 +154,7 @@ Page *IncludeItemsPage::_includeSession(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new InitPage;
+                return new AuthenticatedInitPage(_user);
             }
             handler->clearScreen();
         }
@@ -181,7 +181,7 @@ Page *IncludeItemsPage::_includeSession(PageHandler *handler)
 
                 if (!tryAgain)
                 {
-                    return new InitPage;
+                    return new AuthenticatedInitPage(_user);
                 }
             }
             else
@@ -197,7 +197,7 @@ Page *IncludeItemsPage::_includeSession(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new InitPage;
+                return new AuthenticatedInitPage(_user);
             }
             handler->clearScreen();
         }
@@ -218,7 +218,7 @@ Page *IncludeItemsPage::_includeSession(PageHandler *handler)
 
         if (!tryAgain)
         {
-            return new InitPage;
+            return new AuthenticatedInitPage(_user);
         }
 
         return new IncludeItemsPage(_user, _entityToInclude);
@@ -228,5 +228,5 @@ Page *IncludeItemsPage::_includeSession(PageHandler *handler)
 
     getch();
 
-    return new InitPage;
+    return new AuthenticatedInitPage(_user);
 }

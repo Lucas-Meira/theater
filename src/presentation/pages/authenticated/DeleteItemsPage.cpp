@@ -18,21 +18,21 @@ Page *DeleteItemsPage::show(PageHandler *handler)
     }
 
     handler->clearScreen();
-    handler->print("Error!");
+    handler->print("Error! Press any key to continue...");
 
     getch();
 
-    return new InitPage;
+    return new AuthenticatedInitPage(_user);
 }
 
 Page *DeleteItemsPage::_deletePlay(PageHandler *handler)
 {
-    return new InitPage;
+    return new AuthenticatedInitPage(_user);
 }
 
 Page *DeleteItemsPage::_deleteRoom(PageHandler *handler)
 {
-    return new InitPage;
+    return new AuthenticatedInitPage(_user);
 }
 
 Page *DeleteItemsPage::_deleteSession(PageHandler *handler)
@@ -57,7 +57,7 @@ Page *DeleteItemsPage::_deleteSession(PageHandler *handler)
 
             if (!tryAgain)
             {
-                return new InitPage;
+                return new AuthenticatedInitPage(_user);
             }
             handler->clearScreen();
         }
@@ -78,7 +78,7 @@ Page *DeleteItemsPage::_deleteSession(PageHandler *handler)
 
         if (!tryAgain)
         {
-            return new InitPage;
+            return new AuthenticatedInitPage(_user);
         }
 
         return new DeleteItemsPage(_user, _entityToDelete);
@@ -88,5 +88,5 @@ Page *DeleteItemsPage::_deleteSession(PageHandler *handler)
 
     getch();
 
-    return new InitPage;
+    return new AuthenticatedInitPage(_user);
 }
