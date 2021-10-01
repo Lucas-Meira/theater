@@ -27,11 +27,19 @@ Page *IncludeItemsPage::show(PageHandler *handler)
 
 Page *IncludeItemsPage::_includePlay(PageHandler *handler)
 {
+    handler->print("Page not yet implemented. Press any key to continue...");
+
+    getch();
+
     return new InitPage;
 }
 
 Page *IncludeItemsPage::_includeRoom(PageHandler *handler)
 {
+    handler->print("Page not yet implemented. Press any key to continue...");
+
+    getch();
+
     return new InitPage;
 }
 

@@ -27,11 +27,19 @@ Page *DeleteItemsPage::show(PageHandler *handler)
 
 Page *DeleteItemsPage::_deletePlay(PageHandler *handler)
 {
+    handler->print("Page not yet implemented. Press any key to continue...");
+
+    getch();
+
     return new AuthenticatedInitPage(_user);
 }
 
 Page *DeleteItemsPage::_deleteRoom(PageHandler *handler)
 {
+    handler->print("Page not yet implemented. Press any key to continue...");
+
+    getch();
+
     return new AuthenticatedInitPage(_user);
 }
 

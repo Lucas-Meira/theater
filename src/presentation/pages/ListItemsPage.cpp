@@ -4,7 +4,9 @@
 
 Page *ListItemsPage::show(PageHandler *handler)
 {
-    handler->print("OK");
+    handler->print("Page not yet implemented. Press any key to continue...");
 
     getch();
+
+    return new InitPage;
 };
