@@ -99,6 +99,7 @@ public:
 class ItemsMenuPage : public Page
 {
 private:
+    Participant _user;
     std::string _action;
 
     Page *_handleList(PageHandler *handler, unsigned int option);
@@ -108,7 +109,7 @@ private:
     Page *_handleView(PageHandler *handler, unsigned int option);
 
 public:
-    ItemsMenuPage(const std::string &action) : _action(action)
+    ItemsMenuPage(const Participant &user, const std::string &action) : _user(user), _action(action)
     {
     }
 
@@ -120,6 +121,7 @@ public:
 class IncludeItemsPage : public Page
 {
 private:
+    Participant _user;
     std::string _entityToInclude;
 
     Page *_includePlay(PageHandler *handler);
@@ -127,7 +129,7 @@ private:
     Page *_includeSession(PageHandler *handler);
 
 public:
-    IncludeItemsPage(const std::string &entityToInclude) : _entityToInclude(entityToInclude)
+    IncludeItemsPage(const Participant &user, const std::string &entityToInclude) : _user(user), _entityToInclude(entityToInclude)
     {
     }
 
@@ -139,6 +141,7 @@ public:
 class DeleteItemsPage : public Page
 {
 private:
+    Participant _user;
     std::string _entityToDelete;
 
     Page *_deletePlay(PageHandler *handler);
@@ -146,7 +149,7 @@ private:
     Page *_deleteSession(PageHandler *handler);
 
 public:
-    DeleteItemsPage(const std::string &entityToDelete) : _entityToDelete(entityToDelete)
+    DeleteItemsPage(const Participant &user, const std::string &entityToDelete) : _user(user), _entityToDelete(entityToDelete)
     {
     }
 

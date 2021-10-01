@@ -29,15 +29,15 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
         case 0:
             return nullptr;
         case 1:
-            return new ItemsMenuPage("List");
+            return new ItemsMenuPage(_user, "List");
         case 2:
-            return new ItemsMenuPage("Include");
+            return new ItemsMenuPage(_user, "Include");
         case 3:
-            return new ItemsMenuPage("Delete");
+            return new ItemsMenuPage(_user, "Delete");
         case 4:
-            return new ItemsMenuPage("Edit");
+            return new ItemsMenuPage(_user, "Edit");
         case 5:
-            return new ItemsMenuPage("View");
+            return new ItemsMenuPage(_user, "View");
         case 6:
             return new UpdateUserPage(_user.getRegistration());
         case 7:

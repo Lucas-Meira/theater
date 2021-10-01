@@ -221,7 +221,7 @@ Page *IncludeItemsPage::_includeSession(PageHandler *handler)
             return new InitPage;
         }
 
-        return new IncludeItemsPage(_entityToInclude);
+        return new IncludeItemsPage(_user, _entityToInclude);
     }
 
     handler->print("Successfully created a Session! Press any key to continue...");

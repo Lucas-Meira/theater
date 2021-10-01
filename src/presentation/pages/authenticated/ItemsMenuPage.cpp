@@ -61,8 +61,9 @@ Page *ItemsMenuPage::_handleList(PageHandler *handler, unsigned int option)
     default:
         handler->clearScreen();
         handler->print("Invalid Option " + std::to_string(option));
-        handler->print("");
-        break;
+        handler->print("Press enter to continue");
+        getch();
+        return new ItemsMenuPage(_user, _action);
     }
 }
 
@@ -73,17 +74,17 @@ Page *ItemsMenuPage::_handleInclude(PageHandler *handler, unsigned int option)
     case 0:
         return nullptr;
     case 1:
-        return new IncludeItemsPage("Play");
+        return new IncludeItemsPage(_user, "Play");
     case 2:
-        return new IncludeItemsPage("Room");
+        return new IncludeItemsPage(_user, "Room");
     case 3:
-        return new IncludeItemsPage("Session");
+        return new IncludeItemsPage(_user, "Session");
     default:
         handler->clearScreen();
         handler->print("Invalid Option " + std::to_string(option));
         handler->print("Press enter to continue");
         getch();
-        return new ItemsMenuPage(_action);
+        return new ItemsMenuPage(_user, _action);
     }
 }
 
@@ -94,17 +95,17 @@ Page *ItemsMenuPage::_handleDelete(PageHandler *handler, unsigned int option)
     case 0:
         return nullptr;
     case 1:
-        return new DeleteItemsPage("Play");
+        return new DeleteItemsPage(_user, "Play");
     case 2:
-        return new DeleteItemsPage("Room");
+        return new DeleteItemsPage(_user, "Room");
     case 3:
-        return new DeleteItemsPage("Session");
+        return new DeleteItemsPage(_user, "Session");
     default:
         handler->clearScreen();
         handler->print("Invalid Option " + std::to_string(option));
         handler->print("Press enter to continue");
         getch();
-        return new ItemsMenuPage(_action);
+        return new ItemsMenuPage(_user, _action);
     }
 }
 
@@ -123,7 +124,7 @@ Page *ItemsMenuPage::_handleEdit(PageHandler *handler, unsigned int option)
         handler->print("Invalid Option " + std::to_string(option));
         handler->print("Press enter to continue");
         getch();
-        return new ItemsMenuPage(_action);
+        return new ItemsMenuPage(_user, _action);
     }
 }
 
@@ -142,6 +143,6 @@ Page *ItemsMenuPage::_handleView(PageHandler *handler, unsigned int option)
         handler->print("Invalid Option " + std::to_string(option));
         handler->print("Press enter to continue");
         getch();
-        return new ItemsMenuPage(_action);
+        return new ItemsMenuPage(_user, _action);
     }
 }

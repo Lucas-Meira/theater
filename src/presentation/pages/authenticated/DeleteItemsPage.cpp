@@ -81,7 +81,7 @@ Page *DeleteItemsPage::_deleteSession(PageHandler *handler)
             return new InitPage;
         }
 
-        return new DeleteItemsPage(_entityToDelete);
+        return new DeleteItemsPage(_user, _entityToDelete);
     }
 
     handler->print("Successfully deleted Session! Press any key to continue...");
