@@ -16,6 +16,8 @@ private:
     const static int READ_BUFFER_SIZE = 128;
     char readBuffer[READ_BUFFER_SIZE];
     unsigned int _currentLine = 0;
+    unsigned int _currentX = 0;
+    unsigned int _currentY = 0;
     unsigned int _lines;
     unsigned int _columns;
     ServicesInterface *_services;
@@ -29,6 +31,7 @@ public:
 
     void handle();
     void clearScreen();
+    void clearLines(int nbOfLines);
     void print(const std::string &message);
     unsigned int renderMenu(const std::vector<std::string> &options);
     std::string readInput();

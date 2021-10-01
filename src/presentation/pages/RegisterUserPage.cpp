@@ -39,7 +39,7 @@ Page *RegisterUserPage::show(PageHandler *handler)
                 {
                     return new InitPage;
                 }
-                handler->clearScreen();
+                handler->clearLines(2);
             }
         }
 
@@ -63,7 +63,7 @@ Page *RegisterUserPage::show(PageHandler *handler)
                 {
                     return new InitPage;
                 }
-                handler->clearScreen();
+                handler->clearLines(2);
             }
         }
 
@@ -88,7 +88,7 @@ Page *RegisterUserPage::show(PageHandler *handler)
                 {
                     return new InitPage;
                 }
-                handler->clearScreen();
+                handler->clearLines(2);
             }
         }
 
@@ -112,7 +112,7 @@ Page *RegisterUserPage::show(PageHandler *handler)
                 {
                     return new InitPage;
                 }
-                handler->clearScreen();
+                handler->clearLines(2);
             }
         }
 
@@ -136,7 +136,7 @@ Page *RegisterUserPage::show(PageHandler *handler)
                 {
                     return new InitPage;
                 }
-                handler->clearScreen();
+                handler->clearLines(2);
             }
         }
 
@@ -160,7 +160,7 @@ Page *RegisterUserPage::show(PageHandler *handler)
                 {
                     return new InitPage;
                 }
-                handler->clearScreen();
+                handler->clearLines(2);
             }
         }
 
@@ -184,7 +184,7 @@ Page *RegisterUserPage::show(PageHandler *handler)
                 {
                     return new InitPage;
                 }
-                handler->clearScreen();
+                handler->clearLines(2);
             }
         }
 

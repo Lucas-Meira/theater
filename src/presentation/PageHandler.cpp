@@ -28,7 +28,9 @@ void PageHandler::handle()
 
 void PageHandler::print(const std::string &msg)
 {
-    mvprintw(_lines / 2 + _currentLine - 5, (_columns - msg.length()) / 2, msg.c_str());
+    _currentX = (_columns - msg.length()) / 2;
+    _currentY = _lines / 2 + _currentLine - 5;
+    mvprintw(_currentY, _currentX, msg.c_str());
     _currentLine++;
 }
 
@@ -41,6 +43,17 @@ void PageHandler::clearScreen()
 {
     clear();
     _currentLine = 0;
+}
+
+void PageHandler::clearLines(int nbOfLines)
+{
+    for (int i = 0; i < nbOfLines; i++)
+    {
+        move(_currentY, 0);
+        clrtoeol();
+        _currentLine--;
+        _currentY = _lines / 2 + _currentLine - 5;
+    }
 }
 
 std::string PageHandler::readInput()

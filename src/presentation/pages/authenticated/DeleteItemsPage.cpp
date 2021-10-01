@@ -59,7 +59,7 @@ Page *DeleteItemsPage::_deleteSession(PageHandler *handler)
             {
                 return new AuthenticatedInitPage(_user);
             }
-            handler->clearScreen();
+            handler->clearLines(2);
         }
     }
 

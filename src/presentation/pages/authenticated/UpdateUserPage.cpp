@@ -57,7 +57,7 @@ Page *UpdateUserPage::show(PageHandler *handler)
                 return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
                                                              user["email"], user["phone_number"], user["password"], user["role"]));
             }
-            handler->clearScreen();
+            handler->clearLines(2);
         }
     }
 
@@ -93,7 +93,7 @@ Page *UpdateUserPage::show(PageHandler *handler)
                 return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
                                                              user["email"], user["phone_number"], user["password"], user["role"]));
             }
-            handler->clearScreen();
+            handler->clearLines(2);
         }
     }
 
@@ -129,7 +129,7 @@ Page *UpdateUserPage::show(PageHandler *handler)
                 return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
                                                              user["email"], user["phone_number"], user["password"], user["role"]));
             }
-            handler->clearScreen();
+            handler->clearLines(2);
         }
     }
 
@@ -165,7 +165,7 @@ Page *UpdateUserPage::show(PageHandler *handler)
                 return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
                                                              user["email"], user["phone_number"], user["password"], user["role"]));
             }
-            handler->clearScreen();
+            handler->clearLines(2);
         }
     }
 
@@ -201,7 +201,7 @@ Page *UpdateUserPage::show(PageHandler *handler)
                 return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
                                                              user["email"], user["phone_number"], user["password"], user["role"]));
             }
-            handler->clearScreen();
+            handler->clearLines(2);
         }
     }
 
@@ -237,7 +237,7 @@ Page *UpdateUserPage::show(PageHandler *handler)
                 return new AuthenticatedInitPage(Participant(user["registration"], user["first_name"], user["last_name"],
                                                              user["email"], user["phone_number"], user["password"], user["role"]));
             }
-            handler->clearScreen();
+            handler->clearLines(2);
         }
     }
 
