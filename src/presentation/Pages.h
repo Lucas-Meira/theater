@@ -143,6 +143,10 @@ class DeleteItemsPage : public Page
 private:
     std::string _entityToDelete;
 
+    Page *_deletePlay(PageHandler *handler);
+    Page *_deleteRoom(PageHandler *handler);
+    Page *_deleteSession(PageHandler *handler);
+
 public:
     DeleteItemsPage(const std::string &entityToDelete) : _entityToDelete(entityToDelete)
     {
