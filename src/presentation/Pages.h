@@ -158,4 +158,24 @@ public:
     ~DeleteItemsPage(){};
 };
 
+class EditItemsPage : public Page
+{
+private:
+    Participant _user;
+    std::string _entityToEdit;
+
+    Page *_editPlay(PageHandler *handler);
+    Page *_editRoom(PageHandler *handler);
+    Page *_editSession(PageHandler *handler);
+
+public:
+    EditItemsPage(const Participant &user, const std::string &entityToEdit) : _user(user), _entityToEdit(entityToEdit)
+    {
+    }
+
+    Page *show(PageHandler *handler);
+
+    ~EditItemsPage(){};
+};
+
 #endif

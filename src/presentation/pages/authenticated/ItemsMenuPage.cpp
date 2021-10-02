@@ -116,9 +116,11 @@ Page *ItemsMenuPage::_handleEdit(PageHandler *handler, unsigned int option)
     case 0:
         return new AuthenticatedInitPage(_user);
     case 1:
+        return new EditItemsPage(_user, "Play");
     case 2:
+        return new EditItemsPage(_user, "Room");
     case 3:
-        return new AuthenticatedInitPage(_user);
+        return new EditItemsPage(_user, "Session");
     default:
         handler->clearScreen();
         handler->print("Invalid Option " + std::to_string(option));
