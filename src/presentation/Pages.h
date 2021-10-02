@@ -37,7 +37,27 @@ public:
 
 class ListItemsPage : public Page
 {
+private:
+    Participant _user;
+    std::string _entityToList;
+
+    Page *_listPlays(PageHandler *handler);
+    Page *_listRooms(PageHandler *handler);
+    Page *_listSessions(PageHandler *handler);
+
+    bool _isLoggedIn;
+
 public:
+    ListItemsPage(const std::string &entityToList) : _entityToList(entityToList)
+    {
+        _isLoggedIn = false;
+    }
+
+    ListItemsPage(const Participant &user, const std::string &entityToList) : _user(user), _entityToList(entityToList)
+    {
+        _isLoggedIn = true;
+    }
+
     Page *show(PageHandler *handler);
 
     ~ListItemsPage(){};
@@ -108,9 +128,17 @@ private:
     Page *_handleEdit(PageHandler *handler, unsigned int option);
     Page *_handleView(PageHandler *handler, unsigned int option);
 
+    bool _isLoggedIn;
+
 public:
+    ItemsMenuPage(const std::string &action) : _action(action)
+    {
+        _isLoggedIn = false;
+    }
+
     ItemsMenuPage(const Participant &user, const std::string &action) : _user(user), _action(action)
     {
+        _isLoggedIn = true;
     }
 
     Page *show(PageHandler *handler);
@@ -176,6 +204,26 @@ public:
     Page *show(PageHandler *handler);
 
     ~EditItemsPage(){};
+};
+
+class ViewItemsPage : public Page
+{
+private:
+    Participant _user;
+    std::string _entityToView;
+
+    Page *_viewPlays(PageHandler *handler);
+    Page *_viewRooms(PageHandler *handler);
+    Page *_viewSessions(PageHandler *handler);
+
+public:
+    ViewItemsPage(const Participant &user, const std::string &entityToView) : _user(user), _entityToView(entityToView)
+    {
+    }
+
+    Page *show(PageHandler *handler);
+
+    ~ViewItemsPage(){};
 };
 
 #endif
