@@ -50,7 +50,7 @@ SQLResult RoomHandler::update(const Room &room)
     query << "UPDATE Rooms SET"
           << " name = '"
           << room.getName().get()
-          << "' capacities = '"
+          << "', capacities = '"
           << room.getCapacity().get()
           << "' WHERE id_rooms = '" << room.getId().get() << '\'';
 

@@ -53,11 +53,11 @@ SQLResult SessionHandler::update(const Session &session, const IdCode &playId, c
     query << "UPDATE Sessions SET"
           << " date = '"
           << session.getDate().get()
-          << "' time = '"
+          << "', time = '"
           << session.getTime().get()
-          << "' id_plays_id = '"
+          << "', id_plays_id = '"
           << playId.get()
-          << "' id_rooms_id = '"
+          << "', id_rooms_id = '"
           << roomId.get()
           << "' WHERE id_sessions = '" << session.getId().get() << "\';";
 

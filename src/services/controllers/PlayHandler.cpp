@@ -51,9 +51,9 @@ SQLResult PlayHandler::update(const Play &play)
     query << "UPDATE Plays SET"
           << " name = '"
           << play.getName().get()
-          << "' rating = '"
+          << "', rating = '"
           << play.getRating().get()
-          << "' type = '"
+          << "', type = '"
           << play.getType().get()
           << "' WHERE id_plays = '" << play.getId().get() << '\'';
 
