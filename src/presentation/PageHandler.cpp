@@ -29,7 +29,8 @@ void PageHandler::handle()
 void PageHandler::print(const std::string &msg)
 {
     _currentX = (_columns - msg.length()) / 2;
-    _currentY = _lines / 2 + _currentLine - 5;
+    _currentY = (_lines / 2 + _currentLine - 10) < 0 ? _lines / 2 + _currentLine : _lines / 2 + _currentLine - 10;
+
     mvprintw(_currentY, _currentX, msg.c_str());
     _currentLine++;
 }
