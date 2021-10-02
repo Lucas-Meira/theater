@@ -1,4 +1,4 @@
-#include "../../Pages.h"
+#include "../Pages.h"
 
 Page *ItemsMenuPage::show(PageHandler *handler)
 {
@@ -55,15 +55,17 @@ Page *ItemsMenuPage::_handleList(PageHandler *handler, unsigned int option)
     case 0:
         return new AuthenticatedInitPage(_user);
     case 1:
+        return _isLoggedIn ? new ListItemsPage(_user, "Play") : new ListItemsPage("Play");
     case 2:
+        return _isLoggedIn ? new ListItemsPage(_user, "Room") : new ListItemsPage("Room");
     case 3:
-        return new AuthenticatedInitPage(_user);
+        return _isLoggedIn ? new ListItemsPage(_user, "Session") : new ListItemsPage("Session");
     default:
         handler->clearScreen();
         handler->print("Invalid Option " + std::to_string(option));
         handler->print("Press enter to continue");
         getch();
-        return new ItemsMenuPage(_user, _action);
+        return _isLoggedIn ? new ItemsMenuPage(_user, _action) : new ItemsMenuPage(_action);
     }
 }
 
@@ -137,9 +139,11 @@ Page *ItemsMenuPage::_handleView(PageHandler *handler, unsigned int option)
     case 0:
         return new AuthenticatedInitPage(_user);
     case 1:
+        return new ViewItemsPage(_user, "Play");
     case 2:
+        return new ViewItemsPage(_user, "Room");
     case 3:
-        return new AuthenticatedInitPage(_user);
+        return new ViewItemsPage(_user, "Session");
     default:
         handler->clearScreen();
         handler->print("Invalid Option " + std::to_string(option));
