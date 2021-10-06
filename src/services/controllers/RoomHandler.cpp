@@ -29,7 +29,7 @@ SQLResult RoomHandler::search(const IdCode &id)
 {
     std::stringstream query;
 
-    query << "SELECT id_rooms, name, rating, type  FROM Rooms WHERE id_rooms='" << id.get() << "';";
+    query << "SELECT *  FROM Rooms WHERE id_rooms='" << id.get() << "';";
 
     return DBHandler::getInstance()->execute(query);
 }
