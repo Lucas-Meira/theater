@@ -37,6 +37,14 @@ SQLResult ParticipantHandler::search(const Registration &registration)
 
     return DBHandler::getInstance()->execute(query);
 }
+SQLResult ParticipantHandler::list()
+{
+    std::stringstream query;
+
+    query << "SELECT * FROM Participants;";
+
+    return DBHandler::getInstance()->execute(query);
+}
 
 SQLResult ParticipantHandler::list()
 {
