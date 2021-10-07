@@ -27,7 +27,7 @@ Page *IncludeItemsPage::show(PageHandler *handler)
 
 Page *IncludeItemsPage::_includePlay(PageHandler *handler)
 {
-    
+
     std::string input;
 
     IdCode id;
@@ -89,7 +89,7 @@ Page *IncludeItemsPage::_includePlay(PageHandler *handler)
             }
         }
 
-        
+
         while (true)
         {
             handler->print("Enter type: ");
@@ -176,13 +176,13 @@ Page *IncludeItemsPage::_includePlay(PageHandler *handler)
 
         if (!tryAgain)
         {
-            return new InitPage;
+            return new AuthenticatedInitPage(_user);
         }
 
-        return new IncludeItemsPage(_entityToInclude);
+        return new IncludeItemsPage(_user, _entityToInclude);
     }
 
-    return new InitPage;
+    return new AuthenticatedInitPage(_user);
 }
 
 

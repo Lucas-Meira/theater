@@ -11,6 +11,6 @@ public:
     SQLResult search(const IdCode &id);
     SQLResult list();
     SQLResult update(const Play &play);
-    SQLResult list();
+
 };
 #endif

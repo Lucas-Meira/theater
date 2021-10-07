@@ -45,7 +45,7 @@ SQLResult SessionHandler::list()
     return DBHandler::getInstance()->execute(query);
 }
 
-SQLResult SessionHandler::update(const Session &session,  const Play &play, const Room &room)
+SQLResult SessionHandler::update(const Session &session,  const IdCode &playId, const IdCode &roomId)
 {
     std::stringstream query;
 

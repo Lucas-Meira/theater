@@ -156,17 +156,17 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="src/presentation/pages/InitPage.cpp" />
+		<Unit filename="src/presentation/pages/ItemsMenuPage.cpp" />
 		<Unit filename="src/presentation/pages/ListItemsPage.cpp" />
 		<Unit filename="src/presentation/pages/LogInPage.cpp" />
-		<Unit filename="src/presentation/pages/RegisterItemPage.cpp" />
 		<Unit filename="src/presentation/pages/RegisterUserPage.cpp" />
 		<Unit filename="src/presentation/pages/authenticated/AuthenticatedInitPage.cpp" />
-		<Unit filename="src/presentation/pages/authenticated/DeleteUserPage.cpp">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="src/presentation/pages/authenticated/UpdateUserPage.cpp">
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/DeleteItemsPage.cpp" />
+		<Unit filename="src/presentation/pages/authenticated/DeleteUserPage.cpp" />
+		<Unit filename="src/presentation/pages/authenticated/EditItemsPage.cpp" />
+		<Unit filename="src/presentation/pages/authenticated/IncludeItemsPage.cpp" />
+		<Unit filename="src/presentation/pages/authenticated/UpdateUserPage.cpp" />
+		<Unit filename="src/presentation/pages/authenticated/ViewItemsPage.cpp" />
 		<Unit filename="src/services/controllers/ParticipantHandler.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
