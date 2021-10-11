@@ -27,7 +27,8 @@ Page *EditItemsPage::show(PageHandler *handler)
 
 Page *EditItemsPage::_editPlay(PageHandler *handler)
 {
-    IdCode playId;
+    Play newPlay;
+
     while (true)
     {
         handler->print("Enter the Id of the play to edit: ");
@@ -35,7 +36,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 
         try
         {
-            playId.setId(input);
+            newPlay.setId(input);
             break;
         }
         catch (const std::invalid_argument &)
@@ -52,7 +53,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
         }
     }
 
-    SQLResult result = handler->getServices()->getPlayHandler()->search(playId.getId());
+    SQLResult result = handler->getServices()->getPlayHandler()->search(newPlay.getId());
 
     if (result.rows.size() == 0)
     {
@@ -72,7 +73,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 
         if (!edit)
         {
-            playId.setName(playInDb["name"]);
+            newPlay.setName(playInDb["name"]);
             break;
         }
 
@@ -81,7 +82,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 
         try
         {
-            playId.setName(input);
+            newPlay.setName(input);
             break;
         }
         catch (const std::invalid_argument &)
@@ -107,7 +108,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 
         if (!edit)
         {
-            playId.setType(playInDb["type"]);
+            newPlay.setType(playInDb["type"]);
             break;
         }
 
@@ -116,7 +117,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 
         try
         {
-            playId.setType(input);
+            newPlay.setType(input);
             break;
         }
         catch (const std::invalid_argument &)
@@ -142,7 +143,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 
         if (!edit)
         {
-            playId.setRating(playInDb["rating"]);
+            newPlay.setRating(playInDb["rating"]);
             break;
         }
 
@@ -151,7 +152,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 
         try
         {
-            playId.setRating(input);
+            newPlay.setRating(input);
             break;
         }
         catch (const std::invalid_argument &)
@@ -172,9 +173,9 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 
     handler->print("Please check the info provided");
     handler->print("");
-    handler->print("Name: " + playId.getName().get());
-    handler->print("Type: " + playId.getType().get());
-    handler->print("Rating: " + playId.getRating().get());
+    handler->print("Name: " + newPlay.getName().get());
+    handler->print("Type: " + newPlay.getType().get());
+    handler->print("Rating: " + newPlay.getRating().get());
     handler->print("Is the info provided correct? [Yy/Nn]");
 
     int option = getch();
@@ -185,7 +186,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
         return new EditItemsPage(_user, _entityToEdit);
     }
 
-    result = handler->getServices()->getPlayHandler()->update(playId);
+    result = handler->getServices()->getPlayHandler()->update(newPlay);
 
     if (result.status != SQLResult::SUCCESS)
     {
@@ -215,7 +216,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 
 Page *EditItemsPage::_editRoom(PageHandler *handler)
 {
-    IdCode roomId;
+    Room newRoom;
     while (true)
     {
         handler->print("Enter the Id of the Room to edit: ");
@@ -223,7 +224,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         try
         {
-            roomId.setId(input);
+            newRoom.setId(input);
             break;
         }
         catch (const std::invalid_argument &)
@@ -240,7 +241,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
         }
     }
 
-    SQLResult result = handler->getServices()->getRoomHandler()->search(roomId.getId());
+    SQLResult result = handler->getServices()->getRoomHandler()->search(newRoom.getId());
 
     if (result.rows.size() == 0)
     {
@@ -260,7 +261,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         if (!edit)
         {
-            roomId.setName(roomInDb["name"]);
+            newRoom.setName(roomInDb["name"]);
             break;
         }
 
@@ -269,7 +270,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         try
         {
-            roomId.setName(input);
+            newRoom.setName(input);
             break;
         }
         catch (const std::invalid_argument &)
@@ -295,7 +296,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         if (!edit)
         {
-            roomId.setCapacity(roomInDb["capacities"]);
+            newRoom.setCapacity(roomInDb["capacities"]);
             break;
         }
 
@@ -304,7 +305,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         try
         {
-            roomId.setCapacity(input);
+            newRoom.setCapacity(input);
             break;
         }
         catch (const std::invalid_argument &)
@@ -326,8 +327,8 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
     handler->print("Please check the info provided");
     handler->print("");
-    handler->print("Name: " + roomId.getName().get());
-    handler->print("Capacity: " + roomId.getCapacity().get());
+    handler->print("Name: " + newRoom.getName().get());
+    handler->print("Capacity: " + newRoom.getCapacity().get());
     handler->print("Is the info provided correct? [Yy/Nn]");
 
     int option = getch();
@@ -338,7 +339,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
         return new EditItemsPage(_user, _entityToEdit);
     }
 
-    result = handler->getServices()->getroomHandler()->update(roomId);
+    result = handler->getServices()->getRoomHandler()->update(newRoom);
 
     if (result.status != SQLResult::SUCCESS)
     {
