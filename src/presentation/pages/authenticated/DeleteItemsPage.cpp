@@ -27,7 +27,54 @@ Page *DeleteItemsPage::show(PageHandler *handler)
 
 Page *DeleteItemsPage::_deletePlay(PageHandler *handler)
 {
-    handler->print("Page not yet implemented. Press any key to continue...");
+    IdCode playId;
+
+    while (true)
+    {
+        handler->print("Enter the Id of the play to delete: ");
+        std::string input = handler->readInput();
+
+        try
+        {
+            playId = IdCode(input);
+            break;
+        }
+        catch (const std::invalid_argument &)
+        {
+            handler->print("Invalid input. Try again? [Yy/Nn] ");
+            int option = getch();
+            bool tryAgain = option == 'Y' || option == 'y';
+
+            if (!tryAgain)
+            {
+                return new AuthenticatedInitPage(_user);
+            }
+            handler->clearLines(2);
+        }
+    }
+
+    SQLResult result = handler->getServices()->getPlayHandler()->remove(playId);
+
+    if (result.status != SQLResult::SUCCESS)
+    {
+        handler->print("Could not delete play.");
+        handler->print(result.errorMessage);
+        handler->print("");
+
+        handler->print("Try again? [Yy/Nn]");
+
+        int option = getch();
+        bool tryAgain = option == 'Y' || option == 'y';
+
+        if (!tryAgain)
+        {
+            return new AuthenticatedInitPage(_user);
+        }
+
+        return new DeleteItemsPage(_user, _entityToDelete);
+    }
+
+    handler->print("Successfully deleted play! Press any key to continue...");
 
     getch();
 
@@ -36,7 +83,55 @@ Page *DeleteItemsPage::_deletePlay(PageHandler *handler)
 
 Page *DeleteItemsPage::_deleteRoom(PageHandler *handler)
 {
-    handler->print("Page not yet implemented. Press any key to continue...");
+
+    IdCode roomId;
+
+    while (true)
+    {
+        handler->print("Enter the Id of the room to delete: ");
+        std::string input = handler->readInput();
+
+        try
+        {
+            roomId = IdCode(input);
+            break;
+        }
+        catch (const std::invalid_argument &)
+        {
+            handler->print("Invalid input. Try again? [Yy/Nn] ");
+            int option = getch();
+            bool tryAgain = option == 'Y' || option == 'y';
+
+            if (!tryAgain)
+            {
+                return new AuthenticatedInitPage(_user);
+            }
+            handler->clearLines(2);
+        }
+    }
+
+    SQLResult result = handler->getServices()->getRoomHandler()->remove(roomId);
+
+    if (result.status != SQLResult::SUCCESS)
+    {
+        handler->print("Could not delete room.");
+        handler->print(result.errorMessage);
+        handler->print("");
+
+        handler->print("Try again? [Yy/Nn]");
+
+        int option = getch();
+        bool tryAgain = option == 'Y' || option == 'y';
+
+        if (!tryAgain)
+        {
+            return new AuthenticatedInitPage(_user);
+        }
+
+        return new DeleteItemsPage(_user, _entityToDelete);
+    }
+
+    handler->print("Successfully deleted room! Press any key to continue...");
 
     getch();
 
