@@ -11,6 +11,7 @@ public:
     SQLResult search(const Registration &registration);
     SQLResult list();
     SQLResult update(const Participant &participant);
+    SQLResult update_play(const Participant &participant, const IdCode &playId);
     std::map<std::string, std::string> authenticate(const Registration &registration, const Password &password);
 };
 #endif

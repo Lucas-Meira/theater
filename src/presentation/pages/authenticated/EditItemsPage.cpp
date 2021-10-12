@@ -302,10 +302,11 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         handler->print("Enter new Capacities: ");
         std::string input = handler->readInput();
-
+        std::stoi(str);
         try
         {
             newRoom.setCapacity(input);
+            
             break;
         }
         catch (const std::invalid_argument &)

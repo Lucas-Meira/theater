@@ -86,3 +86,15 @@ SQLResult ParticipantHandler::update(const Participant &participant)
 
     return DBHandler::getInstance()->execute(query);
 }
+
+SQLResult ParticipantHandler::update_play(const Participant &participant, const IdCode &playId,)
+{
+    std::stringstream query;
+
+    query << "UPDATE Participants SET"
+          << "id_plays_id = '"
+          << playId.get()
+          << "' WHERE registration = '" << participant.getRegistration().get() << "\';";
+
+    return DBHandler::getInstance()->execute(query);
+}
