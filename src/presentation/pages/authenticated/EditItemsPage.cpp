@@ -36,7 +36,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 
 Page *EditItemsPage::_editRoom(PageHandler *handler)
 {
-    Room room;
+    Room newRoom;
 
     while (true)
     {
@@ -45,7 +45,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         try
         {
-            room.setId(input);
+            newRoom.setId(input);
             break;
         }
         catch (const std::invalid_argument &)
@@ -62,15 +62,17 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
         }
     }
 
-    SQLResult result = handler->getServices()->getRoomHandler()->search(room.getId());
+    SQLResult result = handler->getServices()->getRoomHandler()->search(newRoom.getId());
 
-    if (result.rows.size() == 0)
+    if (result.rows.empty())
     {
-        handler->print("Something went wrong!");
+        handler->print("No room with id " + newRoom.getId().get() + " found in the database!");
+        handler->print("");
+        handler->print("Press any key to continue...");
 
         getch();
 
-        return new InitPage;
+        return new AuthenticatedInitPage(_user);
     }
 
     auto roomInDb = result.rows[0];
@@ -84,7 +86,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         if (!edit)
         {
-            room.setName(roomInDb["name"]);
+            newRoom.setName(roomInDb["name"]);
             break;
         }
 
@@ -93,7 +95,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         try
         {
-            room.setName(input);
+            newRoom.setName(input);
             break;
         }
         catch (const std::invalid_argument &)
@@ -121,7 +123,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
         {
             int inputInt;
             inputInt = std::stoi(roomInDb["capacities"]);
-            room.setCapacity(inputInt);
+            newRoom.setCapacity(inputInt);
             break;
         }
 
@@ -132,7 +134,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         try
         {
-            room.setCapacity(inputInt);
+            newRoom.setCapacity(inputInt);
             break;
         }
         catch (const std::invalid_argument &)
@@ -153,8 +155,8 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
     handler->print("Please check the info provided");
     handler->print("");
-    handler->print("Name: " + room.getName().get());
-    handler->print("Capacity: " + room.getCapacity().get());
+    handler->print("Name: " + newRoom.getName().get());
+    handler->print("Capacity: " + newRoom.getCapacity().get());
     handler->print("Is the info provided correct? [Yy/Nn]");
 
     int option = getch();
@@ -165,7 +167,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
         return new EditItemsPage(_user, _entityToEdit);
     }
 
-    result = handler->getServices()->getRoomHandler()->update(room);
+    result = handler->getServices()->getRoomHandler()->update(newRoom);
 
     if (result.status != SQLResult::SUCCESS)
     {
@@ -225,11 +227,15 @@ Page *EditItemsPage::_editSession(PageHandler *handler)
 
     SQLResult result = handler->getServices()->getSessionHandler()->search(newSession.getId());
 
-    if (result.rows.size() == 0)
+    if (result.rows.empty())
     {
-        handler->print("Something went wrong!");
+        handler->print("No session with id " + newSession.getId().get() + " found in the database!");
+        handler->print("");
+        handler->print("Press any key to continue...");
 
-        return new InitPage;
+        getch();
+
+        return new AuthenticatedInitPage(_user);
     }
 
     auto sessionInDb = result.rows[0];
