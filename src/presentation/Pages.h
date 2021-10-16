@@ -19,6 +19,14 @@ public:
     ~InitPage(){};
 };
 
+class ErrorPage : public Page
+{
+public:
+    Page *show(PageHandler *handler);
+
+    ~ErrorPage(){};
+};
+
 class RegisterUserPage : public Page
 {
 public:
