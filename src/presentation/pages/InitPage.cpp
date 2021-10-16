@@ -25,7 +25,7 @@ Page *InitPage::show(PageHandler *handler)
         case 2:
             return new RegisterUserPage;
         case 3:
-            return new ListItemsPage;
+            return new ItemsMenuPage("List");
         default:
             handler->clearScreen();
             handler->print("Invalid Option " + std::to_string(option));

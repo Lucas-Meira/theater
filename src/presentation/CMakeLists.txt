@@ -1,7 +1,9 @@
 project(Presentation)
 
-SET(presentation_source_list "PageHandler.cpp;pages/InitPage.cpp;pages/RegisterUserPage.cpp;pages/RegisterItemPage.cpp;pages/ListItemsPage.cpp;pages/LogInPage.cpp;pages/authenticated/AuthenticatedInitPage.cpp;pages/authenticated/DeleteUserPage.cpp;pages/authenticated/UpdateUserPage.cpp")
+add_subdirectory(pages)
+
+SET(presentation_source_list "PageHandler.cpp")
 SET(presentation_header_list "PageHandler.h;Pages.h")
 
 add_library(presentation ${presentation_source_list} ${presentation_header_list})
-target_link_libraries(presentation Curses)
+target_link_libraries(presentation pages Curses)

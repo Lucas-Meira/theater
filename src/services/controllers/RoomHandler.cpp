@@ -29,7 +29,16 @@ SQLResult RoomHandler::search(const IdCode &id)
 {
     std::stringstream query;
 
-    query << "SELECT id_rooms, name, rating, type  FROM Rooms WHERE id_rooms='" << id.get() << "';";
+    query << "SELECT *  FROM Rooms WHERE id_rooms='" << id.get() << "';";
+
+    return DBHandler::getInstance()->execute(query);
+}
+
+SQLResult RoomHandler::list()
+{
+    std::stringstream query;
+
+    query << "SELECT * FROM Rooms;";
 
     return DBHandler::getInstance()->execute(query);
 }
@@ -41,7 +50,7 @@ SQLResult RoomHandler::update(const Room &room)
     query << "UPDATE Rooms SET"
           << " name = '"
           << room.getName().get()
-          << "' capacities = '"
+          << "', capacities = '"
           << room.getCapacity().get()
           << "' WHERE id_rooms = '" << room.getId().get() << '\'';
 

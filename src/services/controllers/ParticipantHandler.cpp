@@ -38,6 +38,15 @@ SQLResult ParticipantHandler::search(const Registration &registration)
     return DBHandler::getInstance()->execute(query);
 }
 
+SQLResult ParticipantHandler::list()
+{
+    std::stringstream query;
+
+    query << "SELECT * FROM Participants;";
+
+    return DBHandler::getInstance()->execute(query);
+}
+
 std::map<std::string, std::string> ParticipantHandler::authenticate(const Registration &registration, const Password &password)
 {
     SQLResult result = search(registration);

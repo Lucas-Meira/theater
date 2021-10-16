@@ -19,6 +19,14 @@ public:
     ~InitPage(){};
 };
 
+class ErrorPage : public Page
+{
+public:
+    Page *show(PageHandler *handler);
+
+    ~ErrorPage(){};
+};
+
 class RegisterUserPage : public Page
 {
 public:
@@ -37,7 +45,27 @@ public:
 
 class ListItemsPage : public Page
 {
+private:
+    Participant _user;
+    std::string _entityToList;
+
+    Page *_listPlays(PageHandler *handler);
+    Page *_listRooms(PageHandler *handler);
+    Page *_listSessions(PageHandler *handler);
+
+    bool _isLoggedIn;
+
 public:
+    ListItemsPage(const std::string &entityToList) : _entityToList(entityToList)
+    {
+        _isLoggedIn = false;
+    }
+
+    ListItemsPage(const Participant &user, const std::string &entityToList) : _user(user), _entityToList(entityToList)
+    {
+        _isLoggedIn = true;
+    }
+
     Page *show(PageHandler *handler);
 
     ~ListItemsPage(){};
@@ -54,12 +82,10 @@ public:
 class AuthenticatedInitPage : public Page
 {
 private:
-    Name _firstName;
-    Name _lastName;
-    Registration _registration;
+    Participant _user;
 
 public:
-    AuthenticatedInitPage(const Name &firstName, const Name &lastName, const Registration &registration) : _firstName(firstName), _lastName(lastName), _registration(registration)
+    AuthenticatedInitPage(const Participant &user) : _user(user)
     {
     }
 
@@ -71,10 +97,10 @@ public:
 class UpdateUserPage : public Page
 {
 private:
-    Registration _registration;
+    Participant _user;
 
 public:
-    UpdateUserPage(const Registration &registration) : _registration(registration)
+    UpdateUserPage(const Participant &user) : _user(user)
     {
     }
 
@@ -86,10 +112,10 @@ public:
 class DeleteUserPage : public Page
 {
 private:
-    Registration _registration;
+    Participant _user;
 
 public:
-    DeleteUserPage(const Registration &registration) : _registration(registration)
+    DeleteUserPage(const Participant &user) : _user(user)
     {
     }
 
@@ -98,15 +124,29 @@ public:
     ~DeleteUserPage(){};
 };
 
-template <class C>
 class ItemsMenuPage : public Page
 {
 private:
+    Participant _user;
     std::string _action;
+
+    Page *_handleList(PageHandler *handler, unsigned int option);
+    Page *_handleInclude(PageHandler *handler, unsigned int option);
+    Page *_handleDelete(PageHandler *handler, unsigned int option);
+    Page *_handleEdit(PageHandler *handler, unsigned int option);
+    Page *_handleView(PageHandler *handler, unsigned int option);
+
+    bool _isLoggedIn;
 
 public:
     ItemsMenuPage(const std::string &action) : _action(action)
     {
+        _isLoggedIn = false;
+    }
+
+    ItemsMenuPage(const Participant &user, const std::string &action) : _user(user), _action(action)
+    {
+        _isLoggedIn = true;
     }
 
     Page *show(PageHandler *handler);
@@ -114,38 +154,84 @@ public:
     ~ItemsMenuPage(){};
 };
 
-template <class C>
-Page *ItemsMenuPage<C>::show(PageHandler *handler)
+class IncludeItemsPage : public Page
 {
-    handler->print(_action + " items options");
-    handler->print("");
+private:
+    Participant _user;
+    std::string _entityToInclude;
 
-    const std::vector<std::string> options{
-        "Play",
-        "Room",
-        "Session",
-        "Quit"};
+    Page *_includePlay(PageHandler *handler);
+    Page *_includeRoom(PageHandler *handler);
+    Page *_includeSession(PageHandler *handler);
 
-    while (true)
+public:
+    IncludeItemsPage(const Participant &user, const std::string &entityToInclude) : _user(user), _entityToInclude(entityToInclude)
     {
-        handler->print("");
-        unsigned int option = handler->renderMenu(options);
-
-        switch (option)
-        {
-        case 0:
-            return nullptr;
-        case 1:
-        case 2:
-        case 3:
-            return new C;
-        default:
-            handler->clearScreen();
-            handler->print("Invalid Option " + std::to_string(option));
-            handler->print("");
-            break;
-        }
     }
-}
+
+    Page *show(PageHandler *handler);
+
+    ~IncludeItemsPage(){};
+};
+
+class DeleteItemsPage : public Page
+{
+private:
+    Participant _user;
+    std::string _entityToDelete;
+
+    Page *_deletePlay(PageHandler *handler);
+    Page *_deleteRoom(PageHandler *handler);
+    Page *_deleteSession(PageHandler *handler);
+
+public:
+    DeleteItemsPage(const Participant &user, const std::string &entityToDelete) : _user(user), _entityToDelete(entityToDelete)
+    {
+    }
+
+    Page *show(PageHandler *handler);
+
+    ~DeleteItemsPage(){};
+};
+
+class EditItemsPage : public Page
+{
+private:
+    Participant _user;
+    std::string _entityToEdit;
+
+    Page *_editPlay(PageHandler *handler);
+    Page *_editRoom(PageHandler *handler);
+    Page *_editSession(PageHandler *handler);
+
+public:
+    EditItemsPage(const Participant &user, const std::string &entityToEdit) : _user(user), _entityToEdit(entityToEdit)
+    {
+    }
+
+    Page *show(PageHandler *handler);
+
+    ~EditItemsPage(){};
+};
+
+class ViewItemsPage : public Page
+{
+private:
+    Participant _user;
+    std::string _entityToView;
+
+    Page *_viewPlays(PageHandler *handler);
+    Page *_viewRooms(PageHandler *handler);
+    Page *_viewSessions(PageHandler *handler);
+
+public:
+    ViewItemsPage(const Participant &user, const std::string &entityToView) : _user(user), _entityToView(entityToView)
+    {
+    }
+
+    Page *show(PageHandler *handler);
+
+    ~ViewItemsPage(){};
+};
 
 #endif

@@ -35,6 +35,15 @@ SQLResult PlayHandler::search(const IdCode &id)
     return DBHandler::getInstance()->execute(query);
 }
 
+SQLResult PlayHandler::list()
+{
+    std::stringstream query;
+
+    query << "SELECT * FROM Plays;";
+
+    return DBHandler::getInstance()->execute(query);
+}
+
 SQLResult PlayHandler::update(const Play &play)
 {
     std::stringstream query;
@@ -42,9 +51,9 @@ SQLResult PlayHandler::update(const Play &play)
     query << "UPDATE Plays SET"
           << " name = '"
           << play.getName().get()
-          << "' rating = '"
+          << "', rating = '"
           << play.getRating().get()
-          << "' type = '"
+          << "', type = '"
           << play.getType().get()
           << "' WHERE id_plays = '" << play.getId().get() << '\'';
 

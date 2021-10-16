@@ -2,7 +2,7 @@
 
 Page *DeleteUserPage::show(PageHandler *handler)
 {
-    SQLResult result = handler->getServices()->getParticipantHandler()->search(_registration);
+    SQLResult result = handler->getServices()->getParticipantHandler()->search(_user.getRegistration());
 
     if (result.rows.size() == 0)
     {
@@ -30,10 +30,10 @@ Page *DeleteUserPage::show(PageHandler *handler)
 
     if (!deleteUser)
     {
-        return new AuthenticatedInitPage(user["first_name"], user["last_name"], _registration);
+        return new AuthenticatedInitPage(_user);
     }
 
-    result = handler->getServices()->getParticipantHandler()->remove(_registration);
+    result = handler->getServices()->getParticipantHandler()->remove(_user.getRegistration());
 
     if (result.status != SQLResult::SUCCESS)
     {
@@ -48,10 +48,10 @@ Page *DeleteUserPage::show(PageHandler *handler)
 
         if (!tryAgain)
         {
-            return new DeleteUserPage(_registration);
+            return new DeleteUserPage(_user);
         }
 
-        return new AuthenticatedInitPage(user["first_name"], user["last_name"], user["registration"]);
+        return new AuthenticatedInitPage(_user);
     }
 
     handler->print("Successfully deleted user! Press any key to continue...");
