@@ -36,7 +36,54 @@ Page *DeleteItemsPage::_deletePlay(PageHandler *handler)
 
 Page *DeleteItemsPage::_deleteRoom(PageHandler *handler)
 {
-    handler->print("Page not yet implemented. Press any key to continue...");
+    IdCode roomId;
+
+    while (true)
+    {
+        handler->print("Enter the Id of the Room to delete: ");
+        std::string input = handler->readInput();
+
+        try
+        {
+            roomId = IdCode(input);
+            break;
+        }
+        catch (const std::invalid_argument &)
+        {
+            handler->print("Invalid input. Try again? [Yy/Nn] ");
+            int option = getch();
+            bool tryAgain = option == 'Y' || option == 'y';
+
+            if (!tryAgain)
+            {
+                return new AuthenticatedInitPage(_user);
+            }
+            handler->clearLines(2);
+        }
+    }
+
+    SQLResult result = handler->getServices()->getRoomHandler()->remove(roomId);
+
+    if (result.status != SQLResult::SUCCESS)
+    {
+        handler->print("Could not delete Room.");
+        handler->print(result.errorMessage);
+        handler->print("");
+
+        handler->print("Try again? [Yy/Nn]");
+
+        int option = getch();
+        bool tryAgain = option == 'Y' || option == 'y';
+
+        if (!tryAgain)
+        {
+            return new AuthenticatedInitPage(_user);
+        }
+
+        return new DeleteItemsPage(_user, _entityToDelete);
+    }
+
+    handler->print("Successfully deleted Room! Press any key to continue...");
 
     getch();
 

@@ -36,11 +36,112 @@ Page *IncludeItemsPage::_includePlay(PageHandler *handler)
 
 Page *IncludeItemsPage::_includeRoom(PageHandler *handler)
 {
-    handler->print("Page not yet implemented. Press any key to continue...");
+
+    IdCode roomId;
+    Name name;
+    Capacity capacity;
+
+    std::string input;
+
+    while (true)
+    {
+        handler->print("Enter Room Id: ");
+        input = handler->readInput();
+
+        try
+        {
+            roomId = IdCode(input);
+            break;
+        }
+        catch (const std::invalid_argument &)
+        {
+            handler->print("Invalid input. Try again? [Yy/Nn] ");
+            int option = getch();
+            bool tryAgain = option == 'Y' || option == 'y';
+
+            if (!tryAgain)
+            {
+                return new AuthenticatedInitPage(_user);
+            }
+            handler->clearLines(2);
+        }
+    }
+
+    while (true)
+    {
+        handler->print("Enter name: ");
+        input = handler->readInput();
+
+        try
+        {
+            name = Name(input);
+            break;
+        }
+        catch (const std::invalid_argument &)
+        {
+            handler->print("Invalid input. Try again? [Yy/Nn] ");
+            int option = getch();
+            bool tryAgain = option == 'Y' || option == 'y';
+
+            if (!tryAgain)
+            {
+                return new AuthenticatedInitPage(_user);
+            }
+            handler->clearLines(2);
+        }
+    }
+
+    while (true)
+    {
+        handler->print("Enter capacity: ");
+        input = handler->readInput();
+        int inputInt = std::stoi(input);
+
+        try
+        {
+            capacity = Capacity(inputInt);
+            break;
+        }
+        catch (const std::invalid_argument &)
+        {
+            handler->print("Invalid input. Try again? [Yy/Nn] ");
+            int option = getch();
+            bool tryAgain = option == 'Y' || option == 'y';
+
+            if (!tryAgain)
+            {
+                return new AuthenticatedInitPage(_user);
+            }
+            handler->clearLines(2);
+        }
+    }
+
+    SQLResult result = handler->getServices()->getRoomHandler()->create(Room(roomId, name, capacity));
+
+    if (result.status != SQLResult::SUCCESS)
+    {
+        handler->print("Could not create a Room.");
+        handler->print(result.errorMessage);
+        handler->print("");
+
+        handler->print("Try again? [Yy/Nn]");
+
+        int option = getch();
+        bool tryAgain = option == 'Y' || option == 'y';
+
+        if (!tryAgain)
+        {
+            return new AuthenticatedInitPage(_user);
+        }
+
+        return new IncludeItemsPage(_user, _entityToInclude);
+    }
+
+    handler->print("Successfully created a Room! Press any key to continue...");
 
     getch();
 
-    return new InitPage;
+    return new AuthenticatedInitPage(_user);
 }
 
 Page *IncludeItemsPage::_includeSession(PageHandler *handler)
