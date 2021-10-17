@@ -4,7 +4,7 @@ Page *DeleteUserPage::show(PageHandler *handler)
 {
     SQLResult result = handler->getServices()->getParticipantHandler()->search(_user.getRegistration());
 
-    if (result.rows.size() == 0)
+    if (result.rows.empty())
     {
         handler->print("Something went wrong! Press any key to continue...");
 

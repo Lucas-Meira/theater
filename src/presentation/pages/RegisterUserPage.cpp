@@ -212,11 +212,9 @@ Page *RegisterUserPage::show(PageHandler *handler)
         handler->clearScreen();
     }
 
-    ServicesInterface *services = handler->getServices();
-
     Participant newUser = Participant(registration, firstName, lastName, email, phoneNumber, password, role);
 
-    SQLResult result = services->getParticipantHandler()->create(newUser);
+    SQLResult result = handler->getServices()->getParticipantHandler()->create(newUser);
 
     if (result.status != SQLResult::SUCCESS)
     {

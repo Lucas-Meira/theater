@@ -27,7 +27,187 @@ Page *EditItemsPage::show(PageHandler *handler)
 
 Page *EditItemsPage::_editPlay(PageHandler *handler)
 {
-    handler->print("Page not yet implemented. Press any key to continue...");
+    Play newPlay;
+
+    while (true)
+    {
+        handler->print("Enter the Id of the play to edit: ");
+        std::string input = handler->readInput();
+
+        try
+        {
+            newPlay.setId(input);
+            break;
+        }
+        catch (const std::invalid_argument &)
+        {
+            handler->print("Invalid input. Try again? [Yy/Nn] ");
+            int option = getch();
+            bool tryAgain = option == 'Y' || option == 'y';
+
+            if (!tryAgain)
+            {
+                return new AuthenticatedInitPage(_user);
+            }
+            handler->clearLines(2);
+        }
+    }
+
+    SQLResult result = handler->getServices()->getPlayHandler()->search(newPlay.getId());
+
+    if (result.rows.empty())
+    {
+        handler->print("No play with id " + newPlay.getId().get() + " found in the database!");
+
+        return new AuthenticatedInitPage(_user);
+    }
+
+    auto playInDb = result.rows[0];
+
+    while (true)
+    {
+        handler->print("Edit Name? " + playInDb["name"] + " [Yy/Nn]");
+
+        int option = getch();
+        bool edit = option == 'Y' || option == 'y';
+
+        if (!edit)
+        {
+            newPlay.setName(playInDb["name"]);
+            break;
+        }
+
+        handler->print("Enter new Name: ");
+        std::string input = handler->readInput();
+
+        try
+        {
+            newPlay.setName(input);
+            break;
+        }
+        catch (const std::invalid_argument &)
+        {
+            handler->print("Invalid input. Try again? [Yy/Nn] ");
+            int option = getch();
+            bool tryAgain = option == 'Y' || option == 'y';
+
+            if (!tryAgain)
+            {
+                return new AuthenticatedInitPage(_user);
+            }
+            handler->clearLines(3);
+        }
+    }
+
+    while (true)
+    {
+        handler->print("Edit Type? " + playInDb["type"] + " [Yy/Nn]");
+
+        int option = getch();
+        bool edit = option == 'Y' || option == 'y';
+
+        if (!edit)
+        {
+            newPlay.setType(playInDb["type"]);
+            break;
+        }
+
+        handler->print("Enter new Type: ");
+        std::string input = handler->readInput();
+
+        try
+        {
+            newPlay.setType(input);
+            break;
+        }
+        catch (const std::invalid_argument &)
+        {
+            handler->print("Invalid input. Try again? [Yy/Nn] ");
+            int option = getch();
+            bool tryAgain = option == 'Y' || option == 'y';
+
+            if (!tryAgain)
+            {
+                return new AuthenticatedInitPage(_user);
+            }
+            handler->clearLines(3);
+        }
+    }
+
+    while (true)
+    {
+        handler->print("Edit Rating? " + playInDb["rating"] + " [Yy/Nn]");
+
+        int option = getch();
+        bool edit = option == 'Y' || option == 'y';
+
+        if (!edit)
+        {
+            newPlay.setRating(playInDb["rating"]);
+            break;
+        }
+
+        handler->print("Enter new Rating: ");
+        std::string input = handler->readInput();
+
+        try
+        {
+            newPlay.setRating(input);
+            break;
+        }
+        catch (const std::invalid_argument &)
+        {
+            handler->print("Invalid input. Try again? [Yy/Nn] ");
+            int option = getch();
+            bool tryAgain = option == 'Y' || option == 'y';
+
+            if (!tryAgain)
+            {
+                return new AuthenticatedInitPage(_user);
+            }
+            handler->clearLines(3);
+        }
+    }
+
+    handler->clearScreen();
+
+    handler->print("Please check the info provided");
+    handler->print("");
+    handler->print("Name: " + newPlay.getName().get());
+    handler->print("Type: " + newPlay.getType().get());
+    handler->print("Rating: " + newPlay.getRating().get());
+    handler->print("Is the info provided correct? [Yy/Nn]");
+
+    int option = getch();
+    bool isCorrect = option == 'Y' || option == 'y';
+
+    if (!isCorrect)
+    {
+        return new EditItemsPage(_user, _entityToEdit);
+    }
+
+    result = handler->getServices()->getPlayHandler()->update(newPlay);
+
+    if (result.status != SQLResult::SUCCESS)
+    {
+        handler->print("Could not edit play.");
+        handler->print(result.errorMessage);
+        handler->print("");
+
+        handler->print("Try again? [Yy/Nn]");
+
+        int option = getch();
+        bool tryAgain = option == 'Y' || option == 'y';
+
+        if (!tryAgain)
+        {
+            return new AuthenticatedInitPage(_user);
+        }
+
+        return new EditItemsPage(_user, _entityToEdit);
+    }
+
+    handler->print("Successfully edited play! Press any key to continue...");
 
     getch();
 
@@ -121,20 +301,16 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         if (!edit)
         {
-            int inputInt;
-            inputInt = std::stoi(roomInDb["capacities"]);
-            newRoom.setCapacity(inputInt);
+            newRoom.setCapacity(std::stoi(roomInDb["capacities"]));
             break;
         }
 
         handler->print("Enter new Capacity: ");
         std::string input = handler->readInput();
 
-        int inputInt = std::stoi(input);
-
         try
         {
-            newRoom.setCapacity(inputInt);
+            newRoom.setCapacity(std::stoi(input));
             break;
         }
         catch (const std::invalid_argument &)
@@ -171,7 +347,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
     if (result.status != SQLResult::SUCCESS)
     {
-        handler->print("Could not edit Room.");
+        handler->print("Could not edit room.");
         handler->print(result.errorMessage);
         handler->print("");
 
@@ -188,7 +364,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
         return new EditItemsPage(_user, _entityToEdit);
     }
 
-    handler->print("Successfully edited Room! Press any key to continue...");
+    handler->print("Successfully edited room! Press any key to continue...");
 
     getch();
 

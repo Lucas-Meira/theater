@@ -27,11 +27,158 @@ Page *IncludeItemsPage::show(PageHandler *handler)
 
 Page *IncludeItemsPage::_includePlay(PageHandler *handler)
 {
-    handler->print("Page not yet implemented. Press any key to continue...");
+    std::string input;
 
-    getch();
+    IdCode id;
+    Name name;
+    PlayType type;
+    Rating rating;
 
-    return new InitPage;
+    while (true)
+    {
+        handler->print("Register a new play");
+        handler->print("");
+
+        while (true)
+        {
+            handler->print("Enter id play: ");
+            input = handler->readInput();
+
+            try
+            {
+                id = IdCode(input);
+                break;
+            }
+            catch (const std::invalid_argument &)
+            {
+                handler->print("Invalid input. Try again? [Yy/Nn] ");
+                int option = getch();
+                bool tryAgain = option == 'Y' || option == 'y';
+
+                if (!tryAgain)
+                {
+                    return new InitPage;
+                }
+                handler->clearScreen();
+            }
+        }
+
+        while (true)
+        {
+            handler->print("Enter name: ");
+            input = handler->readInput();
+
+            try
+            {
+                name = Name(input);
+                break;
+            }
+            catch (const std::invalid_argument &)
+            {
+                handler->print("Invalid input. Try again? [Yy/Nn] ");
+                int option = getch();
+                bool tryAgain = option == 'Y' || option == 'y';
+
+                if (!tryAgain)
+                {
+                    return new InitPage;
+                }
+                handler->clearScreen();
+            }
+        }
+
+        while (true)
+        {
+            handler->print("Enter type: ");
+            input = handler->readInput();
+
+            try
+            {
+                type = PlayType(input);
+                break;
+            }
+            catch (const std::invalid_argument &)
+            {
+                handler->print("Invalid input. Try again? [Yy/Nn]");
+                int option = getch();
+                bool tryAgain = option == 'Y' || option == 'y';
+
+                if (!tryAgain)
+                {
+                    return new InitPage;
+                }
+                handler->clearScreen();
+            }
+        }
+
+        while (true)
+        {
+            handler->print("Enter rating: ");
+            input = handler->readInput();
+
+            try
+            {
+                rating = Rating(input);
+                break;
+            }
+            catch (const std::invalid_argument &)
+            {
+                handler->print("Invalid input. Try again? [Yy/Nn]");
+                int option = getch();
+                bool tryAgain = option == 'Y' || option == 'y';
+
+                if (!tryAgain)
+                {
+                    return new InitPage;
+                }
+                handler->clearScreen();
+            }
+        }
+        handler->clearScreen();
+
+        handler->print("Please check the info provided");
+        handler->print("");
+        handler->print("Id: " + id.get());
+        handler->print("Name: " + name.get());
+        handler->print("Type: " + type.get());
+        handler->print("Rating: " + rating.get());
+        handler->print("Is the info provided correct? [Yy/Nn]");
+
+        int option = getch();
+        bool tryAgain = option == 'N' || option == 'n';
+
+        if (!tryAgain)
+        {
+            break;
+        }
+
+        handler->clearScreen();
+    }
+
+    SQLResult result = handler->getServices()->getPlayHandler()->create(Play(id, name, type, rating));
+
+    if (result.status != SQLResult::SUCCESS)
+    {
+        handler->clearScreen();
+
+        handler->print("Failed to create play.");
+        handler->print(result.errorMessage);
+        handler->print("");
+
+        handler->print("Try again? [Yy/Nn]");
+
+        int option = getch();
+        bool tryAgain = option == 'Y' || option == 'y';
+
+        if (!tryAgain)
+        {
+            return new AuthenticatedInitPage(_user);
+        }
+
+        return new IncludeItemsPage(_user, _entityToInclude);
+    }
+
+    return new AuthenticatedInitPage(_user);
 }
 
 Page *IncludeItemsPage::_includeRoom(PageHandler *handler)

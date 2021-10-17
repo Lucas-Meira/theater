@@ -37,7 +37,6 @@ SQLResult ParticipantHandler::search(const Registration &registration)
 
     return DBHandler::getInstance()->execute(query);
 }
-
 SQLResult ParticipantHandler::list()
 {
     std::stringstream query;
@@ -84,6 +83,19 @@ SQLResult ParticipantHandler::update(const Participant &participant)
           << "', role = '"
           << participant.getRole().get()
           << "' WHERE registration = '" << participant.getRegistration().get() << '\'';
+
+    return DBHandler::getInstance()->execute(query);
+}
+
+SQLResult ParticipantHandler::updatePlay(const Registration &registration, const IdCode &playId)
+{
+    std::stringstream query;
+
+    std::string id = playId.get().empty() ? "NULL" : playId.get();
+
+    query << "UPDATE Participants SET"
+          << " id_plays_id = '" << id << "' WHERE registration = '"
+          << registration.get() << "\';";
 
     return DBHandler::getInstance()->execute(query);
 }

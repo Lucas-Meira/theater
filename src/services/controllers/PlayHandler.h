@@ -9,7 +9,8 @@ public:
     SQLResult create(const Play &play);
     SQLResult remove(const IdCode &id);
     SQLResult search(const IdCode &id);
-    SQLResult update(const Play &play);
     SQLResult list();
+    SQLResult update(const Play &play);
+
 };
 #endif

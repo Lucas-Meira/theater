@@ -9,7 +9,8 @@ public:
     SQLResult create(const Room &room);
     SQLResult remove(const IdCode &id);
     SQLResult search(const IdCode &id);
-    SQLResult update(const Room &room);
     SQLResult list();
+    SQLResult update(const Room &room);
+
 };
 #endif

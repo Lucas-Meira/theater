@@ -6,7 +6,7 @@ Page *UpdateUserPage::show(PageHandler *handler)
 
     SQLResult result = handler->getServices()->getParticipantHandler()->search(_user.getRegistration());
 
-    if (result.rows.size() == 0)
+    if (result.rows.empty())
     {
         handler->print("Something went wrong!");
 
@@ -255,11 +255,9 @@ Page *UpdateUserPage::show(PageHandler *handler)
         return new UpdateUserPage(_user);
     }
 
-    ServicesInterface *services = handler->getServices();
-
     Participant newUser = Participant(registration, firstName, lastName, email, phoneNumber, password, role);
 
-    result = services->getParticipantHandler()->update(newUser);
+    result = handler->getServices()->getParticipantHandler()->update(newUser);
 
     if (result.status != SQLResult::SUCCESS)
     {

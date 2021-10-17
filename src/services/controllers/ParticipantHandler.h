@@ -9,8 +9,9 @@ public:
     SQLResult create(const Participant &participant);
     SQLResult remove(const Registration &registration);
     SQLResult search(const Registration &registration);
-    SQLResult update(const Participant &participant);
     SQLResult list();
+    SQLResult update(const Participant &participant);
+    SQLResult updatePlay(const Registration &registration, const IdCode &playId);
     std::map<std::string, std::string> authenticate(const Registration &registration, const Password &password);
 };
 #endif

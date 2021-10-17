@@ -42,7 +42,11 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
             return new UpdateUserPage(_user);
         case 7:
             return new DeleteUserPage(_user);
-
+        case 8:
+            return new PlayEnrollmentPage(_user);
+        case 9:
+            return new PlayDisenrollmentPage(_user);
+            
         default:
             handler->clearScreen();
             handler->print("Invalid Option " + std::to_string(option));
