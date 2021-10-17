@@ -18,7 +18,7 @@ Page *PlayDisenrollmentPage::show(PageHandler *handler)
     auto user = result.rows[0];
     Registration registration = Registration(user["registration"]);
 
-    handler->print("disenroll from Play? " + user["id_plays_id"] + " [Yy/Nn]");
+    handler->print("Disenroll from Play? " + user["id_plays_id"] + " [Yy/Nn]");
 
     int option = getch();
     bool disenroll = option == 'Y' || option == 'y';
@@ -30,7 +30,7 @@ Page *PlayDisenrollmentPage::show(PageHandler *handler)
 
     handler->clearScreen();
 
-    result = handler->getServices()->getParticipantHandler()->updatePlay(registration, IdCode(""));
+    result = handler->getServices()->getParticipantHandler()->updatePlay(registration, IdCode());
 
     if (result.status != SQLResult::SUCCESS)
     {

@@ -19,19 +19,18 @@ Page *PlayEnrollmentPage::show(PageHandler *handler)
     Registration registration = Registration(user["registration"]);
     Play play;
 
+    handler->print("Alter Play? " + user["id_plays_id"] + " [Yy/Nn]");
+
+    int option = getch();
+    bool alter = option == 'Y' || option == 'y';
+
+    if (!alter)
+    {
+        play.setId(user["id_plays_id"]);
+    }
+
     while (true)
     {
-        handler->print("Alter Play? " + user["id_plays_id"] + " [Yy/Nn]");
-
-        int option = getch();
-        bool alter = option == 'Y' || option == 'y';
-
-        if (!alter)
-        {
-            play.setId(user["id_plays_id"]);
-            break;
-        }
-
         handler->print("Enter new Play Id: ");
 
         std::string input = handler->readInput();
@@ -44,17 +43,17 @@ Page *PlayEnrollmentPage::show(PageHandler *handler)
         catch (const std::invalid_argument &)
         {
             handler->print("Invalid input. Try again? [Yy/Nn] ");
-            int option = getch();
+            option = getch();
             bool tryAgain = option == 'Y' || option == 'y';
 
             if (!tryAgain)
             {
                 return new AuthenticatedInitPage(_user);
             }
-            handler->clearLines(3);
+            handler->clearLines(2);
         }
-
     }
+
     handler->clearScreen();
 
     result = handler->getServices()->getPlayHandler()->search(play.getId());
@@ -83,7 +82,7 @@ Page *PlayEnrollmentPage::show(PageHandler *handler)
 
     handler->print("Is the info provided correct? [Yy/Nn]");
 
-    int option = getch();
+    option = getch();
     bool isCorrect = option == 'Y' || option == 'y';
 
     if (!isCorrect)
