@@ -24,15 +24,15 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++17" />
-					<Add directory="C:/PDCurses" />
+					<Add directory="PDCurses" />
 				</Compiler>
 				<ResourceCompiler>
-					<Add directory="C:/PDCurses" />
+					<Add directory="PDCurses" />
 				</ResourceCompiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="C:/PDCurses/libcurses.a" />
-					<Add directory="C:/PDCurses" />
+					<Add library="PDCurses/libcurses.a" />
+					<Add directory="PDCurses" />
 				</Linker>
 			</Target>
 			<Target title="Tests">

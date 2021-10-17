@@ -4,6 +4,10 @@ This project is a university assignment at the University of Brasilia, for the P
 
 # Installation
 
+First, clone this project.
+
+`git clone --recursive https://github.com/Lucas-Meira/theater.git`
+
 ## CodeBlocks
 
 CodeBlocks is mandatory for this project. You can open `Theater.cbp` in CodeBlocks and select the target to run.

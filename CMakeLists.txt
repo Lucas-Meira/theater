@@ -4,8 +4,8 @@ project(Theater)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories("C:/PDCurses")
-link_directories("C:/PDCurses")
+include_directories("PDCurses")
+link_directories("PDCurses")
 
 set(CMAKE_CXX_FLAGS "-Wall")
 
