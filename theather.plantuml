@@ -1,0 +1,124 @@
+@startuml Theater
+skinparam linetype ortho
+
+skinparam TitleFontSize 48
+skinparam TitleFontStyle bold
+
+title Theater
+
+frame Presentation {
+class PageHandler {
+ +PageHandler(services : ServicesInterface)
+ +handle()
+ +clearScreen()
+ +print(message : string)
+ +renderMenu(options : vector<string>) : unsigned int
+ +readInput() : string
+ +getServices(): ServicesInterface
+}
+}
+
+frame Services {
+interface ServicesInterface {
+ +ServicesInterface(participantHandler : ParticipantInterface, playHandler : PlayInterface, roomHandler : RoomInterface, sessionHandler : SessionInterface)
+ +getParticipantHandler() : ParticipantInterface
+ +getPlayHandler() : PlayInterface
+ +getRoomHandler() : RoomInterface
+ +getSessionHandler() : SessionInterface
+}
+
+interface ParticipantInterface {
+ {abstract} +create(participant : Participant) : SQLResult
+ {abstract} +remove(registration : Registration) : SQLResult
+ {abstract} +search(registration : Registration) : SQLResult
+ {abstract} +list() : SQLResult
+ {abstract} +update(participant : Participant) : SQLResult
+ {abstract} +authenticate(registration : Registration, password : Password) : map<string, string>
+}
+
+interface PlayInterface {
+ {abstract} +create(play : Play) : SQLResult
+ {abstract} +remove(id : IdCode) : SQLResult
+ {abstract} +search(id : IdCode) : SQLResult
+ {abstract} +list() : SQLResult
+ {abstract} +update(play : Play) : SQLResult
+}
+
+interface RoomInterface {
+ {abstract} +create(room : Room) : SQLResult
+ {abstract} +remove(id : IdCode) : SQLResult
+ {abstract} +search(id : IdCode) : SQLResult
+ {abstract} +list() : SQLResult
+ {abstract} +update(room : Room) : SQLResult
+}
+
+
+interface SessionInterface {
+ {abstract} +create(session : Session,  playId : IdCode, roomId : IdCode) : SQLResult
+ {abstract} +remove(id : IdCode) : SQLResult
+ {abstract} +search(id : IdCode) : SQLResult
+ {abstract} +list() : SQLResult
+ {abstract} +update(session : Session,  playId : IdCode, roomId : IdCode) : SQLResult
+}
+
+class ParticipantHandler {
+ +create(participant : Participant) : SQLResult
+ +remove(registration : Registration) : SQLResult
+ +search(registration : Registration) : SQLResult
+ +list() : SQLResult
+ +update(participant : Participant) : SQLResult
+ +authenticate(registration : Registration, password : Password) : map<string, string>
+}
+
+class PlayHandler {
+ +create(play : Play) : SQLResult
+ +remove(id : IdCode) : SQLResult
+ +search(id : IdCode) : SQLResult
+ +list() : SQLResult
+ +update(play : Play) : SQLResult
+}
+
+class RoomHandler {
+ +create(room : Room) : SQLResult
+ +remove(id : IdCode) : SQLResult
+ +search(id : IdCode) : SQLResult
+ +list() : SQLResult
+ +update(room : Room) : SQLResult
+}
+
+
+class SessionHandler {
+ +create(session : Session,  playId : IdCode, roomId : IdCode) : SQLResult
+ +remove(id : IdCode) : SQLResult
+ +search(id : IdCode) : SQLResult
+ +list() : SQLResult
+ +update(session : Session,  playId : IdCode, roomId : IdCode) : SQLResult
+}
+}
+
+frame DB {
+class DBHandler {
+ {static} +getInstance() : DBHandler;
+ +execute(query : string) : SQLResult;
+ +execute(query : stringstream) : SQLResult;
+}
+}
+
+PageHandler --|> ServicesInterface
+
+ServicesInterface *-- ParticipantInterface
+ServicesInterface *-- PlayInterface
+ServicesInterface *-- RoomInterface
+ServicesInterface *-- SessionInterface
+
+ParticipantInterface <|.. ParticipantHandler : "Implements"
+PlayInterface <|.. PlayHandler : "Implements"
+RoomInterface <|.. RoomHandler : "Implements"
+SessionInterface <|.. SessionHandler : "Implements"
+
+ParticipantHandler ..|> DBHandler
+PlayHandler ..|> DBHandler
+RoomHandler ..|> DBHandler
+SessionHandler ..|> DBHandler
+
+@enduml
