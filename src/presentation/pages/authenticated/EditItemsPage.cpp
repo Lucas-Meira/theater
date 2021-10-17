@@ -217,6 +217,7 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 Page *EditItemsPage::_editRoom(PageHandler *handler)
 {
     Room newRoom;
+
     while (true)
     {
         handler->print("Enter the Id of the Room to edit: ");
@@ -243,11 +244,15 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
     SQLResult result = handler->getServices()->getRoomHandler()->search(newRoom.getId());
 
-    if (result.rows.size() == 0)
+    if (result.rows.empty())
     {
-        handler->print("Something went wrong!");
+        handler->print("No room with id " + newRoom.getId().get() + " found in the database!");
+        handler->print("");
+        handler->print("Press any key to continue...");
 
-        return new InitPage;
+        getch();
+
+        return new AuthenticatedInitPage(_user);
     }
 
     auto roomInDb = result.rows[0];
@@ -289,7 +294,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
     while (true)
     {
-        handler->print("Edit Capacities? " + roomInDb["capacities"] + " [Yy/Nn]");
+        handler->print("Edit Capacity? " + roomInDb["capacities"] + " [Yy/Nn]");
 
         int option = getch();
         bool edit = option == 'Y' || option == 'y';
@@ -300,12 +305,12 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
             break;
         }
 
-        handler->print("Enter new Capacities: ");
+        handler->print("Enter new Capacity: ");
         std::string input = handler->readInput();
+
         try
         {
             newRoom.setCapacity(std::stoi(input));
-            
             break;
         }
         catch (const std::invalid_argument &)
@@ -321,7 +326,6 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
             handler->clearLines(3);
         }
     }
-  
 
     handler->clearScreen();
 
@@ -399,11 +403,15 @@ Page *EditItemsPage::_editSession(PageHandler *handler)
 
     SQLResult result = handler->getServices()->getSessionHandler()->search(newSession.getId());
 
-    if (result.rows.size() == 0)
+    if (result.rows.empty())
     {
-        handler->print("Something went wrong!");
+        handler->print("No session with id " + newSession.getId().get() + " found in the database!");
+        handler->print("");
+        handler->print("Press any key to continue...");
 
-        return new InitPage;
+        getch();
+
+        return new AuthenticatedInitPage(_user);
     }
 
     auto sessionInDb = result.rows[0];

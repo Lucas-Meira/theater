@@ -83,12 +83,11 @@ Page *DeleteItemsPage::_deletePlay(PageHandler *handler)
 
 Page *DeleteItemsPage::_deleteRoom(PageHandler *handler)
 {
-
     IdCode roomId;
 
     while (true)
     {
-        handler->print("Enter the Id of the room to delete: ");
+        handler->print("Enter the Id of the Room to delete: ");
         std::string input = handler->readInput();
 
         try

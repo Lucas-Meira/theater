@@ -29,7 +29,56 @@ Page *ViewItemsPage::show(PageHandler *handler)
 
 Page *ViewItemsPage::_viewPlays(PageHandler *handler)
 {
-    handler->print("Page not yet implemented. Press any key to continue...");
+    SQLResult result = handler->getServices()->getPlayHandler()->list();
+
+    if (result.status != SQLResult::SUCCESS)
+    {
+        handler->print("Could not get Plays.");
+        handler->print(result.errorMessage);
+        handler->print("");
+
+        handler->print("Try again? [Yy/Nn]");
+
+        int option = getch();
+        bool tryAgain = option == 'Y' || option == 'y';
+
+        if (!tryAgain)
+        {
+            return new AuthenticatedInitPage(_user);
+        }
+
+        return new ViewItemsPage(_user, _entityToView);
+    }
+
+    auto plays = result.rows;
+
+    if (plays.empty())
+    {
+        handler->print("No entries found in the database. Press any key to continue...");
+
+        getch();
+
+        return new AuthenticatedInitPage(_user);
+    }
+
+    std::stringstream headers;
+
+    headers << std::setw(3) << "#" << std::setw(8) << "   ID   " << std::setw(30) << "             Name             " << std::setw(8) << "Rating" << std::setw(8) << "  Type  ";
+
+    handler->print(headers.str());
+    handler->print("");
+
+    for (std::size_t i = 0; i < plays.size(); i++)
+    {
+        std::stringstream entries;
+
+        entries << std::setw(3) << i + 1 << std::setw(8) << plays[i]["id_plays"] << std::setw(30) << plays[i]["name"] << std::setw(8) << plays[i]["rating"] << std::setw(8) << plays[i]["type"];
+
+        handler->print(entries.str());
+    }
+
+    handler->print("");
+    handler->print("Press any key to continue...");
 
     getch();
 
@@ -38,7 +87,56 @@ Page *ViewItemsPage::_viewPlays(PageHandler *handler)
 
 Page *ViewItemsPage::_viewRooms(PageHandler *handler)
 {
-    handler->print("Page not yet implemented. Press any key to continue...");
+    SQLResult result = handler->getServices()->getRoomHandler()->list();
+
+    if (result.status != SQLResult::SUCCESS)
+    {
+        handler->print("Could not get Rooms.");
+        handler->print(result.errorMessage);
+        handler->print("");
+
+        handler->print("Try again? [Yy/Nn]");
+
+        int option = getch();
+        bool tryAgain = option == 'Y' || option == 'y';
+
+        if (!tryAgain)
+        {
+            return new AuthenticatedInitPage(_user);
+        }
+
+        return new ViewItemsPage(_user, _entityToView);
+    }
+
+    auto rooms = result.rows;
+
+    if (rooms.empty())
+    {
+        handler->print("No entries found in the database. Press any key to continue...");
+
+        getch();
+
+        return new AuthenticatedInitPage(_user);
+    }
+
+    std::stringstream headers;
+
+    headers << std::setw(3) << "#" << std::setw(6) << "  ID  " << std::setw(30) << "             Name             " << std::setw(11) << "Capacity";
+
+    handler->print(headers.str());
+    handler->print("");
+
+    for (std::size_t i = 0; i < rooms.size(); i++)
+    {
+        std::stringstream entries;
+
+        entries << std::setw(3) << i + 1 << std::setw(6) << rooms[i]["id_rooms"] << std::setw(30) << rooms[i]["name"] << std::setw(11) << rooms[i]["capacities"];
+
+        handler->print(entries.str());
+    }
+
+    handler->print("");
+    handler->print("Press any key to continue...");
 
     getch();
 

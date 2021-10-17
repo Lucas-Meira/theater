@@ -21,7 +21,14 @@ void PageHandler::handle()
         }
         catch (const std::exception &)
         {
-            // TODO: Display error page
+            delete page;
+
+            page = new ErrorPage();
+
+            Page *newPage = page->show(this);
+            delete page;
+
+            page = newPage;
         }
     } while (page);
 }
