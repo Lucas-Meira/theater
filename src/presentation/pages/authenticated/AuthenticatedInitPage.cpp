@@ -42,6 +42,8 @@ Page *AuthenticatedInitPage::show(PageHandler *handler)
             return new UpdateUserPage(_user);
         case 7:
             return new DeleteUserPage(_user);
+        case 8:
+            return new PlayEnrollmentPage(_user);
 
         default:
             handler->clearScreen();

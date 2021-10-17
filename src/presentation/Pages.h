@@ -226,4 +226,20 @@ public:
     ~ViewItemsPage(){};
 };
 
+class PlayEnrollmentPage : public Page
+{
+private:
+    Participant _user;
+
+public:
+    PlayEnrollmentPage(const Participant &user) : _user(user)
+    {
+    }
+
+    Page *show(PageHandler *handler);
+
+    ~PlayEnrollmentPage(){};
+};
+
+
 #endif

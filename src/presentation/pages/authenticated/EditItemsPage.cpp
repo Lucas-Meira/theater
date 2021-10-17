@@ -296,16 +296,15 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
 
         if (!edit)
         {
-            newRoom.setCapacity(roomInDb["capacities"]);
+            newRoom.setCapacity(std::stoi(roomInDb["capacities"]));
             break;
         }
 
         handler->print("Enter new Capacities: ");
         std::string input = handler->readInput();
-        std::stoi(str);
         try
         {
-            newRoom.setCapacity(input);
+            newRoom.setCapacity(std::stoi(input));
             
             break;
         }
