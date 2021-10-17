@@ -41,7 +41,7 @@ Page *IncludeItemsPage::_includePlay(PageHandler *handler)
 
         while (true)
         {
-            handler->print("Enter id play: ");
+            handler->print("Enter Play Id: ");
             input = handler->readInput();
 
             try
