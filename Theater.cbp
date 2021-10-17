@@ -155,18 +155,66 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="src/presentation/pages/InitPage.cpp" />
-		<Unit filename="src/presentation/pages/ItemsMenuPage.cpp" />
-		<Unit filename="src/presentation/pages/ListItemsPage.cpp" />
-		<Unit filename="src/presentation/pages/LogInPage.cpp" />
-		<Unit filename="src/presentation/pages/RegisterUserPage.cpp" />
-		<Unit filename="src/presentation/pages/authenticated/AuthenticatedInitPage.cpp" />
-		<Unit filename="src/presentation/pages/authenticated/DeleteItemsPage.cpp" />
-		<Unit filename="src/presentation/pages/authenticated/DeleteUserPage.cpp" />
-		<Unit filename="src/presentation/pages/authenticated/EditItemsPage.cpp" />
-		<Unit filename="src/presentation/pages/authenticated/IncludeItemsPage.cpp" />
-		<Unit filename="src/presentation/pages/authenticated/UpdateUserPage.cpp" />
-		<Unit filename="src/presentation/pages/authenticated/ViewItemsPage.cpp" />
+		<Unit filename="src/presentation/pages/ErrorPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/InitPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/ItemsMenuPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/ListItemsPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/LogInPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/RegisterUserPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/AuthenticatedInitPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/DeleteItemsPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/DeleteUserPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/EditItemsPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/IncludeItemsPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/PlayDisenrollmentPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/PlayEnrollmentPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/UpdateUserPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/presentation/pages/authenticated/ViewItemsPage.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="src/services/controllers/ParticipantHandler.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
@@ -211,11 +259,23 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="src/services/db/sql/Participant.sql" />
+		<Unit filename="src/services/db/sql/Participant.sql">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="src/services/db/sql/Play.sql" />
-		<Unit filename="src/services/db/sql/Room.sql" />
-		<Unit filename="src/services/db/sql/Session.sql" />
-		<Unit filename="src/services/db/sql/Type.sql" />
+		<Unit filename="src/services/db/sql/Room.sql">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/db/sql/Session.sql">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/services/db/sql/Type.sql">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="src/services/db/sqlite3.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
