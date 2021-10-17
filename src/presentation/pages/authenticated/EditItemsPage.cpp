@@ -332,7 +332,7 @@ Page *EditItemsPage::_editRoom(PageHandler *handler)
     handler->print("Please check the info provided");
     handler->print("");
     handler->print("Name: " + newRoom.getName().get());
-    handler->print("Capacity: " + newRoom.getCapacity().get());
+    handler->print("Capacity: " + std::to_string(newRoom.getCapacity().get()));
     handler->print("Is the info provided correct? [Yy/Nn]");
 
     int option = getch();
