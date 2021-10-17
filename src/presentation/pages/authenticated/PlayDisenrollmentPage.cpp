@@ -6,7 +6,7 @@ Page *PlayDisenrollmentPage::show(PageHandler *handler)
     handler->print("Play Disenrollment Page");
     SQLResult result = handler->getServices()->getParticipantHandler()->search(_user.getRegistration());
 
-    if (result.rows.size() == 0)
+    if (result.rows.empty())
     {
         handler->print("Something went wrong!");
 

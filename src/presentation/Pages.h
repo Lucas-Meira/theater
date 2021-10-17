@@ -234,7 +234,6 @@ public:
     ~ViewItemsPage(){};
 };
 
-
 class PlayEnrollmentPage : public Page
 {
 private:
@@ -264,6 +263,5 @@ public:
 
     ~PlayDisenrollmentPage(){};
 };
-
 
 #endif

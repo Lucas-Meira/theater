@@ -27,14 +27,12 @@ Page *IncludeItemsPage::show(PageHandler *handler)
 
 Page *IncludeItemsPage::_includePlay(PageHandler *handler)
 {
-
     std::string input;
 
     IdCode id;
     Name name;
     PlayType type;
     Rating rating;
-
 
     while (true)
     {
@@ -88,7 +86,6 @@ Page *IncludeItemsPage::_includePlay(PageHandler *handler)
                 handler->clearScreen();
             }
         }
-
 
         while (true)
         {
@@ -158,9 +155,8 @@ Page *IncludeItemsPage::_includePlay(PageHandler *handler)
         handler->clearScreen();
     }
 
-    ServicesInterface *services = handler->getServices();
+    SQLResult result = handler->getServices()->getPlayHandler()->create(Play(id, name, type, rating));
 
-    SQLResult result = services->getPlayHandler()->create(Play(id, name, type, rating));
     if (result.status != SQLResult::SUCCESS)
     {
         handler->clearScreen();
@@ -184,8 +180,6 @@ Page *IncludeItemsPage::_includePlay(PageHandler *handler)
 
     return new AuthenticatedInitPage(_user);
 }
-
-
 
 Page *IncludeItemsPage::_includeRoom(PageHandler *handler)
 {

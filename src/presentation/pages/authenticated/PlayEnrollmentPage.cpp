@@ -6,7 +6,7 @@ Page *PlayEnrollmentPage::show(PageHandler *handler)
     handler->print("Play Enrollment Page");
     SQLResult result = handler->getServices()->getParticipantHandler()->search(_user.getRegistration());
 
-    if (result.rows.size() == 0)
+    if (result.rows.empty())
     {
         handler->print("Something went wrong!");
 
@@ -19,14 +19,14 @@ Page *PlayEnrollmentPage::show(PageHandler *handler)
     Registration registration = Registration(user["registration"]);
     Play play;
 
-    handler->print("Alter Play? " + user["id_plays_id"] + " [Yy/Nn]");
+    handler->print("Enroll in a new Play? Current Play: " + user["id_plays_id"] + " [Yy/Nn]");
 
     int option = getch();
     bool alter = option == 'Y' || option == 'y';
 
     if (!alter)
     {
-        play.setId(user["id_plays_id"]);
+        return new AuthenticatedInitPage(_user);
     }
 
     while (true)

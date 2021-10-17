@@ -43,8 +43,6 @@ SQLResult RoomHandler::list()
     return DBHandler::getInstance()->execute(query);
 }
 
-
-
 SQLResult RoomHandler::update(const Room &room)
 {
     std::stringstream query;

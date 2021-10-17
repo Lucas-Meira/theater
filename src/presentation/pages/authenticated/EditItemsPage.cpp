@@ -55,11 +55,11 @@ Page *EditItemsPage::_editPlay(PageHandler *handler)
 
     SQLResult result = handler->getServices()->getPlayHandler()->search(newPlay.getId());
 
-    if (result.rows.size() == 0)
+    if (result.rows.empty())
     {
-        handler->print("Something went wrong!");
+        handler->print("No play with id " + newPlay.getId().get() + " found in the database!");
 
-        return new InitPage;
+        return new AuthenticatedInitPage(_user);
     }
 
     auto playInDb = result.rows[0];
